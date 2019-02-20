@@ -6,6 +6,7 @@ disabled_rules:
   - force_cast
   - trailing_newline
 
+
 excluded:
   - Pods
   - fastlane
