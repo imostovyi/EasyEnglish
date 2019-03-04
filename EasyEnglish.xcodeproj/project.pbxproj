@@ -17,6 +17,10 @@
 		844540DA222D4006002FFF2F /* EasyEnglishUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844540D9222D4006002FFF2F /* EasyEnglishUITests.swift */; };
 		844540E6222D4067002FFF2F /* LoginRegistrationStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 844540E4222D4067002FFF2F /* LoginRegistrationStoryboard.storyboard */; };
 		844540E7222D4067002FFF2F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844540E5222D4067002FFF2F /* LoginViewController.swift */; };
+		84C0CB7E222D47E9002AB7B4 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84C0CB7C222D47E9002AB7B4 /* Model.xcdatamodeld */; };
+		84C0CB81222D48EB002AB7B4 /* Words+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C0CB7F222D48EB002AB7B4 /* Words+CoreDataClass.swift */; };
+		84C0CB82222D48EB002AB7B4 /* Words+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C0CB80222D48EB002AB7B4 /* Words+CoreDataProperties.swift */; };
+		84C0CB85222D495A002AB7B4 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C0CB84222D495A002AB7B4 /* CoreDataStack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +63,10 @@
 		844540DB222D4006002FFF2F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		844540E4222D4067002FFF2F /* LoginRegistrationStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LoginRegistrationStoryboard.storyboard; sourceTree = "<group>"; };
 		844540E5222D4067002FFF2F /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		84C0CB7D222D47E9002AB7B4 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		84C0CB7F222D48EB002AB7B4 /* Words+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Words+CoreDataClass.swift"; sourceTree = "<group>"; };
+		84C0CB80222D48EB002AB7B4 /* Words+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Words+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		84C0CB84222D495A002AB7B4 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		AE2B7F91527DA994067E2779 /* Pods-EasyEnglishUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyEnglishUITests.release.xcconfig"; path = "Target Support Files/Pods-EasyEnglishUITests/Pods-EasyEnglishUITests.release.xcconfig"; sourceTree = "<group>"; };
 		BDCA4E767CCD8E5B8A4FEC2A /* Pods-EasyEnglish.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyEnglish.debug.xcconfig"; path = "Target Support Files/Pods-EasyEnglish/Pods-EasyEnglish.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -91,7 +99,6 @@
 				05514D3E3C981F4DB750584A /* Pods-EasyEnglishUITests.debug.xcconfig */,
 				AE2B7F91527DA994067E2779 /* Pods-EasyEnglishUITests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -169,7 +176,10 @@
 		844540AD222D4006002FFF2F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				84C0CB83222D48F7002AB7B4 /* Entities */,
 				844540AE222D4006002FFF2F /* .gitkeep */,
+				84C0CB7C222D47E9002AB7B4 /* Model.xcdatamodeld */,
+				84C0CB84222D495A002AB7B4 /* CoreDataStack.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -295,6 +305,15 @@
 				844540DB222D4006002FFF2F /* Info.plist */,
 			);
 			path = EasyEnglishUITests;
+			sourceTree = "<group>";
+		};
+		84C0CB83222D48F7002AB7B4 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				84C0CB7F222D48EB002AB7B4 /* Words+CoreDataClass.swift */,
+				84C0CB80222D48EB002AB7B4 /* Words+CoreDataProperties.swift */,
+			);
+			path = Entities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -492,6 +511,10 @@
 			files = (
 				844540E7222D4067002FFF2F /* LoginViewController.swift in Sources */,
 				844540CE222D4006002FFF2F /* AppDelegate.swift in Sources */,
+				84C0CB7E222D47E9002AB7B4 /* Model.xcdatamodeld in Sources */,
+				84C0CB85222D495A002AB7B4 /* CoreDataStack.swift in Sources */,
+				84C0CB81222D48EB002AB7B4 /* Words+CoreDataClass.swift in Sources */,
+				84C0CB82222D48EB002AB7B4 /* Words+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -737,6 +760,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		84C0CB7C222D47E9002AB7B4 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				84C0CB7D222D47E9002AB7B4 /* Model.xcdatamodel */,
+			);
+			currentVersion = 84C0CB7D222D47E9002AB7B4 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 8445409D222D4006002FFF2F /* Project object */;
 }
