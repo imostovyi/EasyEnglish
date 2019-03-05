@@ -6,6 +6,7 @@ target 'EasyEnglish' do
   use_frameworks!
 
   pod 'TextFieldEffects'
+  pod 'Floaty', '~> 4.1.0'
 
   target 'EasyEnglishUITests' do
     inherit! :search_paths

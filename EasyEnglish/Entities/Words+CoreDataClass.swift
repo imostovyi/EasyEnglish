@@ -17,7 +17,7 @@ public class Words: NSManagedObject {
         let context: NSManagedObjectContext = CoreDataStack.shared.persistantContainer.viewContext
         let request: NSFetchRequest = fetchRequest()
         var words: [Words] = []
-        
+
         do {
             words = try context.fetch(request)
         } catch {

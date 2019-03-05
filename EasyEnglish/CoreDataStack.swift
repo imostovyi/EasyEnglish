@@ -9,11 +9,11 @@
 import CoreData
 
 class CoreDataStack {
-    
+
     static let shared = CoreDataStack()
-    
+
     private init() {}
-    
+
     private(set) lazy var persistantContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "EasyEnglish")
         container.loadPersistentStores(completionHandler: { (persistentStoreDescription, error) in

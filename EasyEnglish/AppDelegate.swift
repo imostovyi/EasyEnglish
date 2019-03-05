@@ -18,8 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         -> Bool {
             window = UIWindow(frame: UIScreen.main.bounds)
             window?.makeKeyAndVisible()
-            let storyboard = UIStoryboard(name: "LoginRegistrationStoryboard", bundle: nil)
-            let controller = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
+            let storyboard = UIStoryboard(name: "AddNewWord", bundle: nil)
+            let controller = storyboard.instantiateViewController(withIdentifier: "AddNewWord")
 
             window?.rootViewController = controller
 
