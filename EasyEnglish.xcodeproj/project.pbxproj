@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		48C3612373F98E855C557DA2 /* Pods_EasyEnglishUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2718FDA2DA89C26C304431A9 /* Pods_EasyEnglishUITests.framework */; };
 		79E957BF132E82044B3B19E8 /* Pods_EasyEnglish.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D05D3CBFFA2BFB9FC509584 /* Pods_EasyEnglish.framework */; };
+		843430352235880900DD429B /* SelfWord+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843430312235880900DD429B /* SelfWord+CoreDataClass.swift */; };
+		843430362235880900DD429B /* SelfWord+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843430322235880900DD429B /* SelfWord+CoreDataProperties.swift */; };
+		843430372235880900DD429B /* Word+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843430332235880900DD429B /* Word+CoreDataClass.swift */; };
+		843430382235880900DD429B /* Word+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843430342235880900DD429B /* Word+CoreDataProperties.swift */; };
 		844540C3222D4006002FFF2F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 844540C2222D4006002FFF2F /* Localizable.strings */; };
 		844540C7222D4006002FFF2F /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 844540C6222D4006002FFF2F /* Colors.xcassets */; };
 		844540C9222D4006002FFF2F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 844540C8222D4006002FFF2F /* Assets.xcassets */; };
@@ -20,8 +24,6 @@
 		84B21B3D222EFB6E00320FAC /* WordStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B21B3C222EFB6E00320FAC /* WordStruct.swift */; };
 		84B83C34222EA876005ED568 /* AddNewWordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B83C33222EA876005ED568 /* AddNewWordViewController.swift */; };
 		84C0CB7E222D47E9002AB7B4 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84C0CB7C222D47E9002AB7B4 /* Model.xcdatamodeld */; };
-		84C0CB81222D48EB002AB7B4 /* Words+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C0CB7F222D48EB002AB7B4 /* Words+CoreDataClass.swift */; };
-		84C0CB82222D48EB002AB7B4 /* Words+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C0CB80222D48EB002AB7B4 /* Words+CoreDataProperties.swift */; };
 		84C0CB85222D495A002AB7B4 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C0CB84222D495A002AB7B4 /* CoreDataStack.swift */; };
 		84C0CB87222D4C7D002AB7B4 /* Dictionary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84C0CB86222D4C7D002AB7B4 /* Dictionary.storyboard */; };
 		84C112B7222E7CFD000E0D57 /* DictionaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C112B6222E7CFD000E0D57 /* DictionaryViewController.swift */; };
@@ -43,6 +45,10 @@
 		2718FDA2DA89C26C304431A9 /* Pods_EasyEnglishUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EasyEnglishUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		43D8A272B874272040855382 /* Pods-EasyEnglish.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyEnglish.release.xcconfig"; path = "Target Support Files/Pods-EasyEnglish/Pods-EasyEnglish.release.xcconfig"; sourceTree = "<group>"; };
 		7D05D3CBFFA2BFB9FC509584 /* Pods_EasyEnglish.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EasyEnglish.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		843430312235880900DD429B /* SelfWord+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SelfWord+CoreDataClass.swift"; sourceTree = "<group>"; };
+		843430322235880900DD429B /* SelfWord+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SelfWord+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		843430332235880900DD429B /* Word+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Word+CoreDataClass.swift"; sourceTree = "<group>"; };
+		843430342235880900DD429B /* Word+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Word+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		844540A6222D4006002FFF2F /* EasyEnglish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyEnglish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		844540AA222D4006002FFF2F /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; name = .gitkeep; path = Modules/.gitkeep; sourceTree = "<group>"; };
 		844540AC222D4006002FFF2F /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; name = .gitkeep; path = "Business Logic/.gitkeep"; sourceTree = "<group>"; };
@@ -71,8 +77,6 @@
 		84B21B3C222EFB6E00320FAC /* WordStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordStruct.swift; sourceTree = "<group>"; };
 		84B83C33222EA876005ED568 /* AddNewWordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewWordViewController.swift; sourceTree = "<group>"; };
 		84C0CB7D222D47E9002AB7B4 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		84C0CB7F222D48EB002AB7B4 /* Words+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Words+CoreDataClass.swift"; sourceTree = "<group>"; };
-		84C0CB80222D48EB002AB7B4 /* Words+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Words+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		84C0CB84222D495A002AB7B4 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		84C0CB86222D4C7D002AB7B4 /* Dictionary.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dictionary.storyboard; sourceTree = "<group>"; };
 		84C112B6222E7CFD000E0D57 /* DictionaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryViewController.swift; sourceTree = "<group>"; };
@@ -332,8 +336,10 @@
 		84C0CB83222D48F7002AB7B4 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				84C0CB7F222D48EB002AB7B4 /* Words+CoreDataClass.swift */,
-				84C0CB80222D48EB002AB7B4 /* Words+CoreDataProperties.swift */,
+				843430312235880900DD429B /* SelfWord+CoreDataClass.swift */,
+				843430322235880900DD429B /* SelfWord+CoreDataProperties.swift */,
+				843430332235880900DD429B /* Word+CoreDataClass.swift */,
+				843430342235880900DD429B /* Word+CoreDataProperties.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -483,6 +489,7 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-EasyEnglish/Pods-EasyEnglish-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Floaty/Floaty.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
 				"${BUILT_PRODUCTS_DIR}/TextFieldEffects/TextFieldEffects.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -490,6 +497,7 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Floaty.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TextFieldEffects.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -546,13 +554,15 @@
 			files = (
 				844540E7222D4067002FFF2F /* LoginViewController.swift in Sources */,
 				844540CE222D4006002FFF2F /* AppDelegate.swift in Sources */,
+				843430362235880900DD429B /* SelfWord+CoreDataProperties.swift in Sources */,
 				84C0CB7E222D47E9002AB7B4 /* Model.xcdatamodeld in Sources */,
+				843430352235880900DD429B /* SelfWord+CoreDataClass.swift in Sources */,
 				84C0CB85222D495A002AB7B4 /* CoreDataStack.swift in Sources */,
 				84C112B7222E7CFD000E0D57 /* DictionaryViewController.swift in Sources */,
 				84B21B3D222EFB6E00320FAC /* WordStruct.swift in Sources */,
-				84C0CB81222D48EB002AB7B4 /* Words+CoreDataClass.swift in Sources */,
-				84C0CB82222D48EB002AB7B4 /* Words+CoreDataProperties.swift in Sources */,
+				843430382235880900DD429B /* Word+CoreDataProperties.swift in Sources */,
 				84B83C34222EA876005ED568 /* AddNewWordViewController.swift in Sources */,
+				843430372235880900DD429B /* Word+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -25,24 +25,10 @@ class AddNewWordViewController: UIViewController {
 
         setUpTextView()
         setUpTextFields()
+        setUpNavigationBar()
 
         title = "Add new word"
         view.addGestureRecognizer(UIGestureRecognizer(target: self, action: #selector(endEditing)))
-
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-
-    // MARK: Func to creating toolbar
-
-    private func createToolbar() -> (UIToolbar) {
-        let toolBar = UIToolbar()
-        toolBar.barStyle = .default
-        let button = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(endEditing))
-        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        toolBar.items = [flexSpace, button]
-        toolBar.sizeToFit()
-        return toolBar
     }
 
     // MARK: Fuction that implements closing keyboard
@@ -59,7 +45,6 @@ class AddNewWordViewController: UIViewController {
             field.layer.borderWidth = 2
             field.layer.borderColor = UIColor.white.cgColor
             field.layer.masksToBounds = true
-            field.inputAccessoryView = createToolbar()
         }
     }
 
@@ -72,15 +57,15 @@ class AddNewWordViewController: UIViewController {
         descriptionTextView.layer.masksToBounds = true
         descriptionTextView.textColor = UIColor.blue
         descriptionTextView.text = "Word description"
-        descriptionTextView.inputAccessoryView = createToolbar()
     }
 
     // MARK: Adding navigation bar
 
     private func setUpNavigationBar() {
-        let button = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(saveWord))
-        navigationController?.navigationItem.rightBarButtonItem = button
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(saveWord))
     }
+
+    // MARK: Saving information About word
 
     @objc private func saveWord() {
         let word = WordStruct(word: wordInformation[0].text,
@@ -92,27 +77,9 @@ class AddNewWordViewController: UIViewController {
                               videoURL: wordInformation[5].text)
 
         savedWord?(word)
-    }
-
-    // MARK: Function for implementing moving for keyboard
-
-    @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0 {
-                self.view.frame.origin.y -= keyboardSize.height
-            }
-        }
-    }
-
-    @objc func keyboardWillHide(notification: NSNotification) {
-        if self.view.frame.origin.y != 0 {
-            self.view.frame.origin.y = 0
-        }
-    }}
-
-extension AddNewWordViewController: UITextFieldDelegate {
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        print(textField)
-        //TODO: Handle this textfield and switch it on willshow/hideKeyboard
+        let storyboard = UIStoryboard(name: "Dictionary", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "Dictionary") as! DictionaryViewController
+        navigationController?.present(vc, animated: true, completion: nil)
     }
 }
+

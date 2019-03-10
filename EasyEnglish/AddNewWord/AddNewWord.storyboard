@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Fub-d1-3wT">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iFu-PR-fgh">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -11,25 +11,41 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="Znw-g8-eNT">
+            <objects>
+                <navigationController storyboardIdentifier="AddWordNavController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="iFu-PR-fgh" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="v85-cW-9rq">
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Fub-d1-3wT" kind="relationship" relationship="rootViewController" id="dZM-wp-UlE"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JB7-xh-jJ9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1099" y="149"/>
+        </scene>
         <!--AddNewWord-->
         <scene sceneID="bkJ-AK-1AT">
             <objects>
                 <viewController storyboardIdentifier="AddNewWord" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Fub-d1-3wT" userLabel="AddNewWord" customClass="AddNewWordViewController" customModule="EasyEnglish" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="b4r-SS-TDg">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="big-ben" translatesAutoresizingMaskIntoConstraints="NO" id="06F-J2-dkS">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Smt-sZ-J2X">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="by3-lO-NvM" userLabel="Content">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="503"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="503"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Word" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pFo-Rw-wrY" userLabel="Word Text Field" customClass="IsaoTextField" customModule="TextFieldEffects">
-                                                <rect key="frame" x="20" y="5" width="335" height="50"/>
+                                                <rect key="frame" x="20" y="5" width="280" height="50"/>
                                                 <color key="backgroundColor" name="Background"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="8eg-0L-Asd"/>
@@ -39,21 +55,18 @@
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="inactiveColor">
-                                                        <color key="value" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="value" name="InactiveTextFieldBorder"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="activeColor">
-                                                        <color key="value" name="Text"/>
+                                                        <color key="value" name="ActiveTextFieldBorder"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
                                                         <real key="value" value="0.59999999999999998"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <outlet property="delegate" destination="Fub-d1-3wT" id="tnt-Cj-Mzg"/>
-                                                </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Transcription" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sAX-g5-ouQ" userLabel="Transcription Text Field" customClass="IsaoTextField" customModule="TextFieldEffects">
-                                                <rect key="frame" x="20" y="65" width="335" height="50"/>
+                                                <rect key="frame" x="20" y="65" width="280" height="50"/>
                                                 <color key="backgroundColor" name="Background"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="JJN-db-Pi8"/>
@@ -63,10 +76,10 @@
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="inactiveColor">
-                                                        <color key="value" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="value" name="InactiveTextFieldBorder"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="activeColor">
-                                                        <color key="value" name="Text"/>
+                                                        <color key="value" name="ActiveTextFieldBorder"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
                                                         <real key="value" value="0.59999999999999998"/>
@@ -74,7 +87,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="BJr-M6-04a" userLabel="DescriptionText View">
-                                                <rect key="frame" x="20" y="135" width="335" height="120"/>
+                                                <rect key="frame" x="20" y="135" width="280" height="120"/>
                                                 <color key="backgroundColor" name="Background"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="120" id="Unw-LL-cex"/>
@@ -82,9 +95,12 @@
                                                 <color key="textColor" name="Text"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="Fub-d1-3wT" id="5as-n2-I1o"/>
+                                                </connections>
                                             </textView>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Translation to UA" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u4B-TL-iPB" userLabel="TranslationUA Text Field" customClass="IsaoTextField" customModule="TextFieldEffects">
-                                                <rect key="frame" x="20" y="265" width="335" height="50"/>
+                                                <rect key="frame" x="20" y="265" width="280" height="50"/>
                                                 <color key="backgroundColor" name="Background"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="QP0-fy-P8v"/>
@@ -94,10 +110,10 @@
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="inactiveColor">
-                                                        <color key="value" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="value" name="InactiveTextFieldBorder"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="activeColor">
-                                                        <color key="value" name="Text"/>
+                                                        <color key="value" name="ActiveTextFieldBorder"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
                                                         <real key="value" value="0.59999999999999998"/>
@@ -105,7 +121,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Translation to RU" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="L19-LY-WSe" userLabel="TranslationRU Text Field" customClass="IsaoTextField" customModule="TextFieldEffects">
-                                                <rect key="frame" x="20" y="325" width="335" height="50"/>
+                                                <rect key="frame" x="20" y="325" width="280" height="50"/>
                                                 <color key="backgroundColor" name="Background"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="gIq-lF-xlZ"/>
@@ -127,15 +143,15 @@
                                                         <color key="value" name="Text"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="inactiveColor">
-                                                        <color key="value" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="value" name="InactiveTextFieldBorder"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="activeColor">
-                                                        <color key="value" name="Text"/>
+                                                        <color key="value" name="ActiveTextFieldBorder"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Image URL" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zgk-AB-T41" userLabel="ImageURL Text Field" customClass="IsaoTextField" customModule="TextFieldEffects">
-                                                <rect key="frame" x="20" y="385" width="335" height="50"/>
+                                                <rect key="frame" x="20" y="385" width="280" height="50"/>
                                                 <color key="backgroundColor" name="Background"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="M4Y-Hh-Kbv"/>
@@ -157,15 +173,15 @@
                                                         <color key="value" name="Text"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="inactiveColor">
-                                                        <color key="value" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="value" name="InactiveTextFieldBorder"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="activeColor">
-                                                        <color key="value" name="Text"/>
+                                                        <color key="value" name="ActiveTextFieldBorder"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Video URL" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YMs-19-kfr" userLabel="VideoURL Text Field" customClass="IsaoTextField" customModule="TextFieldEffects">
-                                                <rect key="frame" x="20" y="445" width="335" height="50"/>
+                                                <rect key="frame" x="20" y="445" width="280" height="50"/>
                                                 <color key="backgroundColor" name="Background"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="QnQ-Wb-cR4"/>
@@ -187,10 +203,10 @@
                                                         <color key="value" name="Text"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="inactiveColor">
-                                                        <color key="value" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="value" name="InactiveTextFieldBorder"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="activeColor">
-                                                        <color key="value" name="Text"/>
+                                                        <color key="value" name="ActiveTextFieldBorder"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
@@ -247,6 +263,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bLe-t1-RtH"/>
                     </view>
+                    <navigationItem key="navigationItem" id="BAC-M0-ZFR"/>
                     <connections>
                         <outlet property="descriptionTextView" destination="BJr-M6-04a" id="U9t-xt-82O"/>
                         <outletCollection property="wordInformation" destination="pFo-Rw-wrY" collectionClass="NSMutableArray" id="jlY-IX-w1e"/>
@@ -264,11 +281,17 @@
     </scenes>
     <resources>
         <image name="big-ben" width="2592" height="3888"/>
+        <namedColor name="ActiveTextFieldBorder">
+            <color red="0.16078431372549021" green="0.69803921568627447" blue="0.61568627450980395" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="Background">
             <color red="0.95686274509803926" green="0.96470588235294119" blue="0.97647058823529409" alpha="0.85000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="InactiveTextFieldBorder">
+            <color red="0.1803921568627451" green="0.53725490196078429" blue="0.45490196078431372" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="Text">
-            <color red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.70980392156862748" green="0.4823529411764706" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

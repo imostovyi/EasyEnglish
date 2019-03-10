@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import IQKeyboardManager
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,10 +19,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         -> Bool {
             window = UIWindow(frame: UIScreen.main.bounds)
             window?.makeKeyAndVisible()
-            let storyboard = UIStoryboard(name: "AddNewWord", bundle: nil)
-            let controller = storyboard.instantiateViewController(withIdentifier: "AddNewWord")
+            let storyboard = UIStoryboard(name: "Dictionary", bundle: nil)
+            let controller = storyboard.instantiateViewController(withIdentifier: "Dictionary")
 
             window?.rootViewController = controller
+
+            IQKeyboardManager.shared().isEnabled = true
 
             return true
     }

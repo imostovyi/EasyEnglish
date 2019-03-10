@@ -19,7 +19,11 @@ class DictionaryViewController: UIViewController {
         self.view.addSubview(tableView)
 
         floatyButton.sticky = true
-        floatyButton.addItem(title: "Add words")
+        floatyButton.addItem("Add word", icon: nil) { (_) in
+            let storyboard = UIStoryboard(name: "AddNewWord", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "AddWordNavController")
+            self.present(vc, animated: true, completion: nil)
+        }
         floatyButton.addItem(title: "List of added words")
         tableView.addSubview(floatyButton)
     }
