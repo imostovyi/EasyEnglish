@@ -8,6 +8,7 @@ target 'EasyEnglish' do
   pod 'TextFieldEffects'
   pod 'Floaty', '~> 4.1.0'
   pod 'IQKeyboardManager'
+  pod 'Kingfisher', '~> 5.0'
 
   target 'EasyEnglishUITests' do
     inherit! :search_paths

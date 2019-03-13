@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jVG-iO-yqv">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Self Added Words View Controller-->
+        <scene sceneID="SnE-JJ-yrp">
+            <objects>
+                <viewController storyboardIdentifier="SelfAddedWords" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jVG-iO-yqv" customClass="SelfAddedWordsViewController" customModule="EasyEnglish" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qwA-U5-fLa">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T5P-oJ-aub">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <color key="backgroundColor" name="CheckButtonBackground"/>
+                                <items>
+                                    <navigationItem title="Title" id="uTO-QY-shT"/>
+                                </items>
+                            </navigationBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ATJ-09-FJL" userLabel="ButtonView">
+                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                <subviews>
+                                    <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v8q-li-S45">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="cVV-fK-kJM">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        </view>
+                                        <blurEffect style="light"/>
+                                    </visualEffectView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mrb-cF-cDb" customClass="BounceButton" customModule="EasyEnglish" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                        <color key="backgroundColor" name="CheckButtonBackground"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="9XU-dK-IlE"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" name="Text"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" name="CheckButtonBackground"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="v8q-li-S45" secondAttribute="bottom" id="7Vb-vH-voO"/>
+                                    <constraint firstItem="v8q-li-S45" firstAttribute="leading" secondItem="ATJ-09-FJL" secondAttribute="leading" id="8rz-jy-Sy5"/>
+                                    <constraint firstItem="mrb-cF-cDb" firstAttribute="leading" secondItem="ATJ-09-FJL" secondAttribute="leading" id="HQW-Pw-zZ3"/>
+                                    <constraint firstAttribute="bottom" secondItem="mrb-cF-cDb" secondAttribute="bottom" id="HT9-fX-MLA"/>
+                                    <constraint firstItem="v8q-li-S45" firstAttribute="top" secondItem="ATJ-09-FJL" secondAttribute="top" id="WD5-a7-4of"/>
+                                    <constraint firstAttribute="trailing" secondItem="v8q-li-S45" secondAttribute="trailing" id="fI5-94-ZDH"/>
+                                    <constraint firstItem="mrb-cF-cDb" firstAttribute="top" secondItem="ATJ-09-FJL" secondAttribute="top" id="gsU-sV-nvr"/>
+                                    <constraint firstAttribute="trailing" secondItem="mrb-cF-cDb" secondAttribute="trailing" id="koG-2e-6HC"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lme-Ea-HuK">
+                                <rect key="frame" x="0.0" y="64" width="375" height="553"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ATJ-09-FJL" firstAttribute="top" secondItem="lme-Ea-HuK" secondAttribute="bottom" id="2a1-GT-BX6"/>
+                            <constraint firstItem="lme-Ea-HuK" firstAttribute="top" secondItem="T5P-oJ-aub" secondAttribute="bottom" id="3pB-0I-gBH"/>
+                            <constraint firstItem="T5P-oJ-aub" firstAttribute="leading" secondItem="uF4-pm-jJV" secondAttribute="leading" id="8E5-1P-SPT"/>
+                            <constraint firstItem="lme-Ea-HuK" firstAttribute="leading" secondItem="uF4-pm-jJV" secondAttribute="leading" id="IS7-JU-K6q"/>
+                            <constraint firstItem="uF4-pm-jJV" firstAttribute="bottom" secondItem="ATJ-09-FJL" secondAttribute="bottom" id="NE5-w7-3HI"/>
+                            <constraint firstItem="uF4-pm-jJV" firstAttribute="trailing" secondItem="ATJ-09-FJL" secondAttribute="trailing" id="UZ9-eN-CTn"/>
+                            <constraint firstItem="ATJ-09-FJL" firstAttribute="leading" secondItem="uF4-pm-jJV" secondAttribute="leading" id="dtS-Le-0I2"/>
+                            <constraint firstItem="T5P-oJ-aub" firstAttribute="top" secondItem="uF4-pm-jJV" secondAttribute="top" id="nyt-FG-k4Y"/>
+                            <constraint firstItem="uF4-pm-jJV" firstAttribute="trailing" secondItem="lme-Ea-HuK" secondAttribute="trailing" id="rrs-qu-27d"/>
+                            <constraint firstItem="T5P-oJ-aub" firstAttribute="trailing" secondItem="uF4-pm-jJV" secondAttribute="trailing" id="vcN-ec-e5j"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="uF4-pm-jJV"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="V4t-fW-hlo"/>
+                    <connections>
+                        <outlet property="checkButton" destination="mrb-cF-cDb" id="vXo-bz-aRh"/>
+                        <outlet property="navigationBar" destination="T5P-oJ-aub" id="tgZ-F8-qEV"/>
+                        <outlet property="tableView" destination="lme-Ea-HuK" id="Cdv-IK-xWn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gd3-Ib-aOl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="345" y="154"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="CheckButtonBackground">
+            <color red="0.16078431372549021" green="0.69803921568627447" blue="0.61568627450980395" alpha="0.69999998807907104" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Text">
+            <color red="0.70980392156862748" green="0.4823529411764706" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

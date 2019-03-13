@@ -8,6 +8,7 @@
 
 import UIKit
 import TextFieldEffects
+import CoreData
 
 class AddNewWordViewController: UIViewController {
 
@@ -16,9 +17,20 @@ class AddNewWordViewController: UIViewController {
     @IBOutlet var wordInformation: [IsaoTextField]!
     @IBOutlet weak var descriptionTextView: UITextView!
 
-    // MARK: Properties
+    // MARK: public properties
 
-    var savedWord: ((WordStruct) -> Void)?
+    static public var sender: Direction?
+    static public var passedObject: SelfWord?
+
+    // MARK: Private properties
+
+    enum Direction {
+        case dictionary
+        case listOfSelfWords
+    }
+    private lazy var context = CoreDataStack.shared.persistantContainer.viewContext
+    private lazy var fetchedWords = SelfWord.fetchAll()
+    private lazy var object = SelfWord(context: context)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +41,11 @@ class AddNewWordViewController: UIViewController {
 
         title = "Add new word"
         view.addGestureRecognizer(UIGestureRecognizer(target: self, action: #selector(endEditing)))
+
+        //check if passedObject is nil it means that controller is not using as edit controller
+        guard let tempObject = AddNewWordViewController.passedObject else { return }
+        object = tempObject
+        fillFields(object: object)
     }
 
     // MARK: Fuction that implements closing keyboard
@@ -57,29 +74,118 @@ class AddNewWordViewController: UIViewController {
         descriptionTextView.layer.masksToBounds = true
         descriptionTextView.textColor = UIColor.blue
         descriptionTextView.text = "Word description"
+        descriptionTextView.delegate = self
     }
 
     // MARK: Adding navigation bar
 
     private func setUpNavigationBar() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(saveWord))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(goBack))
     }
 
     // MARK: Saving information About word
 
     @objc private func saveWord() {
-        let word = WordStruct(word: wordInformation[0].text,
-                              transcription: wordInformation[1].text,
-                              description: descriptionTextView.text,
-                              translationUA: wordInformation[2].text,
-                              translationRU: wordInformation[3].text,
-                              imageURL: wordInformation[4].text,
-                              videoURL: wordInformation[5].text)
+        var errorAlertIsNeccesary = false
 
-        savedWord?(word)
-        let storyboard = UIStoryboard(name: "Dictionary", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "Dictionary") as! DictionaryViewController
+        //check if word textfield or description is nil or have wrong first character
+        if wordInformation[0].text == nil || descriptionTextView.text == nil {
+            errorAlertIsNeccesary = true
+        } else {
+            let regex: NSRegularExpression
+            do {
+                //check if word is nil
+                try regex = NSRegularExpression(pattern: "[a-z]+", options: .caseInsensitive)
+                var range = NSRange(location: 0, length: wordInformation[0].text!.utf16.count)
+                if regex.firstMatch(in: wordInformation[0].text!, options: [], range: range) == nil {
+                    errorAlertIsNeccesary = true
+                }
+                //check if description is correctly filled or if is description == placeholder
+                range = NSRange(location: 0, length: descriptionTextView.text.utf16.count)
+                if regex.firstMatch(in: descriptionTextView.text, options: [], range: range) == nil ||
+                    descriptionTextView.text == "Word description" {
+                    errorAlertIsNeccesary = true
+                }
+            } catch {
+                debugPrint(error)
+            }
+        }
+
+        if errorAlertIsNeccesary {
+            let alert = UIAlertController(title: "Error", message: "Incorect text in word or description, please checke our insertion", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
+            return
+        }
+
+        object.word = wordInformation[0].text
+        object.transcription = wordInformation[1].text
+        object.wordDescription = descriptionTextView.text
+        object.translationUA = wordInformation[2].text
+        object.translationRU = wordInformation[3].text
+        object.pictureURL = wordInformation[4].text
+        object.videoURL = wordInformation[5].text
+
+        do {
+            try context.save()
+        } catch {
+            debugPrint(error)
+        }
+        goBack()
+    }
+
+    // MARK: go back to sender viewcontroller
+
+    @objc private func goBack() {
+        let vc: UIViewController
+        switch AddNewWordViewController.sender! {
+        case .dictionary:
+            let storyboard = UIStoryboard(name: "Dictionary", bundle: nil)
+            vc = storyboard.instantiateViewController(withIdentifier: "Dictionary") as! DictionaryViewController
+        default:
+            let storyboard = UIStoryboard(name: "SelfAddedWords", bundle: nil)
+            vc = storyboard.instantiateViewController(withIdentifier: "SelfAddedWords") as! SelfAddedWordsViewController
+        }
+        AddNewWordViewController.sender = nil
+        AddNewWordViewController.passedObject = nil
         navigationController?.present(vc, animated: true, completion: nil)
+    }
+
+    // MARK: fill fields if this controller uses as edit controller
+
+    private func fillFields(object: SelfWord) {
+        wordInformation[0].text = object.word
+        wordInformation[0].placeholderLabel.transform.ty = 0
+        wordInformation[1].text = object.transcription
+        wordInformation[1].placeholderLabel.transform.ty = 0
+        descriptionTextView.text = object.wordDescription
+        wordInformation[2].text = object.translationUA
+        wordInformation[2].placeholderLabel.transform.ty = 0
+        wordInformation[3].text = object.translationRU
+        wordInformation[3].placeholderLabel.transform.ty = 0
+        wordInformation[4].text = object.pictureURL
+        wordInformation[4].placeholderLabel.transform.ty = 0
+        wordInformation[5].text = object.videoURL
+        wordInformation[5].placeholderLabel.transform.ty = 0
+    }
+
+}
+
+// MARK: - - Extension textViewDelegate
+
+extension AddNewWordViewController: UITextViewDelegate {
+
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text == "Word description" {
+            textView.text = ""
+        }
+    }
+
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text == "" {
+            textView.text = "Word description"
+        }
     }
 }
 

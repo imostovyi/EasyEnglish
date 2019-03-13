@@ -38,6 +38,14 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="big-ben" translatesAutoresizingMaskIntoConstraints="NO" id="06F-J2-dkS">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cfE-0X-Ggz">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="8l3-n5-uUA">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Smt-sZ-J2X">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <subviews>
@@ -250,6 +258,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="bLe-t1-RtH" firstAttribute="trailing" secondItem="cfE-0X-Ggz" secondAttribute="trailing" id="0DA-TH-0HW"/>
                             <constraint firstItem="Smt-sZ-J2X" firstAttribute="leading" secondItem="bLe-t1-RtH" secondAttribute="leading" id="0nT-vU-Luy"/>
                             <constraint firstItem="Smt-sZ-J2X" firstAttribute="top" secondItem="bLe-t1-RtH" secondAttribute="top" id="23K-6V-NCy"/>
                             <constraint firstItem="06F-J2-dkS" firstAttribute="trailing" secondItem="bLe-t1-RtH" secondAttribute="trailing" id="PDJ-3K-peX"/>
@@ -257,8 +266,11 @@
                             <constraint firstItem="Smt-sZ-J2X" firstAttribute="bottom" secondItem="bLe-t1-RtH" secondAttribute="bottom" id="Qbg-NM-fEN"/>
                             <constraint firstItem="06F-J2-dkS" firstAttribute="top" secondItem="b4r-SS-TDg" secondAttribute="top" id="XdY-Ec-0uQ"/>
                             <constraint firstItem="Smt-sZ-J2X" firstAttribute="width" secondItem="bLe-t1-RtH" secondAttribute="width" id="f2O-tK-iu7"/>
+                            <constraint firstItem="cfE-0X-Ggz" firstAttribute="top" secondItem="bLe-t1-RtH" secondAttribute="top" id="i1h-RH-Ikf"/>
+                            <constraint firstItem="cfE-0X-Ggz" firstAttribute="leading" secondItem="bLe-t1-RtH" secondAttribute="leading" id="pls-8r-AY7"/>
                             <constraint firstItem="06F-J2-dkS" firstAttribute="leading" secondItem="b4r-SS-TDg" secondAttribute="leading" id="qzt-qx-IvX"/>
                             <constraint firstItem="Smt-sZ-J2X" firstAttribute="height" secondItem="bLe-t1-RtH" secondAttribute="height" id="s3P-DH-i6h"/>
+                            <constraint firstItem="bLe-t1-RtH" firstAttribute="bottom" secondItem="cfE-0X-Ggz" secondAttribute="bottom" id="x2F-X2-mpT"/>
                             <constraint firstAttribute="bottom" secondItem="06F-J2-dkS" secondAttribute="bottom" id="yyb-s5-3a0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bLe-t1-RtH"/>

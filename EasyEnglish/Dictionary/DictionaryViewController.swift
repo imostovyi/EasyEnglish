@@ -16,16 +16,24 @@ class DictionaryViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.addSubview(tableView)
+        //self.view.addSubview(tableView)
 
         floatyButton.sticky = true
-        floatyButton.addItem("Add word", icon: nil) { (_) in
+        var icon = UIImage(named: "plus")
+        floatyButton.addItem("Add word", icon: icon) { (_) in
             let storyboard = UIStoryboard(name: "AddNewWord", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "AddWordNavController")
+            AddNewWordViewController.sender = .dictionary
             self.present(vc, animated: true, completion: nil)
         }
-        floatyButton.addItem(title: "List of added words")
-        tableView.addSubview(floatyButton)
+        icon = UIImage(named: "layers")
+        floatyButton.addItem("Self added words", icon: icon) { (_) in
+            let storyboard = UIStoryboard(name: "SelfAddedWords", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "SelfAddedWords") as! SelfAddedWordsViewController
+            self.present(vc, animated: true, completion: nil)
+        }
+
+        view.addSubview(floatyButton)
     }
 
 }

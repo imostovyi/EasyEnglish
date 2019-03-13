@@ -6,7 +6,7 @@
 //  Copyright © 2019 Мостовий Ігор. All rights reserved.
 //
 
-struct WordStruct {
+struct WordStruct: Codable {
 
     let word: String?
     let transcription: String?
@@ -31,4 +31,8 @@ struct WordStruct {
         self.imageURL = imageURL
         self.videoURL = videoURL
     }
+}
+
+struct JsonObject: Codable {
+    let words: [WordStruct]
 }
