@@ -69,6 +69,9 @@ class SelfAddedWordsViewController: UIViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonWasTapped))
         navigationBar.items?.append(navigationItem)
         title = "List of self added words"
+
+        //let cancelButtonAttributes = [NSAttributedString.Key.foregroundColor: UIColor.blue]
+        //UIBarButtonItem.appearance().setTitleTextAttributes(cancelButtonAttributes, for: .normal)
     }
 
     // MARK: Setting up check button
@@ -178,8 +181,7 @@ extension SelfAddedWordsViewController: UITableViewDelegate, UITableViewDataSour
         cell.captureImageView.kf.indicatorType = .activity
         cell.captureImageView.kf.setImage(with: url, placeholder: placeholderImage, options: nil, progressBlock: nil) { (result) in
             switch result {
-            case .failure(let error):
-                debugPrint(error)
+            case .failure:
                 cell.captureImageView.image = placeholderImage
             default: return
             }

@@ -20,6 +20,7 @@ class SelfAddedWordsTableViewCell: UITableViewCell {
         super.awakeFromNib()
 
         self.layer.cornerRadius = 7
+        self.layer.masksToBounds = true
 
         captureImageView.layer.cornerRadius = 20
         let image = UIImage(named: "flag")
