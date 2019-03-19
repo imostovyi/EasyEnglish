@@ -78,8 +78,8 @@ class DictionaryViewController: UIViewController {
         let textFieldInside = controller.searchBar.value(forKey: "searchField") as? UITextField
         textFieldInside?.textColor = textColor
 
-        let cancelButtonAttributes = [NSAttributedString.Key.foregroundColor: UIColor.red]
-        UIBarButtonItem.appearance().setTitleTextAttributes(cancelButtonAttributes, for: .normal)
+//        let cancelButtonAttributes = [NSAttributedString.Key.foregroundColor: UIColor.red]
+//        UIBarButtonItem.appearance().setTitleTextAttributes(cancelButtonAttributes, for: .normal)
 
         tableView.tableHeaderView = controller.searchBar
 
@@ -92,16 +92,19 @@ class DictionaryViewController: UIViewController {
         floatyButton.sticky = true
         var icon = UIImage(named: "plus")
         floatyButton.addItem("Add word", icon: icon) { (_) in
+            self.resultSearchController.dismiss(animated: false, completion: nil)
             let storyboard = UIStoryboard(name: "AddNewWord", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "AddWordNavController")
-            AddNewWordViewController.sender = .dictionary
+            let vc = storyboard.instantiateViewController(withIdentifier: AddNewWordViewController.reuseIdentifier) as! AddNewWordViewController
             self.present(vc, animated: true, completion: nil)
+
         }
         icon = UIImage(named: "layers")
         floatyButton.addItem("Self added words", icon: icon) { (_) in
+            self.resultSearchController.dismiss(animated: false, completion: nil)
             let storyboard = UIStoryboard(name: "SelfAddedWords", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "SelfAddedWords") as! SelfAddedWordsViewController
             self.present(vc, animated: true, completion: nil)
+
         }
 
         view.addSubview(floatyButton)

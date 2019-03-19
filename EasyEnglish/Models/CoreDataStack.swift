@@ -16,12 +16,12 @@ class CoreDataStack {
 
     private(set) lazy var persistantContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "EasyEnglish")
-        container.loadPersistentStores(completionHandler: { (persistentStoreDescription, error) in
+        container.loadPersistentStores(completionHandler: { (_, error) in
             if let error = error {
                 debugPrint(error)
                 return
             }
-            debugPrint(persistentStoreDescription)
+            //debugPrint(persistentStoreDescription)
             container.viewContext.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
         })
         return container

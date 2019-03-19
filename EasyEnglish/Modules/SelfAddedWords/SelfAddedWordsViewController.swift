@@ -78,9 +78,8 @@ class SelfAddedWordsViewController: UIViewController {
 
     private func setUpCheckButton() {
         checkButton.layer.cornerRadius = 7.0
-        checkButton.setTitle("Chech word", for: .normal)
+        checkButton.setTitle("Check word", for: .normal)
         checkButton.addTarget(self, action: #selector(checkButtonTapped), for: .touchUpInside)
-
     }
 
     // MARK: Private objective C functions
@@ -108,15 +107,12 @@ class SelfAddedWordsViewController: UIViewController {
     }
 
     @objc private func doneButtonWasTapped() {
-        let storyboard = UIStoryboard(name: "Dictionary", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "Dictionary") as! DictionaryViewController
-        self.present(vc, animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
 
     @objc private func addWordButtonWasTapped() {
         let storyboard = UIStoryboard(name: "AddNewWord", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "AddWordNavController")
-        AddNewWordViewController.sender = .listOfSelfWords
         self.present(vc, animated: true, completion: nil)
     }
 
@@ -136,7 +132,6 @@ class SelfAddedWordsViewController: UIViewController {
         guard let object = fetchedResultsController.fetchedObjects?[indexPath.row] else { return }
         let storyboard = UIStoryboard(name: "AddNewWord", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "AddWordNavController")
-        AddNewWordViewController.sender = .listOfSelfWords
         AddNewWordViewController.passedObject = object
         self.present(vc, animated: true, completion: nil)
 

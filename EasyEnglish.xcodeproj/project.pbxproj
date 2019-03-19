@@ -55,22 +55,22 @@
 		843430332235880900DD429B /* Word+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Word+CoreDataClass.swift"; sourceTree = "<group>"; };
 		843430342235880900DD429B /* Word+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Word+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		844540A6222D4006002FFF2F /* EasyEnglish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyEnglish.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		844540AA222D4006002FFF2F /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; name = .gitkeep; path = Modules/.gitkeep; sourceTree = "<group>"; };
-		844540AC222D4006002FFF2F /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; name = .gitkeep; path = "Business Logic/.gitkeep"; sourceTree = "<group>"; };
-		844540AE222D4006002FFF2F /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; name = .gitkeep; path = Models/.gitkeep; sourceTree = "<group>"; };
-		844540B2222D4006002FFF2F /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; name = .gitkeep; path = Library/Extensions/Standart/.gitkeep; sourceTree = "<group>"; };
-		844540B4222D4006002FFF2F /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; name = .gitkeep; path = Library/Extensions/UIKit/.gitkeep; sourceTree = "<group>"; };
-		844540B6222D4006002FFF2F /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; name = .gitkeep; path = Library/Extensions/Frameworks/.gitkeep; sourceTree = "<group>"; };
-		844540B8222D4006002FFF2F /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; name = .gitkeep; path = Library/Utilities/.gitkeep; sourceTree = "<group>"; };
-		844540BB222D4006002FFF2F /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; name = .gitkeep; path = "UI/Basic Views/.gitkeep"; sourceTree = "<group>"; };
-		844540BD222D4006002FFF2F /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; name = .gitkeep; path = "UI/Complex Views/.gitkeep"; sourceTree = "<group>"; };
+		844540AA222D4006002FFF2F /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		844540AC222D4006002FFF2F /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		844540AE222D4006002FFF2F /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		844540B2222D4006002FFF2F /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		844540B4222D4006002FFF2F /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		844540B6222D4006002FFF2F /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		844540B8222D4006002FFF2F /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		844540BB222D4006002FFF2F /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		844540BD222D4006002FFF2F /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		844540BF222D4006002FFF2F /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; name = .swiftlint.yml; path = ../.swiftlint.yml; sourceTree = "<group>"; };
-		844540C2222D4006002FFF2F /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = Resources/Localization/Localizable.strings; sourceTree = "<group>"; };
-		844540C5222D4006002FFF2F /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; name = .gitkeep; path = Resources/Fonts/.gitkeep; sourceTree = "<group>"; };
-		844540C6222D4006002FFF2F /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Colors.xcassets; path = Resources/Colors.xcassets; sourceTree = "<group>"; };
-		844540C8222D4006002FFF2F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Resources/Assets.xcassets; sourceTree = "<group>"; };
-		844540CA222D4006002FFF2F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Resources/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		844540CC222D4006002FFF2F /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = Resources/Settings.bundle; sourceTree = "<group>"; };
+		844540C2222D4006002FFF2F /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		844540C5222D4006002FFF2F /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		844540C6222D4006002FFF2F /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		844540C8222D4006002FFF2F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		844540CA222D4006002FFF2F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		844540CC222D4006002FFF2F /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		844540CD222D4006002FFF2F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		844540CF222D4006002FFF2F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		844540D0222D4006002FFF2F /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; name = .gitignore; path = ../.gitignore; sourceTree = "<group>"; };
@@ -189,7 +189,7 @@
 				84B83C35222EA87E005ED568 /* AddNewWord */,
 				84C112B8222E7F94000E0D57 /* Dictionary */,
 			);
-			name = Modules;
+			path = Modules;
 			sourceTree = "<group>";
 		};
 		844540AB222D4006002FFF2F /* Business Logic */ = {
@@ -198,7 +198,7 @@
 				84C15E832238480F00F8A8C3 /* WordStruct.swift */,
 				844540AC222D4006002FFF2F /* .gitkeep */,
 			);
-			name = "Business Logic";
+			path = "Business Logic";
 			sourceTree = "<group>";
 		};
 		844540AD222D4006002FFF2F /* Models */ = {
@@ -209,7 +209,7 @@
 				84C0CB7C222D47E9002AB7B4 /* EasyEnglish.xcdatamodeld */,
 				84C0CB84222D495A002AB7B4 /* CoreDataStack.swift */,
 			);
-			name = Models;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		844540AF222D4006002FFF2F /* Library */ = {
@@ -218,7 +218,7 @@
 				844540B0222D4006002FFF2F /* Extensions */,
 				844540B7222D4006002FFF2F /* Utilities */,
 			);
-			name = Library;
+			path = Library;
 			sourceTree = "<group>";
 		};
 		844540B0222D4006002FFF2F /* Extensions */ = {
@@ -228,7 +228,7 @@
 				844540B3222D4006002FFF2F /* UIKit */,
 				844540B5222D4006002FFF2F /* Frameworks */,
 			);
-			name = Extensions;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		844540B1222D4006002FFF2F /* Standart */ = {
@@ -236,16 +236,15 @@
 			children = (
 				844540B2222D4006002FFF2F /* .gitkeep */,
 			);
-			name = Standart;
+			path = Standart;
 			sourceTree = "<group>";
 		};
 		844540B3222D4006002FFF2F /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
 				844540B4222D4006002FFF2F /* .gitkeep */,
-				84C15E85223851E300F8A8C3 /* BounceButton.swift */,
 			);
-			name = UIKit;
+			path = UIKit;
 			sourceTree = "<group>";
 		};
 		844540B5222D4006002FFF2F /* Frameworks */ = {
@@ -253,7 +252,7 @@
 			children = (
 				844540B6222D4006002FFF2F /* .gitkeep */,
 			);
-			name = Frameworks;
+			path = Frameworks;
 			sourceTree = "<group>";
 		};
 		844540B7222D4006002FFF2F /* Utilities */ = {
@@ -261,7 +260,7 @@
 			children = (
 				844540B8222D4006002FFF2F /* .gitkeep */,
 			);
-			name = Utilities;
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		844540B9222D4006002FFF2F /* UI */ = {
@@ -270,7 +269,7 @@
 				844540BA222D4006002FFF2F /* Basic Views */,
 				844540BC222D4006002FFF2F /* Complex Views */,
 			);
-			name = UI;
+			path = UI;
 			sourceTree = "<group>";
 		};
 		844540BA222D4006002FFF2F /* Basic Views */ = {
@@ -279,15 +278,17 @@
 				84F9409A2236A8D600D63C89 /* SelfAddedWordsCell */,
 				844540BB222D4006002FFF2F /* .gitkeep */,
 			);
-			name = "Basic Views";
+			path = "Basic Views";
 			sourceTree = "<group>";
 		};
 		844540BC222D4006002FFF2F /* Complex Views */ = {
 			isa = PBXGroup;
 			children = (
+				84F940952236A3EF00D63C89 /* SelfAddedWordsTableViewCell.swift */,
+				84F940962236A3EF00D63C89 /* SelfAddedWordsTableViewCell.xib */,
 				844540BD222D4006002FFF2F /* .gitkeep */,
 			);
-			name = "Complex Views";
+			path = "Complex Views";
 			sourceTree = "<group>";
 		};
 		844540BE222D4006002FFF2F /* External */ = {
@@ -309,7 +310,7 @@
 				844540C1222D4006002FFF2F /* Localization */,
 				844540C4222D4006002FFF2F /* Fonts */,
 			);
-			name = Resources;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		844540C1222D4006002FFF2F /* Localization */ = {
@@ -317,7 +318,7 @@
 			children = (
 				844540C2222D4006002FFF2F /* Localizable.strings */,
 			);
-			name = Localization;
+			path = Localization;
 			sourceTree = "<group>";
 		};
 		844540C4222D4006002FFF2F /* Fonts */ = {
@@ -325,7 +326,7 @@
 			children = (
 				844540C5222D4006002FFF2F /* .gitkeep */,
 			);
-			name = Fonts;
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		844540D8222D4006002FFF2F /* EasyEnglishUITests */ = {
@@ -378,8 +379,7 @@
 		84F9409A2236A8D600D63C89 /* SelfAddedWordsCell */ = {
 			isa = PBXGroup;
 			children = (
-				84F940952236A3EF00D63C89 /* SelfAddedWordsTableViewCell.swift */,
-				84F940962236A3EF00D63C89 /* SelfAddedWordsTableViewCell.xib */,
+				84C15E85223851E300F8A8C3 /* BounceButton.swift */,
 			);
 			path = SelfAddedWordsCell;
 			sourceTree = "<group>";

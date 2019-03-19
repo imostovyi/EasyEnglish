@@ -13,21 +13,16 @@ import CoreData
 class AddNewWordViewController: UIViewController {
 
     // MARK: IBoutlets
-
+    @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet var wordInformation: [IsaoTextField]!
     @IBOutlet weak var descriptionTextView: UITextView!
 
     // MARK: public properties
 
-    static public var sender: Direction?
     static public var passedObject: SelfWord?
+    static public let reuseIdentifier = "AddNewWord"
+    // MARK: Private poperties
 
-    // MARK: Private properties
-
-    enum Direction {
-        case dictionary
-        case listOfSelfWords
-    }
     private lazy var context = CoreDataStack.shared.persistantContainer.viewContext
     private lazy var fetchedWords = SelfWord.fetchAll()
     private lazy var object = SelfWord(context: context)
@@ -59,8 +54,8 @@ class AddNewWordViewController: UIViewController {
     private func setUpTextFields() {
         for field in wordInformation {
             field.layer.cornerRadius = 7
-            field.layer.borderWidth = 2
-            field.layer.borderColor = UIColor.white.cgColor
+//            field.layer.borderWidth = 2
+//            field.layer.borderColor = UIColor.white.cgColor
             field.layer.masksToBounds = true
         }
     }
@@ -68,11 +63,11 @@ class AddNewWordViewController: UIViewController {
     // MARK: Setting up description text view
 
     private func setUpTextView() {
-        descriptionTextView.layer.cornerRadius = 7
-        descriptionTextView.layer.borderWidth = 2
-        descriptionTextView.layer.borderColor = UIColor.white.cgColor
-        descriptionTextView.layer.masksToBounds = true
-        descriptionTextView.textColor = UIColor.blue
+//        descriptionTextView.layer.cornerRadius = 7
+//        descriptionTextView.layer.borderWidth = 2
+//        descriptionTextView.layer.borderColor = UIColor.white.cgColor
+//        descriptionTextView.layer.masksToBounds = true
+//        descriptionTextView.textColor = UIColor.blue
         descriptionTextView.text = "Word description"
         descriptionTextView.delegate = self
     }
@@ -82,6 +77,8 @@ class AddNewWordViewController: UIViewController {
     private func setUpNavigationBar() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(saveWord))
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(goBack))
+        navigationBar.items?.append(navigationItem)
+        title = "Add new word"
     }
 
     // MARK: Saving information About word
@@ -114,7 +111,8 @@ class AddNewWordViewController: UIViewController {
 
         if errorAlertIsNeccesary {
             let alert = UIAlertController(title: "Error", message: "Incorect text in word or description, please checke our insertion", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+            view.endEditing(true)
             present(alert, animated: true, completion: nil)
             return
         }
@@ -138,18 +136,7 @@ class AddNewWordViewController: UIViewController {
     // MARK: go back to sender viewcontroller
 
     @objc private func goBack() {
-        let vc: UIViewController
-        switch AddNewWordViewController.sender! {
-        case .dictionary:
-            let storyboard = UIStoryboard(name: "Dictionary", bundle: nil)
-            vc = storyboard.instantiateViewController(withIdentifier: "Dictionary") as! DictionaryViewController
-        default:
-            let storyboard = UIStoryboard(name: "SelfAddedWords", bundle: nil)
-            vc = storyboard.instantiateViewController(withIdentifier: "SelfAddedWords") as! SelfAddedWordsViewController
-        }
-        AddNewWordViewController.sender = nil
-        AddNewWordViewController.passedObject = nil
-        navigationController?.present(vc, animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
 
     // MARK: fill fields if this controller uses as edit controller
