@@ -96,6 +96,7 @@ class SelfAddedWordsViewController: UIViewController {
             newWord.translationRu = object.translationRU
             newWord.pictureURL = object.pictureURL
             newWord.videoURL = object.videoURL
+            newWord.isKnown = false
 
             do {
                 context.delete(object)

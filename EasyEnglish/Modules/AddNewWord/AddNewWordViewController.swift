@@ -34,19 +34,10 @@ class AddNewWordViewController: UIViewController {
         setUpTextFields()
         setUpNavigationBar()
 
-        title = "Add new word"
-        view.addGestureRecognizer(UIGestureRecognizer(target: self, action: #selector(endEditing)))
-
         //check if passedObject is nil it means that controller is not using as edit controller
         guard let tempObject = AddNewWordViewController.passedObject else { return }
         object = tempObject
         fillFields(object: object)
-    }
-
-    // MARK: Fuction that implements closing keyboard
-
-    @objc private func endEditing() {
-        view.endEditing(true)
     }
 
     // MARK: Setting up textFields
@@ -54,8 +45,6 @@ class AddNewWordViewController: UIViewController {
     private func setUpTextFields() {
         for field in wordInformation {
             field.layer.cornerRadius = 7
-//            field.layer.borderWidth = 2
-//            field.layer.borderColor = UIColor.white.cgColor
             field.layer.masksToBounds = true
         }
     }
@@ -63,11 +52,6 @@ class AddNewWordViewController: UIViewController {
     // MARK: Setting up description text view
 
     private func setUpTextView() {
-//        descriptionTextView.layer.cornerRadius = 7
-//        descriptionTextView.layer.borderWidth = 2
-//        descriptionTextView.layer.borderColor = UIColor.white.cgColor
-//        descriptionTextView.layer.masksToBounds = true
-//        descriptionTextView.textColor = UIColor.blue
         descriptionTextView.text = "Word description"
         descriptionTextView.delegate = self
     }
@@ -111,8 +95,7 @@ class AddNewWordViewController: UIViewController {
 
         if errorAlertIsNeccesary {
             let alert = UIAlertController(title: "Error", message: "Incorect text in word or description, please checke our insertion", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
-            view.endEditing(true)
+            alert.addAction(UIAlertAction(title: "Ok!", style: .default, handler: nil))
             present(alert, animated: true, completion: nil)
             return
         }

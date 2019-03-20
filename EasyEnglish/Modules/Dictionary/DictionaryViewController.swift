@@ -78,9 +78,6 @@ class DictionaryViewController: UIViewController {
         let textFieldInside = controller.searchBar.value(forKey: "searchField") as? UITextField
         textFieldInside?.textColor = textColor
 
-//        let cancelButtonAttributes = [NSAttributedString.Key.foregroundColor: UIColor.red]
-//        UIBarButtonItem.appearance().setTitleTextAttributes(cancelButtonAttributes, for: .normal)
-
         tableView.tableHeaderView = controller.searchBar
 
         return controller
@@ -148,7 +145,8 @@ extension DictionaryViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SelfAddedWordsTableViewCell.identfier) as! SelfAddedWordsTableViewCell
-
+        cell.selectionStyle = .none
+        
         let data: [Word] = {
             var array: [Word]
             if resultSearchController.isActive &&
@@ -190,9 +188,17 @@ extension DictionaryViewController: UITableViewDelegate, UITableViewDataSource {
         return editActions
     }
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "ShowDetail", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: ShowDetailViewController.identifier) as! ShowDetailViewController
+        vc.context = fetchedResultsController.fetchedObjects?[indexPath.row]
+
+        present(vc, animated: true, completion: nil)
+    }
+
 }
 
-// MARK: - - Extension U
+// MARK: - - Extension UIsearchResultsUpdating
 
 extension DictionaryViewController: UISearchResultsUpdating {
 
