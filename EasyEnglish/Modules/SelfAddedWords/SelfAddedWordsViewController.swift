@@ -132,8 +132,8 @@ class SelfAddedWordsViewController: UIViewController {
     private func editAction(indexPath: IndexPath) {
         guard let object = fetchedResultsController.fetchedObjects?[indexPath.row] else { return }
         let storyboard = UIStoryboard(name: "AddNewWord", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "AddWordNavController")
-        AddNewWordViewController.passedObject = object
+        let vc = storyboard.instantiateViewController(withIdentifier: "AddWordNavController") as! AddNewWordViewController
+        vc.passedObject = object
         self.present(vc, animated: true, completion: nil)
 
     }

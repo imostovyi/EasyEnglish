@@ -100,28 +100,22 @@
                                                                         <constraint firstAttribute="height" constant="240" id="zkm-xH-6zV"/>
                                                                     </constraints>
                                                                 </imageView>
-                                                                <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lyt-VQ-ior">
-                                                                    <rect key="frame" x="72" y="563" width="240" height="240"/>
-                                                                    <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="height" constant="240" id="WkU-mJ-x8p"/>
-                                                                        <constraint firstAttribute="width" constant="240" id="hdH-cx-Cp6"/>
-                                                                    </constraints>
-                                                                    <wkWebViewConfiguration key="configuration" allowsInlineMediaPlayback="YES">
-                                                                        <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                                                        <wkPreferences key="preferences"/>
-                                                                    </wkWebViewConfiguration>
-                                                                </wkWebView>
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gLR-hS-KIi" customClass="YTPlayerView">
+                                                                    <rect key="frame" x="0.0" y="563" width="384" height="240"/>
+                                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </view>
                                                             </subviews>
                                                             <constraints>
                                                                 <constraint firstItem="kb2-MG-dUg" firstAttribute="top" secondItem="qNq-o0-2q0" secondAttribute="top" id="9vZ-mj-0oM"/>
                                                                 <constraint firstAttribute="trailing" secondItem="kb2-MG-dUg" secondAttribute="trailing" id="Jr1-b8-hOZ"/>
                                                                 <constraint firstItem="whW-Sz-mMt" firstAttribute="leading" secondItem="qNq-o0-2q0" secondAttribute="leading" id="LX3-1U-i2o"/>
+                                                                <constraint firstItem="gLR-hS-KIi" firstAttribute="width" secondItem="0VV-py-u5C" secondAttribute="width" id="NN7-kW-CHa"/>
                                                                 <constraint firstAttribute="trailing" secondItem="1Rn-nX-fd4" secondAttribute="trailing" id="Xxb-Qx-vbw"/>
                                                                 <constraint firstItem="0VV-py-u5C" firstAttribute="width" secondItem="aqx-Rg-buW" secondAttribute="width" id="gBL-6f-Glb"/>
                                                                 <constraint firstItem="kb2-MG-dUg" firstAttribute="leading" secondItem="qNq-o0-2q0" secondAttribute="leading" id="nTh-kj-wQk"/>
                                                                 <constraint firstItem="aqx-Rg-buW" firstAttribute="width" secondItem="1Rn-nX-fd4" secondAttribute="width" id="oMD-A1-jlR"/>
                                                                 <constraint firstItem="1Rn-nX-fd4" firstAttribute="leading" secondItem="qNq-o0-2q0" secondAttribute="leading" id="ueh-ir-J1E"/>
+                                                                <constraint firstItem="gLR-hS-KIi" firstAttribute="height" secondItem="au4-ek-oQS" secondAttribute="height" id="ugh-dX-jeO"/>
                                                                 <constraint firstAttribute="trailing" secondItem="whW-Sz-mMt" secondAttribute="trailing" id="vTH-bB-hok"/>
                                                             </constraints>
                                                         </stackView>
@@ -182,7 +176,7 @@
                         <outlet property="transcriptionLabel" destination="Ajk-aq-k8u" id="8RA-cD-fG2"/>
                         <outlet property="translationRU" destination="0VV-py-u5C" id="aQg-xs-3lv"/>
                         <outlet property="translationUA" destination="aqx-Rg-buW" id="Qqw-vv-pRU"/>
-                        <outlet property="videoWebView" destination="Lyt-VQ-ior" id="2D5-h7-UHk"/>
+                        <outlet property="videoView" destination="gLR-hS-KIi" id="ZDA-UB-XM3"/>
                         <outlet property="wordLabel" destination="kb2-MG-dUg" id="nrR-Da-9ht"/>
                     </connections>
                 </viewController>

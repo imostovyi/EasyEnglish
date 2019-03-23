@@ -9,6 +9,7 @@
 import UIKit
 import WebKit
 import AVFoundation
+import youtube_ios_player_helper
 
 class ShowDetailViewController: UIViewController {
 
@@ -30,7 +31,7 @@ class ShowDetailViewController: UIViewController {
 
     @IBOutlet weak var playButton: UIButton!
 
-    @IBOutlet weak var videoWebView: WKWebView!
+    @IBOutlet weak var videoView: YTPlayerView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var translationRU: UILabel!
     @IBOutlet weak var translationUA: UILabel!
@@ -42,9 +43,12 @@ class ShowDetailViewController: UIViewController {
         setUpNavBar()
         checkAndFill()
 
+        videoView.delegate = self
+
         playButton.addTarget(self, action: #selector(playButtonWasTapped), for: .touchUpInside)
         playButton.layer.cornerRadius = 20
         playButton.layer.masksToBounds = true
+
     }
 
     // MARK: Go back function
@@ -94,12 +98,23 @@ class ShowDetailViewController: UIViewController {
             }
         }
 
+        setUpPlayer(word: word)
+    }
+
+    /// func that play spech
+    @objc private func playButtonWasTapped() {
+        speechSentesizer.speak(speech)
+    }
+
+    ///Function that vreating and adding player to videoView
+
+    private func setUpPlayer(word: Word) {
         guard let unwrapedStringURL = word.videoURL else {
-            videoWebView.isHidden = true
+            videoView.isHidden = true
             return
         }
         guard let videoURL = URL(string: unwrapedStringURL) else {
-            videoWebView.isHidden = true
+            videoView.isHidden = true
             return
         }
 
@@ -108,19 +123,25 @@ class ShowDetailViewController: UIViewController {
             if error == nil { return }
 
             DispatchQueue.main.async {
-                self.videoWebView.isHidden = true
+                self.videoView.isHidden = true
             }
         }
         task.resume()
 
-        videoWebView.load(URLRequest(url: videoURL))
+//        videoView.frame = CGRect(x: videoView.frame.minX,
+//                                 y: videoView.frame.minY,
+//                                 width: wordLabel.frame.width,
+//                                 height: wordLabel.frame.width * 9 / 16)
+        videoView.backgroundColor = UIColor.clear
+        //videoView.load(withVideoId: "dz5IIzIeBa0")
+        videoView.loadVideo(byURL: "https://www.youtube.com/watch?v=dw7kytoA3KU?version=3", startSeconds: 0.0, suggestedQuality: .auto)
     }
+}
 
-    // MARK: func that play spech
+extension ShowDetailViewController: YTPlayerViewDelegate {
+    func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
 
-    @objc private func playButtonWasTapped() {
-        speechSentesizer.speak(speech)
+        print("OK")
     }
-
 }
 

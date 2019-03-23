@@ -9,6 +9,7 @@ target 'EasyEnglish' do
   pod 'Floaty', '~> 4.1.0'
   pod 'IQKeyboardManager'
   pod 'Kingfisher', '~> 5.0'
+  pod "youtube-ios-player-helper", "~> 0.1.4"
 
   target 'EasyEnglishUITests' do
     inherit! :search_paths

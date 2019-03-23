@@ -22,12 +22,16 @@ class DictionaryViewController: UIViewController {
 
     private var filtreedData = [Word]()
     private var resultSearchController = UISearchController()
+    private var wordsForTest = Set<Word>()
 
     private let cell = UINib(nibName: "SelfAddedWordsTableViewCell", bundle: nil)
 
     private lazy var editActions = [
         UITableViewRowAction(style: .normal, title: "Delete", handler: { [weak self] (_, indexPath) in
             self?.deleteAction(indexPath: indexPath)
+        }),
+        UITableViewRowAction(style: .normal, title: "Add to test", handler: { [weak self] (_, indexPath) in
+            self?.addToTestSet(indexPath: indexPath)
         })
     ]
 
@@ -74,9 +78,9 @@ class DictionaryViewController: UIViewController {
         controller.searchBar.sizeToFit()
         controller.searchBar.placeholder = "Tab to searching"
         controller.searchBar.layer.cornerRadius = 20
-        let textColor = UIColor(named: "Text")
-        let textFieldInside = controller.searchBar.value(forKey: "searchField") as? UITextField
-        textFieldInside?.textColor = textColor
+//        let textColor = UIColor(named: "Text")
+//        let textFieldInside = controller.searchBar.value(forKey: "searchField") as? UITextField
+//        textFieldInside?.textColor = textColor
 
         tableView.tableHeaderView = controller.searchBar
 
@@ -117,6 +121,16 @@ class DictionaryViewController: UIViewController {
         } catch { debugPrint(error) }
     }
 
+    // MARK: Set to test option
+
+    private func addToTestSet(indexPath: IndexPath) {
+        guard let word = fetchedResultsController.fetchedObjects?[indexPath.row] else { return }
+        if wordsForTest.contains(word) {
+            return
+        }
+        wordsForTest.insert(word)
+    }
+
 }
 
 // MARK: - - FetchedresultsControllerDelegate
@@ -146,7 +160,7 @@ extension DictionaryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SelfAddedWordsTableViewCell.identfier) as! SelfAddedWordsTableViewCell
         cell.selectionStyle = .none
-        
+
         let data: [Word] = {
             var array: [Word]
             if resultSearchController.isActive &&
