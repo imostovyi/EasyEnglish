@@ -39,6 +39,7 @@ class DictionaryViewController: UIViewController {
     private lazy var fetchedResultsController: NSFetchedResultsController<Word> = {
         let fetchRequest: NSFetchRequest<Word> = Word.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "word", ascending: true)]
+        fetchRequest.predicate = NSPredicate(format: "isApproved = %@", "1")
         let controller = NSFetchedResultsController<Word>(
             fetchRequest: fetchRequest,
             managedObjectContext: context,
@@ -119,10 +120,14 @@ class DictionaryViewController: UIViewController {
         do {
             try context.save()
         } catch { debugPrint(error) }
+        
+        if wordsForTest.contains(object) {
+            wordsForTest.remove(object)
+        }
     }
 
     // MARK: Set to test option
-
+    /// Adding word to set that would be passed
     private func addToTestSet(indexPath: IndexPath) {
         guard let word = fetchedResultsController.fetchedObjects?[indexPath.row] else { return }
         if wordsForTest.contains(word) {

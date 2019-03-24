@@ -19,7 +19,7 @@ class AddNewWordViewController: UIViewController {
 
     // MARK: public properties
 
-    public var passedObject: SelfWord?
+    public var passedObject: Word?
     static public let reuseIdentifier = "AddNewWord"
 
     // MARK: Private poperties
@@ -28,7 +28,7 @@ class AddNewWordViewController: UIViewController {
     private var rightButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(saveWord))
     private lazy var context = CoreDataStack.shared.persistantContainer.viewContext
     private lazy var fetchedWords = Word.fetchAll()
-    private lazy var object = SelfWord(context: context)
+    private lazy var object = Word(context: context)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,6 +55,7 @@ class AddNewWordViewController: UIViewController {
         wordInformation[0].delegate = self
         wordInformation[0].layer.borderColor = UIColor.red.cgColor
         wordInformation[0].addTarget(self, action: #selector(changingTheContext(textField:)), for: .editingChanged)
+        wordInformation[5].delegate = self
     }
 
     // MARK: Setting up description text view
@@ -84,15 +85,18 @@ class AddNewWordViewController: UIViewController {
         object.transcription = wordInformation[1].text
         object.wordDescription = descriptionTextView.text
         object.translationUA = wordInformation[2].text
-        object.translationRU = wordInformation[3].text
+        object.translationRu = wordInformation[3].text
         object.pictureURL = wordInformation[4].text
         object.videoURL = wordInformation[5].text
-        
-        if let index = wordInformation[5].text?.firstIndex(of: "=") {
+        object.isKnown = false
+        object.isApproved = false
+
+        //cuting down all that isn't neccesary
+        if var index = wordInformation[5].text?.firstIndex(of: "=") {
+            index = wordInformation[5].text?.index(after: index) ?? index
             let id = wordInformation[5].text?[index...]
-            object.videoURL = String(id ?? "") 
+            object.videoURL = String(id ?? "")
         }
-        
 
         do {
             try context.save()
@@ -110,7 +114,7 @@ class AddNewWordViewController: UIViewController {
 
     // MARK: fill fields if this controller uses as edit controller
 
-    private func fillFields(object: SelfWord) {
+    private func fillFields(object: Word) {
         wordInformation[0].text = object.word
         wordInformation[0].placeholderLabel.transform.ty = 0
         wordInformation[1].text = object.transcription
@@ -118,7 +122,7 @@ class AddNewWordViewController: UIViewController {
         descriptionTextView.text = object.wordDescription
         wordInformation[2].text = object.translationUA
         wordInformation[2].placeholderLabel.transform.ty = 0
-        wordInformation[3].text = object.translationRU
+        wordInformation[3].text = object.translationRu
         wordInformation[3].placeholderLabel.transform.ty = 0
         wordInformation[4].text = object.pictureURL
         wordInformation[4].placeholderLabel.transform.ty = 0
@@ -131,9 +135,38 @@ class AddNewWordViewController: UIViewController {
         isDoneButtonMustBeShown[1] = checkIfWordIsNormal(textField: textField)
         checkNeccesaryForDoneButton()
     }
+    
+    ///Checking if url is correct
+    private func validateVideoURL(textField: UITextField) {
+        if textField.text == "" {
+            return
+        }
+        
+        if !(textField.text!.contains("www.youtube.com/watch?v=")) {
+            let alert = UIAlertController(title: "Error",
+                                          message: "Incorect video URL. If you left it, you can't watch video\n Correct format www.youtube.com/watch?v=id", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+            present(alert, animated: true, completion: nil)
+            return
+        }
+        
+        let url = URL(string: textField.text!)!
+        let session = URLSession(configuration: .default)
+        let task = session.dataTask(with: url) { (_, _, error) in
+            if error == nil {
+                return
+            }
+            
+            let alert = UIAlertController(title: "Error", message: "Invalid URL. Please try to check your insertion", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+        }
+        task.resume()
+        
+    }
 
     ///Checking if word have set normally
     private func checkIfWordIsNormal(textField: UITextField) -> Bool {
+        
         if textField.text == nil {
             textField.layer.borderColor = UIColor.red.cgColor
             return false
@@ -220,21 +253,7 @@ extension AddNewWordViewController: UITextViewDelegate {
 extension AddNewWordViewController: UITextFieldDelegate {
 
     func textFieldDidEndEditing(_ textField: UITextField) {
-        if textField == wordInformation[5] {
-            if textField.text == "" {
-                return
-            }
-            if !(textField.text!.contains("www.youtube.com/watch?v=")) {
-                let alert = UIAlertController(title: "Error",
-                                              message: "Incorect video URL. If you left it, you can't watch video", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
-                present(alert, animated: true, completion: nil)
-                return
-            }
-            
-            return
-        }
-        
+
         for word in fetchedWords where word.word == textField.text {
 
             textField.layer.borderColor = UIColor.red.cgColor

@@ -16,23 +16,21 @@ struct WordStruct: Codable {
     let imageURL: String?
     let videoURL: String?
 
-    init(word: String?,
-         transcription: String?,
-         description: String?,
-         translationUA: String?,
-         translationRU: String?,
-         imageURL: String?,
-         videoURL: String?) {
-        self.word = word
-        self.transcription = transcription
-        self.description = description
-        self.translationUA = translationUA
-        self.translationRU = translationRU
-        self.imageURL = imageURL
-        self.videoURL = videoURL
+    init(word: Word) {
+        self.word = word.word
+        self.transcription = word.transcription
+        self.description = word.description
+        self.translationUA = word.translationUA
+        self.translationRU = word.translationRu
+        self.imageURL = word.pictureURL
+        self.videoURL = word.videoURL
     }
 }
 
 struct JsonObject: Codable {
     let words: [WordStruct]
+
+    init(words: [WordStruct]) {
+        self.words = words
+    }
 }

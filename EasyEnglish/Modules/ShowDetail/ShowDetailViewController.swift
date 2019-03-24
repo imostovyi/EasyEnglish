@@ -109,38 +109,15 @@ class ShowDetailViewController: UIViewController {
     ///Function that vreating and adding player to videoView
 
     private func setUpPlayer(word: Word) {
-        guard let unwrapedStringURL = word.videoURL else {
-            videoView.isHidden = true
-            return
-        }
-        guard let videoURL = URL(string: unwrapedStringURL) else {
-            videoView.isHidden = true
-            return
-        }
-
-        let session = URLSession(configuration: URLSessionConfiguration.default)
-        let task = session.dataTask(with: videoURL) { (_, _, error) in
-            if error == nil { return }
-
-            DispatchQueue.main.async {
-                self.videoView.isHidden = true
-            }
-        }
-        task.resume()
-
-//        videoView.frame = CGRect(x: videoView.frame.minX,
-//                                 y: videoView.frame.minY,
-//                                 width: wordLabel.frame.width,
-//                                 height: wordLabel.frame.width * 9 / 16)
+        videoView.isHidden = true
         videoView.backgroundColor = UIColor.clear
-        //videoView.load(withVideoId: "dz5IIzIeBa0")
-        videoView.loadVideo(byURL: "https://www.youtube.com/watch?v=dw7kytoA3KU?version=3", startSeconds: 0.0, suggestedQuality: .auto)
+        videoView.load(withVideoId: "dg")
     }
 }
 
 extension ShowDetailViewController: YTPlayerViewDelegate {
     func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
-
+        playerView.isHidden = false
         print("OK")
     }
 }

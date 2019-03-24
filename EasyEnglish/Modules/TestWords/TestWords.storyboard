@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PhH-iY-WDe">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Test Word View Controller-->
+        <scene sceneID="YbP-w6-FbA">
+            <objects>
+                <viewController storyboardIdentifier="TestWords" useStoryboardIdentifierAsRestorationIdentifier="YES" id="PhH-iY-WDe" customClass="TestWordViewController" customModule="EasyEnglish" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Voe-Kz-OQB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="big-ben" translatesAutoresizingMaskIntoConstraints="NO" id="1Po-p1-A3n">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </imageView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5yT-vM-v0L">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="ciz-fJ-PpW">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Fhh-gj-U6g">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </tableView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Fhh-gj-U6g" firstAttribute="top" secondItem="ciz-fJ-PpW" secondAttribute="top" id="Byp-E6-wc9"/>
+                                        <constraint firstAttribute="bottom" secondItem="Fhh-gj-U6g" secondAttribute="bottom" id="ge6-US-FFv"/>
+                                        <constraint firstAttribute="trailing" secondItem="Fhh-gj-U6g" secondAttribute="trailing" id="he3-u2-t86"/>
+                                        <constraint firstItem="Fhh-gj-U6g" firstAttribute="leading" secondItem="ciz-fJ-PpW" secondAttribute="leading" id="ukW-V3-Nux"/>
+                                    </constraints>
+                                </view>
+                                <color key="backgroundColor" name="Background"/>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ROr-5T-vCP">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="Title" id="SRY-aS-t8T"/>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ROr-5T-vCP" firstAttribute="trailing" secondItem="wqX-7Z-7xh" secondAttribute="trailing" id="2ZM-Od-0ai"/>
+                            <constraint firstItem="wqX-7Z-7xh" firstAttribute="trailing" secondItem="1Po-p1-A3n" secondAttribute="trailing" id="3KJ-rI-NUA"/>
+                            <constraint firstItem="5yT-vM-v0L" firstAttribute="leading" secondItem="wqX-7Z-7xh" secondAttribute="leading" id="64O-ad-MNC"/>
+                            <constraint firstItem="1Po-p1-A3n" firstAttribute="top" secondItem="wqX-7Z-7xh" secondAttribute="top" id="RZ8-tt-tdb"/>
+                            <constraint firstItem="1Po-p1-A3n" firstAttribute="leading" secondItem="wqX-7Z-7xh" secondAttribute="leading" id="RfG-my-9gy"/>
+                            <constraint firstItem="5yT-vM-v0L" firstAttribute="top" secondItem="ROr-5T-vCP" secondAttribute="bottom" id="X12-Og-m1N"/>
+                            <constraint firstItem="wqX-7Z-7xh" firstAttribute="trailing" secondItem="5yT-vM-v0L" secondAttribute="trailing" id="e9O-RL-hmE"/>
+                            <constraint firstItem="ROr-5T-vCP" firstAttribute="top" secondItem="wqX-7Z-7xh" secondAttribute="top" id="eda-rU-q3q"/>
+                            <constraint firstItem="wqX-7Z-7xh" firstAttribute="bottom" secondItem="5yT-vM-v0L" secondAttribute="bottom" id="hGr-MP-bP3"/>
+                            <constraint firstItem="ROr-5T-vCP" firstAttribute="leading" secondItem="wqX-7Z-7xh" secondAttribute="leading" id="jJc-Wq-v4R"/>
+                            <constraint firstItem="wqX-7Z-7xh" firstAttribute="bottom" secondItem="1Po-p1-A3n" secondAttribute="bottom" id="wZg-Kg-XoD"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="wqX-7Z-7xh"/>
+                    </view>
+                    <connections>
+                        <outlet property="navigationBar" destination="ROr-5T-vCP" id="eoj-I3-TO4"/>
+                        <outlet property="tableView" destination="Fhh-gj-U6g" id="quk-Qu-Nbe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I2f-3Q-o8P" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="316" y="161"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="big-ben" width="2592" height="3888"/>
+        <namedColor name="Background">
+            <color red="0.0" green="0.0" blue="0.0" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

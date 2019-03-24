@@ -2,7 +2,7 @@
 //  Word+CoreDataProperties.swift
 //  EasyEnglish
 //
-//  Created by Мостовий Ігор on 3/10/19.
+//  Created by Мостовий Ігор on 3/24/19.
 //  Copyright © 2019 Мостовий Ігор. All rights reserved.
 //
 //
@@ -24,5 +24,6 @@ extension Word {
     @NSManaged public var videoURL: String?
     @NSManaged public var word: String?
     @NSManaged public var wordDescription: String?
+    @NSManaged public var isApproved: Bool
 
 }

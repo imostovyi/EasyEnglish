@@ -33,10 +33,11 @@ class SelfAddedWordsViewController: UIViewController {
     ]
 
     private lazy var context = CoreDataStack.shared.persistantContainer.viewContext
-    private lazy var fetchedResultsController: NSFetchedResultsController<SelfWord> = {
-        let fetchRequest: NSFetchRequest<SelfWord> = SelfWord.fetchRequest()
+    private lazy var fetchedResultsController: NSFetchedResultsController<Word> = {
+        let fetchRequest: NSFetchRequest<Word> = Word.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "word", ascending: true)]
-        let controller = NSFetchedResultsController<SelfWord>(
+        fetchRequest.predicate = NSPredicate(format: "isApproved = %@", "false")
+        let controller = NSFetchedResultsController<Word>(
             fetchRequest: fetchRequest,
             managedObjectContext: context,
             sectionNameKeyPath: nil,
@@ -69,9 +70,6 @@ class SelfAddedWordsViewController: UIViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonWasTapped))
         navigationBar.items?.append(navigationItem)
         title = "List of self added words"
-
-        //let cancelButtonAttributes = [NSAttributedString.Key.foregroundColor: UIColor.blue]
-        //UIBarButtonItem.appearance().setTitleTextAttributes(cancelButtonAttributes, for: .normal)
     }
 
     // MARK: Setting up check button
@@ -85,25 +83,30 @@ class SelfAddedWordsViewController: UIViewController {
     // MARK: Private objective C functions
 
     @objc private func checkButtonTapped() {
+        var arrayToEncode: [WordStruct] = []
         while fetchedResultsController.fetchedObjects?.count != 0 {
             guard let object = fetchedResultsController.fetchedObjects?.first else { return }
-            let newWord = Word(context: context)
 
-            newWord.word = object.word
-            newWord.transcription = object.transcription
-            newWord.wordDescription = object.wordDescription
-            newWord.translationUA = object.translationUA
-            newWord.translationRu = object.translationRU
-            newWord.pictureURL = object.pictureURL
-            newWord.videoURL = object.videoURL
-            newWord.isKnown = false
+            object.isApproved = true
+            //nead to change
+            let codableObject = WordStruct(word: object)
+            arrayToEncode.append(codableObject)
 
             do {
-                context.delete(object)
                 try context.save()
             } catch {
                 debugPrint(error)
+                return
             }
+        }
+
+        let jsonStruct = JsonObject(words: arrayToEncode)
+        do {
+            let jsonBody = try JSONEncoder().encode(jsonStruct)
+            let json = try JSONSerialization.jsonObject(with: jsonBody, options: [])
+            print(json)
+        } catch {
+            debugPrint("Error")
         }
     }
 
@@ -113,7 +116,7 @@ class SelfAddedWordsViewController: UIViewController {
 
     @objc private func addWordButtonWasTapped() {
         let storyboard = UIStoryboard(name: "AddNewWord", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "AddWordNavController")
+        let vc = storyboard.instantiateViewController(withIdentifier: "AddNewWord") as! AddNewWordViewController
         self.present(vc, animated: true, completion: nil)
     }
 
@@ -132,7 +135,7 @@ class SelfAddedWordsViewController: UIViewController {
     private func editAction(indexPath: IndexPath) {
         guard let object = fetchedResultsController.fetchedObjects?[indexPath.row] else { return }
         let storyboard = UIStoryboard(name: "AddNewWord", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "AddWordNavController") as! AddNewWordViewController
+        let vc = storyboard.instantiateViewController(withIdentifier: "AddNewWord") as! AddNewWordViewController
         vc.passedObject = object
         self.present(vc, animated: true, completion: nil)
 
