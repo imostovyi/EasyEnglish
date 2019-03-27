@@ -135,13 +135,13 @@ class AddNewWordViewController: UIViewController {
         isDoneButtonMustBeShown[1] = checkIfWordIsNormal(textField: textField)
         checkNeccesaryForDoneButton()
     }
-    
+
     ///Checking if url is correct
     private func validateVideoURL(textField: UITextField) {
         if textField.text == "" {
             return
         }
-        
+
         if !(textField.text!.contains("www.youtube.com/watch?v=")) {
             let alert = UIAlertController(title: "Error",
                                           message: "Incorect video URL. If you left it, you can't watch video\n Correct format www.youtube.com/watch?v=id", preferredStyle: .alert)
@@ -149,24 +149,24 @@ class AddNewWordViewController: UIViewController {
             present(alert, animated: true, completion: nil)
             return
         }
-        
+
         let url = URL(string: textField.text!)!
         let session = URLSession(configuration: .default)
         let task = session.dataTask(with: url) { (_, _, error) in
             if error == nil {
                 return
             }
-            
+
             let alert = UIAlertController(title: "Error", message: "Invalid URL. Please try to check your insertion", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
         }
         task.resume()
-        
+
     }
 
     ///Checking if word have set normally
     private func checkIfWordIsNormal(textField: UITextField) -> Bool {
-        
+
         if textField.text == nil {
             textField.layer.borderColor = UIColor.red.cgColor
             return false

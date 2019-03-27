@@ -100,6 +100,7 @@ class DictionaryViewController: UIViewController {
             self.present(vc, animated: true, completion: nil)
 
         }
+
         icon = UIImage(named: "layers")
         floatyButton.addItem("Self added words", icon: icon) { (_) in
             self.resultSearchController.dismiss(animated: false, completion: nil)
@@ -107,6 +108,32 @@ class DictionaryViewController: UIViewController {
             let vc = storyboard.instantiateViewController(withIdentifier: "SelfAddedWords") as! SelfAddedWordsViewController
             self.present(vc, animated: true, completion: nil)
 
+        }
+
+        floatyButton.addItem("Test", icon: nil) { (_) in
+            let storyboard = UIStoryboard(name: "ComposeWord", bundle: nil)
+            let controller = storyboard.instantiateViewController(withIdentifier: "Test") as! ComposeWordViewController
+
+            var words: [Word] = []
+            let conntext = CoreDataStack.shared.persistantContainer.viewContext
+            var word = Word(context: conntext)
+            word.word = "Test 1"
+            word.wordDescription = "Description 1"
+            words.append(word)
+
+            word = Word(context: conntext)
+            word.word = "Test 2"
+            word.wordDescription = "Description 2"
+            words.append(word)
+
+            word = Word(context: conntext)
+            word.word = "Test 3"
+            word.wordDescription = "Description 3"
+            words.append(word)
+
+            controller.fillWordsArray(words: words)
+
+            self.present(controller, animated: true, completion: nil)
         }
 
         view.addSubview(floatyButton)
@@ -120,7 +147,7 @@ class DictionaryViewController: UIViewController {
         do {
             try context.save()
         } catch { debugPrint(error) }
-        
+
         if wordsForTest.contains(object) {
             wordsForTest.remove(object)
         }

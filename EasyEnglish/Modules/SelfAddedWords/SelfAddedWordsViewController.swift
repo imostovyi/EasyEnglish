@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-import Kingfisher
+//import Kingfisher
 import MessageUI
 
 class SelfAddedWordsViewController: UIViewController {

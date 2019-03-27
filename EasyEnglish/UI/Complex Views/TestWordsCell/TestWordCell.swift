@@ -10,22 +10,22 @@ import UIKit
 
 class TestWordCell: UITableViewCell {
 
-    //MARK: outlets
-    
+    // MARK: outlets
+
     @IBOutlet private weak var pictureView: UIImageView!
     @IBOutlet private weak var wordLabel: UILabel!
-    
-    //MARK: public properties
-    
+
+    // MARK: public properties
+
     public static let identifier = "TestWordCell"
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
         pictureView.layer.cornerRadius = 10
-        
+
         wordLabel.textColor = UIColor(named: "Text")
-        
+
         self.layer.cornerRadius = 8
         self.layer.borderWidth = 2
         self.layer.borderColor = UIColor.white.cgColor
@@ -37,9 +37,9 @@ class TestWordCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
-    //MARK:Public function
-    
+
+    // MARK: Public function
+
     ///init for outlet's properties
     public func initProperties(word: Word) {
         wordLabel.text = word.word
@@ -53,11 +53,11 @@ class TestWordCell: UITableViewCell {
                                     options: nil,
                                     progressBlock: nil) { (result) in
                                         switch result {
-                                        case .success(_): return
+                                        case .success: return
                                         default: self.pictureView.image = UIImage(named: "flag")
                                         }
             }
         }
     }
-    
+
 }
