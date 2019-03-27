@@ -131,7 +131,7 @@ class DictionaryViewController: UIViewController {
             word.wordDescription = "Description 3"
             words.append(word)
 
-            controller.fillWordsArray(words: words)
+//            controller.fillWordsArray(words: words)
 
             self.present(controller, animated: true, completion: nil)
         }
