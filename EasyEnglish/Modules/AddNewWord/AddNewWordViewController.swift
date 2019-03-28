@@ -20,7 +20,9 @@ class AddNewWordViewController: UIViewController {
     // MARK: public properties
 
     public var passedObject: Word?
+    public var rootController: DictionaryViewController?
     static public let reuseIdentifier = "AddNewWord"
+    public var callBack: (() -> Void)?
 
     // MARK: Private poperties
 
@@ -109,6 +111,17 @@ class AddNewWordViewController: UIViewController {
     // MARK: go back to sender viewcontroller
 
     @objc private func goBack() {
+//        guard let vc = rootController else {
+//            dismiss(animated: true, completion: nil)
+//            //callBack?()
+//            return
+//        }
+//
+//        let storyboard = UIStoryboard(name: "SelfAddedWords", bundle: nil)
+//        let addedWordsVC = storyboard.instantiateViewController(withIdentifier: SelfAddedWordsViewController.identifier) as! SelfAddedWordsViewController
+//        addedWordsVC.root = rootController
+//        dismiss(animated: true, completion: nil)
+//        vc.present(addedWordsVC, animated: true, completion: nil)
         dismiss(animated: true, completion: nil)
     }
 

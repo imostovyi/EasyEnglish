@@ -21,11 +21,8 @@ class TestWordCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-
         pictureView.layer.cornerRadius = 10
-
         wordLabel.textColor = UIColor(named: "Text")
-
         self.layer.cornerRadius = 8
         self.layer.borderWidth = 2
         self.layer.borderColor = UIColor.white.cgColor

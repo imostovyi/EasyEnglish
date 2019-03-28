@@ -12,7 +12,7 @@ class ComposeWordViewController: UIViewController {
 
     // MARK: public properties
 
-    public static let identifier = "ComposeWord"
+    public static let identifier = "Test"
     //using for callBack
     public var callBack: (([Word]) -> Void)?
 
@@ -30,7 +30,8 @@ class ComposeWordViewController: UIViewController {
 
     // MARK: private properties
     private var passedWords: [Word] = []
-    private var wordsArray: [Word] = []
+    //private var wordsArray: [Word] = []
+    private var words: [Words] = []
     private var observedIndex = 0
     private var lettersData: [String] = []
     private var answerData: [String] = []
@@ -44,7 +45,9 @@ class ComposeWordViewController: UIViewController {
     // MARK: Public functions
 
     public func fillWordsArray(words: [Word]) {
-        wordsArray = words
+        for word in words {
+            self.words.append(Words(word: word))
+        }
     }
 
     // MARK: Private functions
@@ -69,6 +72,9 @@ class ComposeWordViewController: UIViewController {
         fillLettersAndDescription()
         configuratinCollectionView()
         configuratingNavBar()
+
+        statusImageView.isHidden = true
+
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -84,20 +90,20 @@ class ComposeWordViewController: UIViewController {
             answer += letter
         }
 
-        if wordsArray[observedIndex].word != answer {
+        if words[observedIndex].word.word != answer {
             statusImageView.image = canceledImage
+        } else {
+            statusImageView.image = checkedImage
+            words[observedIndex].answer = answerData
+        }
+        statusImageView.isHidden = false
+
+        for word in passedWords where word == words[observedIndex].word {
             return
         }
-        statusImageView.image = checkedImage
+        passedWords.append(words[observedIndex].word)
 
-        for word in passedWords {
-            if word == wordsArray[observedIndex] {
-                return
-            }
-            passedWords.append(wordsArray[observedIndex])
-        }
-
-        if passedWords.count == wordsArray.count {
+        if passedWords.count == words.count {
             let alert = UIAlertController(title: "Congratulation", message: "You passed all words", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Huray!)", style: .cancel, handler: { (_) in
                 self.callBack?(self.passedWords)
@@ -121,11 +127,11 @@ class ComposeWordViewController: UIViewController {
 
     ///Filing letters array and description
     private func fillLettersAndDescription() {
-        if wordsArray.count == 0 { return }
+        if words.count == 0 { return }
 
-        guard let word = wordsArray[observedIndex].word else { return }
+        guard let word = words[observedIndex].word.word else { return }
 
-        descriptionTextView.text = wordsArray[observedIndex].wordDescription
+        descriptionTextView.text = words[observedIndex].word.wordDescription
 
         lettersData = []
         let array = Array(word)
@@ -134,9 +140,15 @@ class ComposeWordViewController: UIViewController {
             lettersData.append(charToString)
         }
 
+        let originLettersData = lettersData
         lettersData = lettersData.shuffled()
+        answerData = words[observedIndex].answer
 
-        answerData = []
+        if answerData == originLettersData {
+            statusImageView.image = checkedImage
+            statusImageView.isHidden = false
+            lettersData = []
+        }
 
         statusImageView.image = canceledImage
 
@@ -162,6 +174,7 @@ class ComposeWordViewController: UIViewController {
                         self.visualEffectView.alpha = 0.3
         }, completion: nil)
 
+        statusImageView.isHidden = true
         fillLettersAndDescription()
         checkIndex()
 
@@ -173,9 +186,9 @@ class ComposeWordViewController: UIViewController {
 
     ///Chech if it's necessary to hide left or right button
     private func checkIndex() {
-        if wordsArray.count == 1 {
-            backButton.isEnabled = true
-            forwardButton.isEnabled = true
+        if words.count == 1 {
+            backButton.isEnabled = false
+            forwardButton.isEnabled = false
             return
         }
 
@@ -185,7 +198,7 @@ class ComposeWordViewController: UIViewController {
             return
         }
 
-        if observedIndex == (wordsArray.count - 1) {
+        if observedIndex == (words.count - 1) {
             forwardButton.isEnabled = false
             backButton.isEnabled = true
             return
@@ -358,4 +371,14 @@ extension ComposeWordViewController: UICollectionViewDropDelegate {
         }
     }
 
+}
+
+struct Words {
+    let word: Word
+    var answer: [String]
+
+    init(word: Word) {
+        self.word = word
+        answer = []
+    }
 }

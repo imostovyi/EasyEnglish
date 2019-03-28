@@ -79,9 +79,6 @@ class DictionaryViewController: UIViewController {
         controller.searchBar.sizeToFit()
         controller.searchBar.placeholder = "Tab to searching"
         controller.searchBar.layer.cornerRadius = 20
-//        let textColor = UIColor(named: "Text")
-//        let textFieldInside = controller.searchBar.value(forKey: "searchField") as? UITextField
-//        textFieldInside?.textColor = textColor
 
         tableView.tableHeaderView = controller.searchBar
 
@@ -97,6 +94,7 @@ class DictionaryViewController: UIViewController {
             self.resultSearchController.dismiss(animated: false, completion: nil)
             let storyboard = UIStoryboard(name: "AddNewWord", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: AddNewWordViewController.reuseIdentifier) as! AddNewWordViewController
+            vc.rootController = self
             self.present(vc, animated: true, completion: nil)
 
         }
@@ -111,29 +109,17 @@ class DictionaryViewController: UIViewController {
         }
 
         floatyButton.addItem("Test", icon: nil) { (_) in
-            let storyboard = UIStoryboard(name: "ComposeWord", bundle: nil)
-            let controller = storyboard.instantiateViewController(withIdentifier: "Test") as! ComposeWordViewController
+            let storyboard = UIStoryboard(name: "TestWords", bundle: nil)
+            let controller = storyboard.instantiateViewController(withIdentifier: TestWordViewController.identifier) as! TestWordViewController
 
-            var words: [Word] = []
-            let conntext = CoreDataStack.shared.persistantContainer.viewContext
-            var word = Word(context: conntext)
-            word.word = "Test 1"
-            word.wordDescription = "Description 1"
-            words.append(word)
-
-            word = Word(context: conntext)
-            word.word = "Test 2"
-            word.wordDescription = "Description 2"
-            words.append(word)
-
-            word = Word(context: conntext)
-            word.word = "Test 3"
-            word.wordDescription = "Description 3"
-            words.append(word)
-
-//            controller.fillWordsArray(words: words)
-
+            controller.initArray(words: self.wordsForTest)
             self.present(controller, animated: true, completion: nil)
+
+            controller.callBack = {(words) in
+                for word in words {
+                    self.wordsForTest.remove(word)
+                }
+            }
         }
 
         view.addSubview(floatyButton)

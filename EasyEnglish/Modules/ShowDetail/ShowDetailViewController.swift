@@ -92,16 +92,17 @@ class ShowDetailViewController: UIViewController {
                                   options: nil,
                                   progressBlock: nil) { (result) in
                                     if result.error != nil {
-                                        //debugPrint(result.error?.localizedDescription)
                                         self.imageView.image = image
                                     }
+
+                                    //debugPrint(result.error?.localizedDescription)
             }
         }
 
         setUpPlayer(word: word)
     }
 
-    /// func that play spech
+    /// func that play speach
     @objc private func playButtonWasTapped() {
         speechSentesizer.speak(speech)
     }
@@ -111,7 +112,10 @@ class ShowDetailViewController: UIViewController {
     private func setUpPlayer(word: Word) {
         videoView.isHidden = true
         videoView.backgroundColor = UIColor.clear
-        videoView.load(withVideoId: "dg")
+        if let url = word.videoURL {
+            if url == "" {return}
+            videoView.load(withVideoId: url)
+        }
     }
 }
 

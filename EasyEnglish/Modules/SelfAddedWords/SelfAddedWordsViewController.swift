@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-//import Kingfisher
+import Kingfisher
 import MessageUI
 
 class SelfAddedWordsViewController: UIViewController {
@@ -19,6 +19,9 @@ class SelfAddedWordsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var checkButton: UIButton!
 
+    // MARK: Publiv properties
+    static let identifier = "SelfAddedWords"
+    var root: DictionaryViewController?
     // MARK: Private properties
 
     private let cell = UINib(nibName: "SelfAddedWordsTableViewCell", bundle: nil)
@@ -36,7 +39,7 @@ class SelfAddedWordsViewController: UIViewController {
     private lazy var fetchedResultsController: NSFetchedResultsController<Word> = {
         let fetchRequest: NSFetchRequest<Word> = Word.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "word", ascending: true)]
-        fetchRequest.predicate = NSPredicate(format: "isApproved = %@", "false")
+        fetchRequest.predicate = NSPredicate(format: "isApproved = %@", "0")
         let controller = NSFetchedResultsController<Word>(
             fetchRequest: fetchRequest,
             managedObjectContext: context,
@@ -104,7 +107,7 @@ class SelfAddedWordsViewController: UIViewController {
         do {
             let jsonBody = try JSONEncoder().encode(jsonStruct)
             let json = try JSONSerialization.jsonObject(with: jsonBody, options: [])
-            print(json)
+            //print(json)
         } catch {
             debugPrint("Error")
         }
@@ -112,12 +115,18 @@ class SelfAddedWordsViewController: UIViewController {
 
     @objc private func doneButtonWasTapped() {
         dismiss(animated: true, completion: nil)
+        guard let vc = root else {return}
+        vc.tableView.reloadData()
     }
 
     @objc private func addWordButtonWasTapped() {
         let storyboard = UIStoryboard(name: "AddNewWord", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "AddNewWord") as! AddNewWordViewController
         self.present(vc, animated: true, completion: nil)
+
+        vc.callBack = { () in
+            self.tableView.reloadData()
+        }
     }
 
     // MARK: delete option
