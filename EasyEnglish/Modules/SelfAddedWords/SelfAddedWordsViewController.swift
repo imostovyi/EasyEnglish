@@ -111,12 +111,16 @@ class SelfAddedWordsViewController: UIViewController {
         } catch {
             debugPrint("Error")
         }
+        
+        dismiss(animated: true, completion: nil)
     }
 
     @objc private func doneButtonWasTapped() {
-        dismiss(animated: true, completion: nil)
-        guard let vc = root else {return}
-        vc.tableView.reloadData()
+        let alert = UIAlertController(title: "Are you shure?", message: "You didn't send words for checking, so we cant check and approve it. This words will not appeare in dictionary", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: {(_) in
+            self.dismiss(animated: true, completion: nil)
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
     }
 
     @objc private func addWordButtonWasTapped() {
@@ -124,9 +128,6 @@ class SelfAddedWordsViewController: UIViewController {
         let vc = storyboard.instantiateViewController(withIdentifier: "AddNewWord") as! AddNewWordViewController
         self.present(vc, animated: true, completion: nil)
 
-        vc.callBack = { () in
-            self.tableView.reloadData()
-        }
     }
 
     // MARK: delete option
@@ -180,12 +181,9 @@ extension SelfAddedWordsViewController: UITableViewDelegate, UITableViewDataSour
 
         cell.wordLabel.text = object.word
         cell.descriptionLabel.text = object.wordDescription
+        
         let placeholderImage = UIImage(named: "flag")
-        guard let stringURL = object.pictureURL else {
-            cell.captureImageView.image = placeholderImage
-            return cell
-        }
-        let url = URL(string: stringURL)
+        let url = object.pictureURL
         cell.captureImageView.kf.indicatorType = .activity
         cell.captureImageView.kf.setImage(with: url, placeholder: placeholderImage, options: nil, progressBlock: nil) { (result) in
             switch result {

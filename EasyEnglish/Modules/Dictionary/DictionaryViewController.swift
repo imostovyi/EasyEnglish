@@ -22,16 +22,12 @@ class DictionaryViewController: UIViewController {
 
     private var filtreedData = [Word]()
     private var resultSearchController = UISearchController()
-    private var wordsForTest = Set<Word>()
 
     private let cell = UINib(nibName: "SelfAddedWordsTableViewCell", bundle: nil)
 
     private lazy var editActions = [
         UITableViewRowAction(style: .normal, title: "Delete", handler: { [weak self] (_, indexPath) in
             self?.deleteAction(indexPath: indexPath)
-        }),
-        UITableViewRowAction(style: .normal, title: "Add to test", handler: { [weak self] (_, indexPath) in
-            self?.addToTestSet(indexPath: indexPath)
         })
     ]
 
@@ -39,7 +35,7 @@ class DictionaryViewController: UIViewController {
     private lazy var fetchedResultsController: NSFetchedResultsController<Word> = {
         let fetchRequest: NSFetchRequest<Word> = Word.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "word", ascending: true)]
-        fetchRequest.predicate = NSPredicate(format: "isApproved = %@", "1")
+        fetchRequest.predicate = NSPredicate(format: "isApproved = YES")
         let controller = NSFetchedResultsController<Word>(
             fetchRequest: fetchRequest,
             managedObjectContext: context,
@@ -100,7 +96,7 @@ class DictionaryViewController: UIViewController {
         }
 
         icon = UIImage(named: "layers")
-        floatyButton.addItem("Self added words", icon: icon) { (_) in
+        floatyButton.addItem("Unchecked words", icon: icon) { (_) in
             self.resultSearchController.dismiss(animated: false, completion: nil)
             let storyboard = UIStoryboard(name: "SelfAddedWords", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "SelfAddedWords") as! SelfAddedWordsViewController
@@ -109,17 +105,10 @@ class DictionaryViewController: UIViewController {
         }
 
         floatyButton.addItem("Test", icon: nil) { (_) in
+            self.resultSearchController.dismiss(animated: false, completion: nil)
             let storyboard = UIStoryboard(name: "TestWords", bundle: nil)
             let controller = storyboard.instantiateViewController(withIdentifier: TestWordViewController.identifier) as! TestWordViewController
-
-            controller.initArray(words: self.wordsForTest)
             self.present(controller, animated: true, completion: nil)
-
-            controller.callBack = {(words) in
-                for word in words {
-                    self.wordsForTest.remove(word)
-                }
-            }
         }
 
         view.addSubview(floatyButton)
@@ -129,26 +118,18 @@ class DictionaryViewController: UIViewController {
 
     private func deleteAction(indexPath: IndexPath) {
         guard let object = fetchedResultsController.fetchedObjects?[indexPath.row] else { return }
-        context.delete(object)
-        do {
-            try context.save()
-        } catch { debugPrint(error) }
-
-        if wordsForTest.contains(object) {
-            wordsForTest.remove(object)
-        }
+        
+        let alert = UIAlertController(title: "Are you shure?", message: "You are going to delete \(object.word ?? "")", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (_) in
+            self.context.delete(object)
+            do {
+                try self.context.save()
+            } catch {
+                debugPrint(error)
+            }
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
     }
-
-    // MARK: Set to test option
-    /// Adding word to set that would be passed
-    private func addToTestSet(indexPath: IndexPath) {
-        guard let word = fetchedResultsController.fetchedObjects?[indexPath.row] else { return }
-        if wordsForTest.contains(word) {
-            return
-        }
-        wordsForTest.insert(word)
-    }
-
 }
 
 // MARK: - - FetchedresultsControllerDelegate
@@ -194,19 +175,10 @@ extension DictionaryViewController: UITableViewDelegate, UITableViewDataSource {
 
         cell.wordLabel.text = object.word
         cell.descriptionLabel.text = object.wordDescription
+        
         let placeholderImage = UIImage(named: "flag")
-        guard let stringURL = object.pictureURL else {
-            cell.captureImageView.image = placeholderImage
-            return cell
-        }
-
-        let optionalUrl = URL(string: stringURL)
-        guard let url = optionalUrl else {
-            cell.captureImageView.image = placeholderImage
-            return cell
-        }
         cell.captureImageView.kf.indicatorType = .activity
-        cell.captureImageView.kf.setImage(with: url, placeholder: placeholderImage, options: nil, progressBlock: nil) { (result) in
+        cell.captureImageView.kf.setImage(with: object.pictureURL, placeholder: placeholderImage, options: nil, progressBlock: nil) { (result) in
             switch result {
             case .failure:
                 cell.captureImageView.image = placeholderImage

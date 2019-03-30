@@ -22,7 +22,7 @@ struct WordStruct: Codable {
         self.description = word.description
         self.translationUA = word.translationUA
         self.translationRU = word.translationRu
-        self.imageURL = word.pictureURL
+        self.imageURL = word.pictureURL?.absoluteString
         self.videoURL = word.videoURL
     }
 }

@@ -80,7 +80,6 @@ class AddNewWordViewController: UIViewController {
     }
 
     // MARK: Saving information About word
-
     @objc private func saveWord() {
 
         object.word = wordInformation[0].text
@@ -88,7 +87,7 @@ class AddNewWordViewController: UIViewController {
         object.wordDescription = descriptionTextView.text
         object.translationUA = wordInformation[2].text
         object.translationRu = wordInformation[3].text
-        object.pictureURL = wordInformation[4].text
+        object.pictureURL = URL(string: wordInformation[4].text ?? "")
         object.videoURL = wordInformation[5].text
         object.isKnown = false
         object.isApproved = false
@@ -108,25 +107,22 @@ class AddNewWordViewController: UIViewController {
         goBack()
     }
 
-    // MARK: go back to sender viewcontroller
-
+    /// MARK: go back to sender viewcontroller
     @objc private func goBack() {
-//        guard let vc = rootController else {
-//            dismiss(animated: true, completion: nil)
-//            //callBack?()
-//            return
-//        }
-//
-//        let storyboard = UIStoryboard(name: "SelfAddedWords", bundle: nil)
-//        let addedWordsVC = storyboard.instantiateViewController(withIdentifier: SelfAddedWordsViewController.identifier) as! SelfAddedWordsViewController
-//        addedWordsVC.root = rootController
-//        dismiss(animated: true, completion: nil)
-//        vc.present(addedWordsVC, animated: true, completion: nil)
+        guard let vc = rootController else {
+            dismiss(animated: true, completion: nil)
+            return
+        }
+
+        let storyboard = UIStoryboard(name: "SelfAddedWords", bundle: nil)
+        let addedWordsVC = storyboard.instantiateViewController(withIdentifier: SelfAddedWordsViewController.identifier) as! SelfAddedWordsViewController
+        addedWordsVC.root = rootController
         dismiss(animated: true, completion: nil)
+        vc.present(addedWordsVC, animated: true, completion: nil)
+
     }
 
     // MARK: fill fields if this controller uses as edit controller
-
     private func fillFields(object: Word) {
         wordInformation[0].text = object.word
         wordInformation[0].placeholderLabel.transform.ty = 0
@@ -137,7 +133,7 @@ class AddNewWordViewController: UIViewController {
         wordInformation[2].placeholderLabel.transform.ty = 0
         wordInformation[3].text = object.translationRu
         wordInformation[3].placeholderLabel.transform.ty = 0
-        wordInformation[4].text = object.pictureURL
+        wordInformation[4].text = object.pictureURL?.absoluteString
         wordInformation[4].placeholderLabel.transform.ty = 0
         wordInformation[5].text = object.videoURL
         wordInformation[5].placeholderLabel.transform.ty = 0

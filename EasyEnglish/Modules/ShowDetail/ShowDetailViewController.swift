@@ -82,23 +82,19 @@ class ShowDetailViewController: UIViewController {
         translationRU.text = word.translationRu
 
         let image = UIImage(named: "flag")
-        if word.pictureURL == nil {
-            imageView.image = image
-        } else {
-            let imageURL = URL(string: word.pictureURL!)
-            imageView.kf.indicatorType = .activity
-            imageView.kf.setImage(with: imageURL,
-                                  placeholder: image,
-                                  options: nil,
-                                  progressBlock: nil) { (result) in
-                                    if result.error != nil {
-                                        self.imageView.image = image
-                                    }
-
-                                    //debugPrint(result.error?.localizedDescription)
-            }
+        let imageURL = word.pictureURL
+        imageView.kf.indicatorType = .activity
+        imageView.kf.setImage(with: imageURL,
+                              placeholder: image,
+                              options: nil,
+                              progressBlock: nil) { (result) in
+                                if result.error != nil {
+                                    self.imageView.image = image
+                                }
+                                
+                                //debugPrint(result.error?.localizedDescription)
         }
-
+        
         setUpPlayer(word: word)
     }
 

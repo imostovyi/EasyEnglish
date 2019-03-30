@@ -13,8 +13,6 @@ class ComposeWordViewController: UIViewController {
     // MARK: public properties
 
     public static let identifier = "Test"
-    //using for callBack
-    public var callBack: (([Word]) -> Void)?
 
     // MARK: outlets
 
@@ -29,9 +27,7 @@ class ComposeWordViewController: UIViewController {
     @IBOutlet var visualEffectView: UIVisualEffectView!
 
     // MARK: private properties
-    private var passedWords: [Word] = []
-    //private var wordsArray: [Word] = []
-    private var words: [Words] = []
+    private var words: [Word] = []
     private var observedIndex = 0
     private var lettersData: [String] = []
     private var answerData: [String] = []
@@ -41,12 +37,15 @@ class ComposeWordViewController: UIViewController {
 
     private var sourceCollectionView: UICollectionView?
     private var sourceIndexPath: IndexPath?
+    
+    private lazy var context = CoreDataStack.shared.persistantContainer.viewContext
 
     // MARK: Public functions
 
     public func fillWordsArray(words: [Word]) {
         for word in words {
-            self.words.append(Words(word: word))
+            word.isKnown = false
+            self.words.append(word)
         }
     }
 
@@ -61,10 +60,6 @@ class ComposeWordViewController: UIViewController {
         descriptionTextView.layer.borderWidth = 1
         descriptionTextView.layer.borderColor = UIColor.white.cgColor
 
-        configurateLayer(button: backButton)
-        configurateLayer(button: checkButton)
-        configurateLayer(button: forwardButton)
-
         backButton.addTarget(self, action: #selector(arrowButtonWasTapped(button:)), for: .touchUpInside)
         forwardButton.addTarget(self, action: #selector(arrowButtonWasTapped(button:)), for: .touchUpInside)
         checkButton.addTarget(self, action: #selector(checkButtonWasTapped), for: .touchUpInside)
@@ -72,8 +67,6 @@ class ComposeWordViewController: UIViewController {
         fillLettersAndDescription()
         configuratinCollectionView()
         configuratingNavBar()
-
-        statusImageView.isHidden = true
 
     }
 
@@ -89,28 +82,41 @@ class ComposeWordViewController: UIViewController {
         for letter in answerData {
             answer += letter
         }
-
-        if words[observedIndex].word.word != answer {
+        
+        if words[observedIndex].word != answer {
             statusImageView.image = canceledImage
-        } else {
-            statusImageView.image = checkedImage
-            words[observedIndex].answer = answerData
-        }
-        statusImageView.isHidden = false
-
-        for word in passedWords where word == words[observedIndex].word {
             return
         }
-        passedWords.append(words[observedIndex].word)
-
-        if passedWords.count == words.count {
-            let alert = UIAlertController(title: "Congratulation", message: "You passed all words", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Huray!)", style: .cancel, handler: { (_) in
-                self.callBack?(self.passedWords)
+        statusImageView.image = checkedImage
+        
+        createAlert()
+    }
+    
+    ///Function that ctrate and present alert to congratulate user with passing one word or all words
+    private func createAlert() {
+        
+        var messageInAlert = ""
+        
+        if words.count == 0 {
+            messageInAlert = "Congratulation, you passed all the words"
+        } else {
+            messageInAlert = "Congratulation, you compose the word correctly"
+        }
+        
+        let alert = UIAlertController(title: "Congratulation", message: messageInAlert, preferredStyle: .alert)
+        
+        if words.count == 0 {
+            alert.addAction(UIAlertAction(title: "Go back", style: .default, handler: { (_) in
                 self.dismiss(animated: true, completion: nil)
             }))
-            present(alert, animated: true, completion: nil)
+        } else {
+            alert.addAction(UIAlertAction(title: "Next word", style: .default, handler: { (_) in
+                self.arrowButtonWasTapped(button: self.forwardButton)
+            }))
         }
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        present(alert, animated: true, completion: nil)
     }
 
     ///Configuaratind navigation bar
@@ -121,17 +127,23 @@ class ComposeWordViewController: UIViewController {
     }
 
     @objc private func giveUpWasTapped() {
-        callBack?(passedWords)
+        do {
+            try context.save()
+        } catch {
+            debugPrint(error)
+        }
+        
         dismiss(animated: true, completion: nil)
     }
+    
 
     ///Filing letters array and description
     private func fillLettersAndDescription() {
         if words.count == 0 { return }
 
-        guard let word = words[observedIndex].word.word else { return }
+        guard let word = words[observedIndex].word else { return }
 
-        descriptionTextView.text = words[observedIndex].word.wordDescription
+        descriptionTextView.text = words[observedIndex].wordDescription
 
         lettersData = []
         let array = Array(word)
@@ -142,11 +154,9 @@ class ComposeWordViewController: UIViewController {
 
         let originLettersData = lettersData
         lettersData = lettersData.shuffled()
-        answerData = words[observedIndex].answer
 
         if answerData == originLettersData {
             statusImageView.image = checkedImage
-            statusImageView.isHidden = false
             lettersData = []
         }
 
@@ -156,27 +166,30 @@ class ComposeWordViewController: UIViewController {
         answerCollectionView.reloadData()
     }
 
-    ///Configurating layers for buttons
-    private func configurateLayer(button: UIButton) {
-        button.layer.cornerRadius = 8
-        button.layer.masksToBounds = true
-        button.layer.borderColor = UIColor.white.cgColor
-        button.layer.borderWidth = 1
-    }
 
-    ///FadeIn/FadeOut function with switching to the next word
+    ///FadeIn/FadeOut function with switching to the next word. Also check and save changes in context
     @objc private func arrowButtonWasTapped(button: UIButton) {
         let isForward = button == forwardButton ? true : false
+        
+        if (words[observedIndex].isKnown == true) {
+            do {
+                try context.save()
+            } catch {
+                debugPrint(error)
+            }
+            
+            words.remove(at: observedIndex)
+        }
+        
         if isForward {self.observedIndex += 1} else {self.observedIndex -= 1}
+        checkIndex()
 
         UIView.animate(withDuration: 1.5, delay: 0.5, options: .allowUserInteraction,
                        animations: {
                         self.visualEffectView.alpha = 0.3
         }, completion: nil)
 
-        statusImageView.isHidden = true
         fillLettersAndDescription()
-        checkIndex()
 
         UIView.animate(withDuration: 0.5, delay: 0, options: .allowUserInteraction,
                        animations: {
@@ -186,6 +199,10 @@ class ComposeWordViewController: UIViewController {
 
     ///Chech if it's necessary to hide left or right button
     private func checkIndex() {
+        if words.count == 0 {
+            createAlert()
+        }
+        
         if words.count == 1 {
             backButton.isEnabled = false
             forwardButton.isEnabled = false
@@ -234,7 +251,7 @@ class ComposeWordViewController: UIViewController {
         answerCollectionView.layer.borderColor = UIColor.white.cgColor
     }
 
-    ///Reorder item
+    ///Reorder item in one section
     private func reorderItems(coordinator: UICollectionViewDropCoordinator, destinationIndexPath: IndexPath, collectionView: UICollectionView) {
         //sourceCollectionView? = collectionView
         let items = coordinator.items
@@ -260,7 +277,7 @@ class ComposeWordViewController: UIViewController {
         }
     }
 
-    //Moving items
+    //Moving items between sections
     private func copyItems(coordinator: UICollectionViewDropCoordinator, destinationIndexPath: IndexPath, collectionView: UICollectionView) {
         if sourceCollectionView! == collectionView {
             sourceCollectionView = nil
@@ -318,6 +335,29 @@ extension ComposeWordViewController: UICollectionViewDelegate, UICollectionViewD
         cell.initLabel(letter: answerData[indexPath.row])
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.performBatchUpdates({
+            
+            if collectionView == lettersCollectionView {
+                let object = lettersData[indexPath.row]
+                lettersData.remove(at: indexPath.row)
+                let dIndexPath = IndexPath(row: answerCollectionView.numberOfItems(inSection: 0) - 1, section: 0)
+                answerData.insert(object, at: dIndexPath.row)
+                
+                collectionView.deleteItems(at: [indexPath])
+                answerCollectionView.insertItems(at: [dIndexPath])
+            } else {
+                let object = answerData[indexPath.row]
+                answerData.remove(at: indexPath.row)
+                let dIndexPath = IndexPath(row: lettersCollectionView.numberOfItems(inSection: 0) - 1, section: 0)
+                lettersData.insert(object, at: dIndexPath.row)
+                
+                collectionView.deleteItems(at: [indexPath])
+                lettersCollectionView.insertItems(at: [dIndexPath])
+            }
+        }, completion: nil)
+    }
 }
 
 // MARK: - - Extension UiCollectionViewDragDelegate
@@ -373,12 +413,3 @@ extension ComposeWordViewController: UICollectionViewDropDelegate {
 
 }
 
-struct Words {
-    let word: Word
-    var answer: [String]
-
-    init(word: Word) {
-        self.word = word
-        answer = []
-    }
-}
