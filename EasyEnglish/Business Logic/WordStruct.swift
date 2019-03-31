@@ -18,12 +18,12 @@ struct WordStruct: Codable {
 
     init(word: Word) {
         self.word = word.word
-        self.transcription = word.transcription
+        self.transcription = word.transcription ?? ""
         self.description = word.description
-        self.translationUA = word.translationUA
-        self.translationRU = word.translationRu
-        self.imageURL = word.pictureURL?.absoluteString
-        self.videoURL = word.videoURL
+        self.translationUA = word.translationUA ?? ""
+        self.translationRU = word.translationRu ?? ""
+        self.imageURL = word.pictureURL?.absoluteString ?? ""
+        self.videoURL = word.videoURL ?? ""
     }
 }
 

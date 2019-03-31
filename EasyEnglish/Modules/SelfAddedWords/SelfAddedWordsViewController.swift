@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 import Kingfisher
-import MessageUI
+import Moya
 
 class SelfAddedWordsViewController: UIViewController {
 
@@ -20,10 +20,10 @@ class SelfAddedWordsViewController: UIViewController {
     @IBOutlet weak var checkButton: UIButton!
 
     // MARK: Public properties
-    
+
     static let identifier = "SelfAddedWords"
     var root: DictionaryViewController?
-    
+
     // MARK: Private properties
 
     private let cell = UINib(nibName: "SelfAddedWordsTableViewCell", bundle: nil)
@@ -88,6 +88,11 @@ class SelfAddedWordsViewController: UIViewController {
     // MARK: Private objective C functions
 
     @objc private func checkButtonTapped() {
+        let provider = MoyaProvider<Services>()
+        let session = URLSession(configuration: .default)
+        var request = URLRequest(url: URL(string: "https://api.front-end.icu/api/posts")!)
+        request.httpMethod = "POST"
+
         var arrayToEncode: [WordStruct] = []
         while fetchedResultsController.fetchedObjects?.count != 0 {
             guard let object = fetchedResultsController.fetchedObjects?.first else { return }
@@ -105,13 +110,34 @@ class SelfAddedWordsViewController: UIViewController {
             }
         }
 
-        let jsonStruct = JsonObject(words: arrayToEncode)
-        do {
-            let jsonBody = try JSONEncoder().encode(jsonStruct)
-            let json = try JSONSerialization.jsonObject(with: jsonBody, options: [])
-            //print(json)
-        } catch {
-            debugPrint("Error")
+//        for word in arrayToEncode {
+//            do {
+//                let jsonBody = try JSONEncoder().encode(word)
+//                request.httpBody = jsonBody
+//                let task = session.dataTask(with: request) { (_, response, _) in
+//                    print(response)
+//                }
+//                task.resume()
+//            } catch {
+//                print(error)
+//            }
+//        }
+//
+//        let jsonStruct = JsonObject(words: arrayToEncode)
+//        do {
+//            let jsonBody = try JSONEncoder().encode(jsonStruct)
+//            let json = try JSONSerialization.jsonObject(with: jsonBody, options: [])
+//            //print(json)
+//        } catch {
+//            debugPrint("Error")
+//        }
+//
+        for word in arrayToEncode {
+            provider.request(.validateWord(word: word)) { (result) in
+                if result.error != nil {
+                    debugPrint(result)
+                }
+            }
         }
 
         dismiss(animated: true, completion: nil)
@@ -122,7 +148,7 @@ class SelfAddedWordsViewController: UIViewController {
             dismiss(animated: true, completion: nil)
             return
         }
-        
+
         let alert = UIAlertController(title: "Are you shure?", message: "You didn't send words for checking, so we cant check and approve it. This words will not appeare in dictionary", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: {(_) in
             self.dismiss(animated: true, completion: nil)
