@@ -25,11 +25,14 @@ class DictionaryViewController: UIViewController {
 
     private let cell = UINib(nibName: "SelfAddedWordsTableViewCell", bundle: nil)
 
-    private lazy var editActions = [
-        UITableViewRowAction(style: .normal, title: "Delete", handler: { [weak self] (_, indexPath) in
+    private lazy var editActions: [UITableViewRowAction] = {
+        let arrayOfActions: [UITableViewRowAction] = [
+            UITableViewRowAction(style: .normal, title: "Delete", handler: { [weak self] (_, indexPath) in
             self?.deleteAction(indexPath: indexPath)
-        })
-    ]
+        })]
+        arrayOfActions.first?.backgroundColor = UIColor.red
+        return arrayOfActions
+    }()
 
     private lazy var context = CoreDataStack.shared.persistantContainer.viewContext
     private lazy var fetchedResultsController: NSFetchedResultsController<Word> = {
@@ -118,7 +121,7 @@ class DictionaryViewController: UIViewController {
 
     private func deleteAction(indexPath: IndexPath) {
         guard let object = fetchedResultsController.fetchedObjects?[indexPath.row] else { return }
-        
+
         let alert = UIAlertController(title: "Are you shure?", message: "You are going to delete \(object.word ?? "")", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (_) in
             self.context.delete(object)
@@ -129,6 +132,8 @@ class DictionaryViewController: UIViewController {
             }
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+
+        present(alert, animated: true, completion: nil)
     }
 }
 
@@ -175,7 +180,7 @@ extension DictionaryViewController: UITableViewDelegate, UITableViewDataSource {
 
         cell.wordLabel.text = object.word
         cell.descriptionLabel.text = object.wordDescription
-        
+
         let placeholderImage = UIImage(named: "flag")
         cell.captureImageView.kf.indicatorType = .activity
         cell.captureImageView.kf.setImage(with: object.pictureURL, placeholder: placeholderImage, options: nil, progressBlock: nil) { (result) in

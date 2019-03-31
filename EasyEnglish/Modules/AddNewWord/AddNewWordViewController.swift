@@ -22,7 +22,6 @@ class AddNewWordViewController: UIViewController {
     public var passedObject: Word?
     public var rootController: DictionaryViewController?
     static public let reuseIdentifier = "AddNewWord"
-    public var callBack: (() -> Void)?
 
     // MARK: Private poperties
 
@@ -104,13 +103,13 @@ class AddNewWordViewController: UIViewController {
         } catch {
             debugPrint(error)
         }
-        goBack()
+        goToSelfAddedViewController()
     }
 
-    /// MARK: go back to sender viewcontroller
-    @objc private func goBack() {
+    /// Function that dismsiss current view controller and presenting Controller with list of self added words
+    @objc private func goToSelfAddedViewController() {
         guard let vc = rootController else {
-            dismiss(animated: true, completion: nil)
+            goBack()
             return
         }
 
@@ -120,6 +119,10 @@ class AddNewWordViewController: UIViewController {
         dismiss(animated: true, completion: nil)
         vc.present(addedWordsVC, animated: true, completion: nil)
 
+    }
+
+    @objc private func goBack() {
+        dismiss(animated: true, completion: nil)
     }
 
     // MARK: fill fields if this controller uses as edit controller

@@ -10,7 +10,6 @@
 import Foundation
 import CoreData
 
-
 extension Word {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Word> {

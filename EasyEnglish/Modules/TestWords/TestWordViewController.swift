@@ -19,30 +19,34 @@ class TestWordViewController: UIViewController {
 
     let nib = UINib(nibName: "SelfAddedWordsTableViewCell", bundle: nil)
     private let rightbutton = UIBarButtonItem(title: "I'm ready!", style: .done, target: self, action: #selector(doneButtonWasTapped))
-    
+
     private lazy var context = CoreDataStack.shared.persistantContainer.viewContext
     private lazy var fetchedResultsController: NSFetchedResultsController<Word> = {
         let request: NSFetchRequest<Word> = Word.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key: "word", ascending: true)]
         request.predicate = NSPredicate(format: "isApproved = YES")
-        
+
         let controller = NSFetchedResultsController<Word>(
             fetchRequest: request,
             managedObjectContext: context,
             sectionNameKeyPath: nil,
             cacheName: nil)
         controller.delegate = self
-        
+
+        do {
+            try controller.performFetch()
+        } catch {
+            debugPrint(error)
+        }
         return controller
     }()
-    
+
     private var wordsForTesting: Set<Word> = []
-    
+
     // MARK: outlets
 
     @IBOutlet var navigationBar: UINavigationBar!
     @IBOutlet var tableView: UITableView!
-
 
     // MARK: Private functions
 
@@ -53,8 +57,8 @@ class TestWordViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         customizationNavBar()
-        
-        chechCapacity()
+
+        checkCapacity()
     }
 
     ///Customization navigation bar, add two navigation items to the navigationbar
@@ -69,19 +73,18 @@ class TestWordViewController: UIViewController {
     @objc private func doneButtonWasTapped() {
         let storyBoard = UIStoryboard(name: "ComposeWord", bundle: nil)
         let vc = storyBoard.instantiateViewController(withIdentifier: ComposeWordViewController.identifier) as! ComposeWordViewController
-        
+
         vc.fillWordsArray(words: Array(wordsForTesting))
-        
+
         present(vc, animated: true, completion: nil)
     }
 
-    
     @objc private func backButtonWasTapped() {
         dismiss(animated: true)
     }
-    
+
     ///Function that check capacity of wordsForTesting set and decide if it's necessary to show rightBarButtonItem
-    private func chechCapacity() {
+    private func checkCapacity() {
         if wordsForTesting.count != 0 {
             navigationItem.rightBarButtonItem = rightbutton
             return
@@ -107,13 +110,13 @@ extension TestWordViewController: UITableViewDataSource, UITableViewDelegate {
         let placeholderImage = UIImage(named: "flag")
 
         cell.wordLabel.isHidden = true
-        cell.descriptionLabel.text = fetchedResultsController.fetchedObjects?[indexPath.row].description
-        
+        cell.descriptionLabel.text = fetchedResultsController.fetchedObjects?[indexPath.row].wordDescription
+
         guard let url = fetchedResultsController.fetchedObjects?[indexPath.row].pictureURL else {
             cell.captureImageView.image = placeholderImage
             return cell
         }
-        
+
         cell.captureImageView.kf.indicatorType = .activity
         cell.captureImageView.kf.setImage(with: url, placeholder: placeholderImage, options: nil, progressBlock: nil) { (result) in
             switch result {
@@ -122,45 +125,45 @@ extension TestWordViewController: UITableViewDataSource, UITableViewDelegate {
             default: return
             }
         }
-        
+
         return cell
     }
-    
+
     ///Add checkmark for selected word and push it to wordsForTesting and check it's count
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) {
             cell.accessoryType = .checkmark
         }
-        
+
         guard let word = fetchedResultsController.fetchedObjects?[indexPath.row] else {
             return
         }
         if wordsForTesting.contains(word) { return }
         wordsForTesting.insert(word)
-        
-        chechCapacity()
+
+        checkCapacity()
     }
-    
+
     ///Disabling checkmark for deselected word and removing it from wordForTesting
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) {
             cell.accessoryType = .none
         }
-        
+
         guard let word = fetchedResultsController.fetchedObjects?[indexPath.row] else {
             return
         }
         if !wordsForTesting.contains(word) { return }
         wordsForTesting.remove(word)
-        
-        chechCapacity()
+
+        checkCapacity()
     }
-    
+
 }
 
-//MARK:-- Extension Fetched results controller delegate
+// MARK: - - Extension Fetched results controller delegate
 extension TestWordViewController: NSFetchedResultsControllerDelegate {
-    
+
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.reloadData()
     }

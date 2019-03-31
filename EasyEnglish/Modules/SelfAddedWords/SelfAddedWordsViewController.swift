@@ -19,9 +19,11 @@ class SelfAddedWordsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var checkButton: UIButton!
 
-    // MARK: Publiv properties
+    // MARK: Public properties
+    
     static let identifier = "SelfAddedWords"
     var root: DictionaryViewController?
+    
     // MARK: Private properties
 
     private let cell = UINib(nibName: "SelfAddedWordsTableViewCell", bundle: nil)
@@ -39,7 +41,7 @@ class SelfAddedWordsViewController: UIViewController {
     private lazy var fetchedResultsController: NSFetchedResultsController<Word> = {
         let fetchRequest: NSFetchRequest<Word> = Word.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "word", ascending: true)]
-        fetchRequest.predicate = NSPredicate(format: "isApproved = %@", "0")
+        fetchRequest.predicate = NSPredicate(format: "isApproved = NO")
         let controller = NSFetchedResultsController<Word>(
             fetchRequest: fetchRequest,
             managedObjectContext: context,
@@ -111,16 +113,23 @@ class SelfAddedWordsViewController: UIViewController {
         } catch {
             debugPrint("Error")
         }
-        
+
         dismiss(animated: true, completion: nil)
     }
 
     @objc private func doneButtonWasTapped() {
+        if fetchedResultsController.fetchedObjects?.count == 0 {
+            dismiss(animated: true, completion: nil)
+            return
+        }
+        
         let alert = UIAlertController(title: "Are you shure?", message: "You didn't send words for checking, so we cant check and approve it. This words will not appeare in dictionary", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: {(_) in
             self.dismiss(animated: true, completion: nil)
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+
+        present(alert, animated: true, completion: nil)
     }
 
     @objc private func addWordButtonWasTapped() {
@@ -181,7 +190,7 @@ extension SelfAddedWordsViewController: UITableViewDelegate, UITableViewDataSour
 
         cell.wordLabel.text = object.word
         cell.descriptionLabel.text = object.wordDescription
-        
+
         let placeholderImage = UIImage(named: "flag")
         let url = object.pictureURL
         cell.captureImageView.kf.indicatorType = .activity

@@ -37,7 +37,7 @@ class ComposeWordViewController: UIViewController {
 
     private var sourceCollectionView: UICollectionView?
     private var sourceIndexPath: IndexPath?
-    
+
     private lazy var context = CoreDataStack.shared.persistantContainer.viewContext
 
     // MARK: Public functions
@@ -82,40 +82,49 @@ class ComposeWordViewController: UIViewController {
         for letter in answerData {
             answer += letter
         }
-        
+
         if words[observedIndex].word != answer {
             statusImageView.image = canceledImage
             return
         }
         statusImageView.image = checkedImage
-        
+        words[observedIndex].isKnown = true
+        do {
+            try context.save()
+        } catch {
+            debugPrint(error)
+        }
+
+        words.remove(at: observedIndex)
+
         createAlert()
     }
-    
+
     ///Function that ctrate and present alert to congratulate user with passing one word or all words
     private func createAlert() {
-        
+
         var messageInAlert = ""
-        
+
         if words.count == 0 {
             messageInAlert = "Congratulation, you passed all the words"
         } else {
             messageInAlert = "Congratulation, you compose the word correctly"
         }
-        
+
         let alert = UIAlertController(title: "Congratulation", message: messageInAlert, preferredStyle: .alert)
-        
+
         if words.count == 0 {
             alert.addAction(UIAlertAction(title: "Go back", style: .default, handler: { (_) in
                 self.dismiss(animated: true, completion: nil)
             }))
         } else {
             alert.addAction(UIAlertAction(title: "Next word", style: .default, handler: { (_) in
+                self.observedIndex -= 1
                 self.arrowButtonWasTapped(button: self.forwardButton)
             }))
         }
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        
+
         present(alert, animated: true, completion: nil)
     }
 
@@ -132,10 +141,9 @@ class ComposeWordViewController: UIViewController {
         } catch {
             debugPrint(error)
         }
-        
+
         dismiss(animated: true, completion: nil)
     }
-    
 
     ///Filing letters array and description
     private func fillLettersAndDescription() {
@@ -146,19 +154,14 @@ class ComposeWordViewController: UIViewController {
         descriptionTextView.text = words[observedIndex].wordDescription
 
         lettersData = []
+        answerData = []
         let array = Array(word)
         for i in array {
             let charToString = String(i)
             lettersData.append(charToString)
         }
 
-        let originLettersData = lettersData
         lettersData = lettersData.shuffled()
-
-        if answerData == originLettersData {
-            statusImageView.image = checkedImage
-            lettersData = []
-        }
 
         statusImageView.image = canceledImage
 
@@ -166,21 +169,10 @@ class ComposeWordViewController: UIViewController {
         answerCollectionView.reloadData()
     }
 
-
     ///FadeIn/FadeOut function with switching to the next word. Also check and save changes in context
     @objc private func arrowButtonWasTapped(button: UIButton) {
         let isForward = button == forwardButton ? true : false
-        
-        if (words[observedIndex].isKnown == true) {
-            do {
-                try context.save()
-            } catch {
-                debugPrint(error)
-            }
-            
-            words.remove(at: observedIndex)
-        }
-        
+
         if isForward {self.observedIndex += 1} else {self.observedIndex -= 1}
         checkIndex()
 
@@ -202,7 +194,7 @@ class ComposeWordViewController: UIViewController {
         if words.count == 0 {
             createAlert()
         }
-        
+
         if words.count == 1 {
             backButton.isEnabled = false
             forwardButton.isEnabled = false
@@ -335,24 +327,40 @@ extension ComposeWordViewController: UICollectionViewDelegate, UICollectionViewD
         cell.initLabel(letter: answerData[indexPath.row])
         return cell
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.performBatchUpdates({
-            
+
             if collectionView == lettersCollectionView {
                 let object = lettersData[indexPath.row]
                 lettersData.remove(at: indexPath.row)
-                let dIndexPath = IndexPath(row: answerCollectionView.numberOfItems(inSection: 0) - 1, section: 0)
+
+                //deciding where letter must be inseted
+                var row: Int
+                switch answerCollectionView.numberOfItems(inSection: 0) {
+                case 0: row = 0
+                case 1: row = 1
+                default: row = answerCollectionView.numberOfItems(inSection: 0)
+                }
+                let dIndexPath = IndexPath(row: row, section: 0)
                 answerData.insert(object, at: dIndexPath.row)
-                
+
                 collectionView.deleteItems(at: [indexPath])
                 answerCollectionView.insertItems(at: [dIndexPath])
             } else {
                 let object = answerData[indexPath.row]
                 answerData.remove(at: indexPath.row)
-                let dIndexPath = IndexPath(row: lettersCollectionView.numberOfItems(inSection: 0) - 1, section: 0)
+
+                //deciding where letter must be inseted
+                var row: Int
+                switch lettersCollectionView.numberOfItems(inSection: 0) {
+                case 0: row = 0
+                case 1: row = 1
+                default: row = lettersCollectionView.numberOfItems(inSection: 0)// - 1
+                }
+                let dIndexPath = IndexPath(row: row, section: 0)
                 lettersData.insert(object, at: dIndexPath.row)
-                
+
                 collectionView.deleteItems(at: [indexPath])
                 lettersCollectionView.insertItems(at: [dIndexPath])
             }
@@ -410,6 +418,4 @@ extension ComposeWordViewController: UICollectionViewDropDelegate {
             return UICollectionViewDropProposal(operation: .copy, intent: .insertAtDestinationIndexPath)
         }
     }
-
 }
-

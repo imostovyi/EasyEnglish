@@ -40,21 +40,18 @@ class TestWordCell: UITableViewCell {
     ///init for outlet's properties
     public func initProperties(word: Word) {
         wordLabel.text = word.word
-        guard let unwrapedString = word.pictureURL else {
-            return
+
+        pictureView.kf.indicatorType = .activity
+        pictureView.kf.setImage(with: word.pictureURL,
+                                placeholder: UIImage(named: "flag"),
+                                options: nil,
+                                progressBlock: nil) { (result) in
+                                    switch result {
+                                    case .success: return
+                                    default: self.pictureView.image = UIImage(named: "flag")
+                                    }
         }
-        if let url = URL(string: unwrapedString) {
-            pictureView.kf.indicatorType = .activity
-            pictureView.kf.setImage(with: url,
-                                    placeholder: UIImage(named: "flag"),
-                                    options: nil,
-                                    progressBlock: nil) { (result) in
-                                        switch result {
-                                        case .success: return
-                                        default: self.pictureView.image = UIImage(named: "flag")
-                                        }
-            }
-        }
+
     }
 
 }

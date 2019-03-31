@@ -24,14 +24,14 @@ class BounceButton: UIButton {
                        completion: nil)
         super.touchesBegan(touches, with: event)
     }
-    
+
     func performCustomLayer() {
         self.layer.cornerRadius = 8
         self.layer.masksToBounds = true
         self.layer.borderColor = UIColor.white.cgColor
         self.layer.borderWidth = 1
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         self.layer.cornerRadius = 8

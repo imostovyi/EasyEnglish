@@ -91,10 +91,10 @@ class ShowDetailViewController: UIViewController {
                                 if result.error != nil {
                                     self.imageView.image = image
                                 }
-                                
+
                                 //debugPrint(result.error?.localizedDescription)
         }
-        
+
         setUpPlayer(word: word)
     }
 
