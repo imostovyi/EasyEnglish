@@ -64,6 +64,7 @@ class DictionaryViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(cell, forCellReuseIdentifier: SelfAddedWordsTableViewCell.identfier)
+        tableView.addSubview(PullToRefresh.shared.refreshController)
 
         resultSearchController = setUpSearchController()
     }
@@ -76,7 +77,7 @@ class DictionaryViewController: UIViewController {
         controller.searchResultsUpdater = self
         controller.dimsBackgroundDuringPresentation = false
         controller.searchBar.sizeToFit()
-        controller.searchBar.placeholder = "Tab to searching"
+        controller.searchBar.placeholder = "At least two letters to start"
         controller.searchBar.layer.cornerRadius = 20
 
         tableView.tableHeaderView = controller.searchBar
@@ -135,6 +136,16 @@ class DictionaryViewController: UIViewController {
 
         present(alert, animated: true, completion: nil)
     }
+
+    ///Function that checks if is nead to start searching
+    private func isNecessaryToSearch() -> Bool {
+        if resultSearchController.isActive && resultSearchController.searchBar.text! != "" &&
+            resultSearchController.searchBar.text!.count >= 2 {
+            return true
+        }
+        return false
+    }
+
 }
 
 // MARK: - - FetchedresultsControllerDelegate
@@ -154,7 +165,7 @@ extension DictionaryViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if resultSearchController.isActive && resultSearchController.searchBar.text! != "" {
+        if isNecessaryToSearch() {
             return filtreedData.count
         } else {
             return fetchedResultsController.fetchedObjects?.count ?? 0
@@ -167,8 +178,7 @@ extension DictionaryViewController: UITableViewDelegate, UITableViewDataSource {
 
         let data: [Word] = {
             var array: [Word]
-            if resultSearchController.isActive &&
-                resultSearchController.searchBar.text! != "" {
+            if isNecessaryToSearch() {
                 array = filtreedData
             } else {
                 array = fetchedResultsController.fetchedObjects ?? []
@@ -177,7 +187,6 @@ extension DictionaryViewController: UITableViewDelegate, UITableViewDataSource {
         }()
 
         let object = data[indexPath.row]
-
         cell.wordLabel.text = object.word
         cell.descriptionLabel.text = object.wordDescription
 
@@ -198,6 +207,7 @@ extension DictionaryViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.resultSearchController.dismiss(animated: false, completion: nil)
         let storyboard = UIStoryboard(name: "ShowDetail", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: ShowDetailViewController.identifier) as! ShowDetailViewController
         vc.context = fetchedResultsController.fetchedObjects?[indexPath.row]

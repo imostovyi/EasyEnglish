@@ -19,7 +19,7 @@ struct WordStruct: Codable {
     init(word: Word) {
         self.word = word.word
         self.transcription = word.transcription ?? ""
-        self.description = word.description
+        self.description = word.wordDescription ?? ""
         self.translationUA = word.translationUA ?? ""
         self.translationRU = word.translationRu ?? ""
         self.imageURL = word.pictureURL?.absoluteString ?? ""
@@ -27,10 +27,17 @@ struct WordStruct: Codable {
     }
 }
 
+//struct JsonObject: Codable {
+//    let words: [WordStruct]
+//
+//    init(words: [WordStruct]) {
+//        self.words = words
+//    }
+//}
 struct JsonObject: Codable {
     let words: [WordStruct]
 
-    init(words: [WordStruct]) {
-        self.words = words
+    enum CodingKeys: String, CodingKey {
+        case words = ""
     }
 }

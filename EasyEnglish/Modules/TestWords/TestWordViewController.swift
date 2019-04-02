@@ -24,7 +24,6 @@ class TestWordViewController: UIViewController {
     private lazy var fetchedResultsController: NSFetchedResultsController<Word> = {
         let request: NSFetchRequest<Word> = Word.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key: "word", ascending: true)]
-        request.predicate = NSPredicate(format: "isApproved = YES")
 
         let controller = NSFetchedResultsController<Word>(
             fetchRequest: request,

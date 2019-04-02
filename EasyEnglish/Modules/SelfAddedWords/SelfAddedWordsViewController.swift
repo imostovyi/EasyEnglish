@@ -41,7 +41,7 @@ class SelfAddedWordsViewController: UIViewController {
     private lazy var fetchedResultsController: NSFetchedResultsController<Word> = {
         let fetchRequest: NSFetchRequest<Word> = Word.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "word", ascending: true)]
-        fetchRequest.predicate = NSPredicate(format: "isApproved = NO")
+        fetchRequest.predicate = NSPredicate(format: "isApproved = 0")
         let controller = NSFetchedResultsController<Word>(
             fetchRequest: fetchRequest,
             managedObjectContext: context,
@@ -81,7 +81,7 @@ class SelfAddedWordsViewController: UIViewController {
 
     private func setUpCheckButton() {
         checkButton.layer.cornerRadius = 7.0
-        checkButton.setTitle("Check word", for: .normal)
+        checkButton.setTitle("Check words", for: .normal)
         checkButton.addTarget(self, action: #selector(checkButtonTapped), for: .touchUpInside)
     }
 
@@ -89,9 +89,6 @@ class SelfAddedWordsViewController: UIViewController {
 
     @objc private func checkButtonTapped() {
         let provider = MoyaProvider<Services>()
-        let session = URLSession(configuration: .default)
-        var request = URLRequest(url: URL(string: "https://api.front-end.icu/api/posts")!)
-        request.httpMethod = "POST"
 
         var arrayToEncode: [WordStruct] = []
         while fetchedResultsController.fetchedObjects?.count != 0 {
@@ -109,29 +106,6 @@ class SelfAddedWordsViewController: UIViewController {
                 return
             }
         }
-
-//        for word in arrayToEncode {
-//            do {
-//                let jsonBody = try JSONEncoder().encode(word)
-//                request.httpBody = jsonBody
-//                let task = session.dataTask(with: request) { (_, response, _) in
-//                    print(response)
-//                }
-//                task.resume()
-//            } catch {
-//                print(error)
-//            }
-//        }
-//
-//        let jsonStruct = JsonObject(words: arrayToEncode)
-//        do {
-//            let jsonBody = try JSONEncoder().encode(jsonStruct)
-//            let json = try JSONSerialization.jsonObject(with: jsonBody, options: [])
-//            //print(json)
-//        } catch {
-//            debugPrint("Error")
-//        }
-//
         for word in arrayToEncode {
             provider.request(.validateWord(word: word)) { (result) in
                 if result.error != nil {

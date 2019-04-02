@@ -21,7 +21,7 @@ class ShowDetailViewController: UIViewController {
 
     // MARK: Private properties
 
-    private let speechSentesizer = AVSpeechSynthesizer()
+    private lazy var speechSentesizer = AVSpeechSynthesizer()
     private var speech: AVSpeechUtterance = AVSpeechUtterance()
     // MARK: Outlets
 
@@ -44,6 +44,7 @@ class ShowDetailViewController: UIViewController {
         checkAndFill()
 
         videoView.delegate = self
+        speechSentesizer.delegate = self
 
         playButton.addTarget(self, action: #selector(playButtonWasTapped), for: .touchUpInside)
         playButton.layer.cornerRadius = 20
@@ -72,9 +73,9 @@ class ShowDetailViewController: UIViewController {
             return
         }
 
-        title = word.word
         speech = AVSpeechUtterance(string: word.word!)
 
+        title = word.word
         wordLabel.text = word.word
         transcriptionLabel.text = word.transcription
         descriptionTextView.text = word.wordDescription
@@ -100,6 +101,9 @@ class ShowDetailViewController: UIViewController {
 
     /// func that play speach
     @objc private func playButtonWasTapped() {
+        if speechSentesizer.isSpeaking {
+            speechSentesizer.stopSpeaking(at: .immediate)
+        }
         speechSentesizer.speak(speech)
     }
 
@@ -119,6 +123,16 @@ extension ShowDetailViewController: YTPlayerViewDelegate {
     func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
         playerView.isHidden = false
         print("OK")
+    }
+}
+
+extension ShowDetailViewController: AVSpeechSynthesizerDelegate {
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didStart utterance: AVSpeechUtterance) {
+        playButton.isEnabled = false
+    }
+
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
+        playButton.isEnabled = true
     }
 }
 

@@ -28,6 +28,7 @@
 		84A21292224AB9BC003CA53E /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A21291224AB9BC003CA53E /* CollectionViewCell.swift */; };
 		84AE9DD822514CAD00E06179 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE9DD722514CAD00E06179 /* Api.swift */; };
 		84B83C34222EA876005ED568 /* AddNewWordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B83C33222EA876005ED568 /* AddNewWordViewController.swift */; };
+		84B8E07E225224C300669369 /* RefreshController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B8E07D225224C300669369 /* RefreshController.swift */; };
 		84BE5E85224A29940016C63D /* ComposeWord.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84BE5E84224A29940016C63D /* ComposeWord.storyboard */; };
 		84BE5E87224A29C60016C63D /* ComposeWordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE5E86224A29C60016C63D /* ComposeWordViewController.swift */; };
 		84C0CB7E222D47E9002AB7B4 /* EasyEnglish.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84C0CB7C222D47E9002AB7B4 /* EasyEnglish.xcdatamodeld */; };
@@ -96,6 +97,7 @@
 		84A21291224AB9BC003CA53E /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		84AE9DD722514CAD00E06179 /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		84B83C33222EA876005ED568 /* AddNewWordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewWordViewController.swift; sourceTree = "<group>"; };
+		84B8E07D225224C300669369 /* RefreshController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshController.swift; sourceTree = "<group>"; };
 		84BE5E84224A29940016C63D /* ComposeWord.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ComposeWord.storyboard; sourceTree = "<group>"; };
 		84BE5E86224A29C60016C63D /* ComposeWordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeWordViewController.swift; sourceTree = "<group>"; };
 		84C0CB7D222D47E9002AB7B4 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
@@ -423,6 +425,7 @@
 			isa = PBXGroup;
 			children = (
 				84C0CB86222D4C7D002AB7B4 /* Dictionary.storyboard */,
+				84B8E07D225224C300669369 /* RefreshController.swift */,
 				84C112B6222E7CFD000E0D57 /* DictionaryViewController.swift */,
 			);
 			path = Dictionary;
@@ -672,6 +675,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84B8E07E225224C300669369 /* RefreshController.swift in Sources */,
 				84BE5E87224A29C60016C63D /* ComposeWordViewController.swift in Sources */,
 				84F940972236A3EF00D63C89 /* SelfAddedWordsTableViewCell.swift in Sources */,
 				84C15E842238480F00F8A8C3 /* WordStruct.swift in Sources */,
