@@ -76,6 +76,7 @@ class TestWordViewController: UIViewController {
         vc.fillWordsArray(words: Array(wordsForTesting))
 
         present(vc, animated: true, completion: nil)
+        tableView.reloadData()
     }
 
     @objc private func backButtonWasTapped() {
@@ -125,6 +126,7 @@ extension TestWordViewController: UITableViewDataSource, UITableViewDelegate {
             }
         }
 
+        cell.accessoryType = .none
         return cell
     }
 

@@ -21,6 +21,7 @@
 		844540DA222D4006002FFF2F /* EasyEnglishUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844540D9222D4006002FFF2F /* EasyEnglishUITests.swift */; };
 		844540E6222D4067002FFF2F /* LoginRegistrationStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 844540E4222D4067002FFF2F /* LoginRegistrationStoryboard.storyboard */; };
 		844540E7222D4067002FFF2F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844540E5222D4067002FFF2F /* LoginViewController.swift */; };
+		845E3FBE2255083100F8CB78 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 845E3FBD2255083100F8CB78 /* SplashScreen.storyboard */; };
 		8474115D2248068800639522 /* TestWords.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8474115C2248068800639522 /* TestWords.storyboard */; };
 		8474115F2248082100639522 /* TestWordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8474115E2248082000639522 /* TestWordViewController.swift */; };
 		847411642248118700639522 /* TestWordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847411622248118700639522 /* TestWordCell.swift */; };
@@ -90,6 +91,7 @@
 		844540DB222D4006002FFF2F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		844540E4222D4067002FFF2F /* LoginRegistrationStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LoginRegistrationStoryboard.storyboard; sourceTree = "<group>"; };
 		844540E5222D4067002FFF2F /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		845E3FBD2255083100F8CB78 /* SplashScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SplashScreen.storyboard; sourceTree = "<group>"; };
 		8474115C2248068800639522 /* TestWords.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TestWords.storyboard; sourceTree = "<group>"; };
 		8474115E2248082000639522 /* TestWordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestWordViewController.swift; sourceTree = "<group>"; };
 		847411622248118700639522 /* TestWordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestWordCell.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 				84B83C35222EA87E005ED568 /* AddNewWord */,
 				84C112B8222E7F94000E0D57 /* Dictionary */,
 				84BE5E88224A29CC0016C63D /* ComposeWords */,
+				845E3FBD2255083100F8CB78 /* SplashScreen.storyboard */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -555,6 +558,7 @@
 				844540C7222D4006002FFF2F /* Colors.xcassets in Resources */,
 				8474115D2248068800639522 /* TestWords.storyboard in Resources */,
 				847411652248118700639522 /* TestWordCell.xib in Resources */,
+				845E3FBE2255083100F8CB78 /* SplashScreen.storyboard in Resources */,
 				844540E6222D4067002FFF2F /* LoginRegistrationStoryboard.storyboard in Resources */,
 				84C0CB87222D4C7D002AB7B4 /* Dictionary.storyboard in Resources */,
 			);

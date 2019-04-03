@@ -146,6 +146,22 @@ class DictionaryViewController: UIViewController {
         return false
     }
 
+    private func highlight(_ substring: String, in string: String, color: UIColor = UIColor.blue) -> NSAttributedString {
+        let defaultAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22.0),
+                                 NSAttributedString.Key.foregroundColor: UIColor.white]
+
+        let text = NSMutableAttributedString(string: string, attributes: defaultAttributes)
+
+        if let fillableRange = string.lowercased().range(of: (substring.lowercased())) {
+            let findedSubstring = NSRange(fillableRange, in: string)
+            text.addAttribute(NSAttributedString.Key.font, value: UIFont.boldSystemFont(ofSize: 22.0), range: findedSubstring)
+            text.addAttribute(NSAttributedString.Key.underlineColor, value: UIColor.red, range: findedSubstring)
+            text.addAttribute(NSAttributedString.Key.underlineStyle, value: 1, range: findedSubstring)
+        }
+
+        return text
+    }
+
 }
 
 // MARK: - - FetchedresultsControllerDelegate
@@ -187,7 +203,15 @@ extension DictionaryViewController: UITableViewDelegate, UITableViewDataSource {
         }()
 
         let object = data[indexPath.row]
-        cell.wordLabel.text = object.word
+
+        if isNecessaryToSearch() {
+            cell.wordLabel.attributedText = highlight(
+                resultSearchController.searchBar.text!, in: object.word!)
+        } else {
+            cell.wordLabel.attributedText = nil
+            cell.wordLabel.text = object.word
+        }
+
         cell.descriptionLabel.text = object.wordDescription
 
         let placeholderImage = UIImage(named: "flag")
@@ -207,11 +231,21 @@ extension DictionaryViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.resultSearchController.dismiss(animated: false, completion: nil)
         let storyboard = UIStoryboard(name: "ShowDetail", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: ShowDetailViewController.identifier) as! ShowDetailViewController
-        vc.context = fetchedResultsController.fetchedObjects?[indexPath.row]
 
+        let data: [Word] = {
+            var array: [Word]
+            if isNecessaryToSearch() {
+                array = filtreedData
+            } else {
+                array = fetchedResultsController.fetchedObjects ?? []
+            }
+            return array
+        }()
+
+        vc.context = data[indexPath.row]
+        self.resultSearchController.dismiss(animated: true, completion: nil)
         present(vc, animated: true, completion: nil)
     }
 
@@ -251,5 +285,5 @@ extension DictionaryViewController: UISearchResultsUpdating {
 
         tableView.reloadData()
     }
-
 }
+
