@@ -80,7 +80,8 @@ class DictionaryViewController: UIViewController {
         controller.searchBar.placeholder = "At least two letters to start"
         controller.searchBar.layer.cornerRadius = 20
 
-        tableView.tableHeaderView = controller.searchBar
+//        navigationItem.searchController = controller
+        //tableView.tableHeaderView = controller.searchBar
 
         return controller
     }
@@ -186,6 +187,14 @@ extension DictionaryViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             return fetchedResultsController.fetchedObjects?.count ?? 0
         }
+    }
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return resultSearchController.searchBar
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40.0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
