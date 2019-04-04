@@ -156,16 +156,16 @@
                                             </constraints>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="ofM-ox-Nfb">
-                                            <rect key="frame" x="55.333333333333343" y="342" width="303.33333333333326" height="50"/>
+                                            <rect key="frame" x="51.333333333333343" y="342" width="311.66666666666663" height="50"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Compose word below. Statu is" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kzU-IW-IDV">
-                                                    <rect key="frame" x="0.0" y="15.333333333333313" width="238.33333333333334" height="19.333333333333329"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Compose word below. Status is" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kzU-IW-IDV">
+                                                    <rect key="frame" x="0.0" y="15.333333333333313" width="246.66666666666666" height="19.333333333333329"/>
                                                     <fontDescription key="fontDescription" name="Baskerville-BoldItalic" family="Baskerville" pointSize="17"/>
                                                     <color key="textColor" name="Text"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lYm-Sc-sQM">
-                                                    <rect key="frame" x="253.33333333333337" y="0.0" width="50" height="50"/>
+                                                    <rect key="frame" x="261.66666666666669" y="0.0" width="50" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="Xob-KZ-VVX"/>
                                                         <constraint firstAttribute="width" constant="50" id="ybB-Ta-VgR"/>

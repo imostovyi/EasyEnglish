@@ -81,7 +81,7 @@ class DictionaryViewController: UIViewController {
         controller.searchBar.layer.cornerRadius = 20
 
 //        navigationItem.searchController = controller
-        //tableView.tableHeaderView = controller.searchBar
+        tableView.tableHeaderView = controller.searchBar
 
         return controller
     }
@@ -189,13 +189,13 @@ extension DictionaryViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
 
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return resultSearchController.searchBar
-    }
-
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 40.0
-    }
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        return resultSearchController.searchBar
+//    }
+//
+//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return 40.0
+//    }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SelfAddedWordsTableViewCell.identfier) as! SelfAddedWordsTableViewCell
