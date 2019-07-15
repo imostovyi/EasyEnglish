@@ -88,13 +88,7 @@ class ShowDetailViewController: UIViewController {
         imageView.kf.setImage(with: imageURL,
                               placeholder: image,
                               options: nil,
-                              progressBlock: nil) { (result) in
-                                if result.error != nil {
-                                    self.imageView.image = image
-                                }
-
-                                //debugPrint(result.error?.localizedDescription)
-        }
+                              progressBlock: nil)
 
         setUpPlayer(word: word)
     }
