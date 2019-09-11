@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -45,6 +45,7 @@
 		84F940932236938000D63C89 /* SelfAddedWordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F940922236938000D63C89 /* SelfAddedWordsViewController.swift */; };
 		84F940972236A3EF00D63C89 /* SelfAddedWordsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F940952236A3EF00D63C89 /* SelfAddedWordsTableViewCell.swift */; };
 		84F940982236A3EF00D63C89 /* SelfAddedWordsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84F940962236A3EF00D63C89 /* SelfAddedWordsTableViewCell.xib */; };
+		88B175D2232923A5009086CB /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 88B175D1232923A5009086CB /* Podfile */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +116,7 @@
 		84F940922236938000D63C89 /* SelfAddedWordsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfAddedWordsViewController.swift; sourceTree = "<group>"; };
 		84F940952236A3EF00D63C89 /* SelfAddedWordsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfAddedWordsTableViewCell.swift; sourceTree = "<group>"; };
 		84F940962236A3EF00D63C89 /* SelfAddedWordsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelfAddedWordsTableViewCell.xib; sourceTree = "<group>"; };
+		88B175D1232923A5009086CB /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
 		AE2B7F91527DA994067E2779 /* Pods-EasyEnglishUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyEnglishUITests.release.xcconfig"; path = "Target Support Files/Pods-EasyEnglishUITests/Pods-EasyEnglishUITests.release.xcconfig"; sourceTree = "<group>"; };
 		BDCA4E767CCD8E5B8A4FEC2A /* Pods-EasyEnglish.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyEnglish.debug.xcconfig"; path = "Target Support Files/Pods-EasyEnglish/Pods-EasyEnglish.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -325,6 +327,7 @@
 			children = (
 				844540BF222D4006002FFF2F /* .swiftlint.yml */,
 				844540D0222D4006002FFF2F /* .gitignore */,
+				88B175D1232923A5009086CB /* Podfile */,
 			);
 			name = External;
 			sourceTree = "<group>";
@@ -547,6 +550,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88B175D2232923A5009086CB /* Podfile in Resources */,
 				84BE5E85224A29940016C63D /* ComposeWord.storyboard in Resources */,
 				844540C3222D4006002FFF2F /* Localizable.strings in Resources */,
 				84F940982236A3EF00D63C89 /* SelfAddedWordsTableViewCell.xib in Resources */,
