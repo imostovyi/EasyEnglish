@@ -1,0 +1,8 @@
+workspace: EasyEnglish.xcworkspace
+schemes:
+  - EasyEnglish
+targets:
+  - EasyEnglish
+index_exclude:
+  - EasyEnglish/Debug/*.swift
+format: xcode

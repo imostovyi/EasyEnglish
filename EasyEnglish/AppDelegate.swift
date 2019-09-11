@@ -26,6 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
             IQKeyboardManager.shared().isEnabled = true
 
+			//PeripheryTest
+			_ = Execute()
             return true
     }
 }

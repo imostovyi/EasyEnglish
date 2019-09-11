@@ -6,6 +6,20 @@
 	objectVersion = 51;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		88B175DA23293641009086CB /* Periphery */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 88B175DB23293641009086CB /* Build configuration list for PBXAggregateTarget "Periphery" */;
+			buildPhases = (
+				88B175DE2329364A009086CB /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = Periphery;
+			productName = Periphery;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		48C3612373F98E855C557DA2 /* Pods_EasyEnglishUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2718FDA2DA89C26C304431A9 /* Pods_EasyEnglishUITests.framework */; };
 		79E957BF132E82044B3B19E8 /* Pods_EasyEnglish.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D05D3CBFFA2BFB9FC509584 /* Pods_EasyEnglish.framework */; };
@@ -46,6 +60,8 @@
 		84F940972236A3EF00D63C89 /* SelfAddedWordsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F940952236A3EF00D63C89 /* SelfAddedWordsTableViewCell.swift */; };
 		84F940982236A3EF00D63C89 /* SelfAddedWordsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84F940962236A3EF00D63C89 /* SelfAddedWordsTableViewCell.xib */; };
 		88B175D2232923A5009086CB /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 88B175D1232923A5009086CB /* Podfile */; };
+		88B175D62329287D009086CB /* .periphery.yml in Resources */ = {isa = PBXBuildFile; fileRef = 88B175D52329287D009086CB /* .periphery.yml */; };
+		88B175D923292E9D009086CB /* PeripherySimple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B175D823292E9D009086CB /* PeripherySimple.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +133,8 @@
 		84F940952236A3EF00D63C89 /* SelfAddedWordsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfAddedWordsTableViewCell.swift; sourceTree = "<group>"; };
 		84F940962236A3EF00D63C89 /* SelfAddedWordsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelfAddedWordsTableViewCell.xib; sourceTree = "<group>"; };
 		88B175D1232923A5009086CB /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
+		88B175D52329287D009086CB /* .periphery.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .periphery.yml; sourceTree = SOURCE_ROOT; };
+		88B175D823292E9D009086CB /* PeripherySimple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeripherySimple.swift; sourceTree = "<group>"; };
 		AE2B7F91527DA994067E2779 /* Pods-EasyEnglishUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyEnglishUITests.release.xcconfig"; path = "Target Support Files/Pods-EasyEnglishUITests/Pods-EasyEnglishUITests.release.xcconfig"; sourceTree = "<group>"; };
 		BDCA4E767CCD8E5B8A4FEC2A /* Pods-EasyEnglish.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyEnglish.debug.xcconfig"; path = "Target Support Files/Pods-EasyEnglish/Pods-EasyEnglish.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -193,6 +211,7 @@
 		844540A8222D4006002FFF2F /* EasyEnglish */ = {
 			isa = PBXGroup;
 			children = (
+				88B175D723292E1F009086CB /* PeripheryTest */,
 				844540CD222D4006002FFF2F /* AppDelegate.swift */,
 				844540CF222D4006002FFF2F /* Info.plist */,
 				844540A9222D4006002FFF2F /* Modules */,
@@ -328,6 +347,7 @@
 				844540BF222D4006002FFF2F /* .swiftlint.yml */,
 				844540D0222D4006002FFF2F /* .gitignore */,
 				88B175D1232923A5009086CB /* Podfile */,
+				88B175D52329287D009086CB /* .periphery.yml */,
 			);
 			name = External;
 			sourceTree = "<group>";
@@ -463,6 +483,14 @@
 			path = BounceButton;
 			sourceTree = "<group>";
 		};
+		88B175D723292E1F009086CB /* PeripheryTest */ = {
+			isa = PBXGroup;
+			children = (
+				88B175D823292E9D009086CB /* PeripherySimple.swift */,
+			);
+			path = PeripheryTest;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -524,6 +552,9 @@
 						LastSwiftMigration = 1020;
 						TestTargetID = 844540A5222D4006002FFF2F;
 					};
+					88B175DA23293641009086CB = {
+						CreatedOnToolsVersion = 10.3;
+					};
 				};
 			};
 			buildConfigurationList = 844540A0222D4006002FFF2F /* Build configuration list for PBXProject "EasyEnglish" */;
@@ -541,6 +572,7 @@
 			targets = (
 				844540A5222D4006002FFF2F /* EasyEnglish */,
 				844540D4222D4006002FFF2F /* EasyEnglishUITests */,
+				88B175DA23293641009086CB /* Periphery */,
 			);
 		};
 /* End PBXProject section */
@@ -554,6 +586,7 @@
 				84BE5E85224A29940016C63D /* ComposeWord.storyboard in Resources */,
 				844540C3222D4006002FFF2F /* Localizable.strings in Resources */,
 				84F940982236A3EF00D63C89 /* SelfAddedWordsTableViewCell.xib in Resources */,
+				88B175D62329287D009086CB /* .periphery.yml in Resources */,
 				844540CB222D4006002FFF2F /* LaunchScreen.storyboard in Resources */,
 				84C112BA222E7FD6000E0D57 /* AddNewWord.storyboard in Resources */,
 				84CF8D5022426F61006CC4A7 /* ShowDetail.storyboard in Resources */,
@@ -657,6 +690,23 @@
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint autocorrect\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, brew install swiftlint\"\nfi";
 		};
+		88B175DE2329364A009086CB /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "unset LLVM_TARGET_TRIPLE_SUFFIX\nPods/Periphery/periphery scan\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -668,6 +718,7 @@
 				84BE5E87224A29C60016C63D /* ComposeWordViewController.swift in Sources */,
 				84F940972236A3EF00D63C89 /* SelfAddedWordsTableViewCell.swift in Sources */,
 				84C15E842238480F00F8A8C3 /* WordStruct.swift in Sources */,
+				88B175D923292E9D009086CB /* PeripherySimple.swift in Sources */,
 				844540E7222D4067002FFF2F /* LoginViewController.swift in Sources */,
 				84CF8D5322428556006CC4A7 /* ShowDetailViewController.swift in Sources */,
 				847411642248118700639522 /* TestWordCell.swift in Sources */,
@@ -901,6 +952,22 @@
 			};
 			name = Release;
 		};
+		88B175DC23293641009086CB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		88B175DD23293641009086CB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -927,6 +994,15 @@
 			buildConfigurations = (
 				844540E2222D4006002FFF2F /* Debug */,
 				844540E3222D4006002FFF2F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		88B175DB23293641009086CB /* Build configuration list for PBXAggregateTarget "Periphery" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				88B175DC23293641009086CB /* Debug */,
+				88B175DD23293641009086CB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
