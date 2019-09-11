@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wSI-4f-kVs">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="6UF-BR-ViD">
+            <objects>
+                <viewController id="wSI-4f-kVs" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lyq-Hd-6Cq">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="big-ben" translatesAutoresizingMaskIntoConstraints="NO" id="xhK-Cr-zSQ">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <color key="backgroundColor" name="Background"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EasyEnglish" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QW7-m0-DEu">
+                                <rect key="frame" x="0.0" y="20" width="414" height="34"/>
+                                <fontDescription key="fontDescription" name="Baskerville-BoldItalic" family="Baskerville" pointSize="30"/>
+                                <color key="textColor" name="Text"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Watch, play, study" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iAA-Aa-4VG">
+                                <rect key="frame" x="0.0" y="702" width="414" height="34"/>
+                                <fontDescription key="fontDescription" name="Baskerville-BoldItalic" family="Baskerville" pointSize="30"/>
+                                <color key="textColor" name="Text"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="xhK-Cr-zSQ" firstAttribute="top" secondItem="lyq-Hd-6Cq" secondAttribute="top" id="OcT-xt-5SN"/>
+                            <constraint firstItem="QW7-m0-DEu" firstAttribute="top" secondItem="2wM-Kc-hnh" secondAttribute="top" id="RTE-sX-3rc"/>
+                            <constraint firstItem="2wM-Kc-hnh" firstAttribute="trailing" secondItem="iAA-Aa-4VG" secondAttribute="trailing" id="XiK-6s-EJ8"/>
+                            <constraint firstAttribute="bottom" secondItem="iAA-Aa-4VG" secondAttribute="bottom" id="gdI-bh-Xo7"/>
+                            <constraint firstItem="2wM-Kc-hnh" firstAttribute="trailing" secondItem="xhK-Cr-zSQ" secondAttribute="trailing" id="och-YU-8uY"/>
+                            <constraint firstItem="xhK-Cr-zSQ" firstAttribute="leading" secondItem="2wM-Kc-hnh" secondAttribute="leading" id="one-HY-Uf4"/>
+                            <constraint firstItem="2wM-Kc-hnh" firstAttribute="trailing" secondItem="QW7-m0-DEu" secondAttribute="trailing" id="qVr-Hn-GYA"/>
+                            <constraint firstItem="QW7-m0-DEu" firstAttribute="leading" secondItem="2wM-Kc-hnh" secondAttribute="leading" id="rka-9D-wnW"/>
+                            <constraint firstItem="iAA-Aa-4VG" firstAttribute="leading" secondItem="2wM-Kc-hnh" secondAttribute="leading" id="uMd-SB-zLc"/>
+                            <constraint firstAttribute="bottom" secondItem="xhK-Cr-zSQ" secondAttribute="bottom" id="zUq-VO-vy3"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="2wM-Kc-hnh"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MtB-f8-a5C" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="164" y="33"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="big-ben" width="864" height="1296"/>
+        <namedColor name="Background">
+            <color red="0.0" green="0.0" blue="0.0" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Text">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

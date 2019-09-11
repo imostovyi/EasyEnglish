@@ -5,6 +5,7 @@ disabled_rules:
   - variable_name
   - force_cast
   - trailing_newline
+  - line_length
 
 
 excluded:
