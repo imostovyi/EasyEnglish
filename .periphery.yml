@@ -5,4 +5,12 @@ targets:
   - EasyEnglish
 index_exclude:
   - EasyEnglish/Debug/*.swift
+  - EasyEnglish/modules/*.swift
+  - EasyEnglish/Business Logic/*.swift
 format: xcode
+aggressive: true
+#report_exclude:
+# - Path
+#retain_unused_protocol_func_params: false
+#retain_objc_annotated: false
+#retain_public: true

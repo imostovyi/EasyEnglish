@@ -26,7 +26,7 @@ protocol SomeProtocol { // 'SomeProtocol' is unused
 
 class SomeClass: SomeProtocol {
 
-	private let someDependency: SomeDependency // writes but never be used
+    private var someDependency: SomeDependency {didSet { print("asdas")} }// writes but never be used
 
 	init(someDependency: SomeDependency) {
 		self.someDependency = someDependency
@@ -59,7 +59,7 @@ class SomeClass: SomeProtocol {
 	//so pheriphery scans it only in aggresive mode
 
 	func doSomething(_ a: SomeEnum) {
-		print("Sample 6")
+        print("Sample 6 \(a)")
 	}
 }
 
