@@ -108,8 +108,8 @@ class SelfAddedWordsViewController: UIViewController {
         }
         for word in arrayToEncode {
             provider.request(.validateWord(word: word)) { (result) in
-                if result.error != nil {
-                    debugPrint(result)
+                if case let .failure(error) = result {
+                    debugPrint(error)
                 }
             }
         }
