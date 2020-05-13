@@ -15,11 +15,13 @@ import CoreData
 final class ObjectDetectionVC: UIViewController {
     // MARK: - State
     private var captureSesion: AVCaptureSession!
+    private var searchingWord: String?
 
     // MARK: - @IBOutlets
-    @IBOutlet private var cameraLayerView: UIView!
-    @IBOutlet private var objectLabel: UILabel!
-    @IBOutlet private var findInDictionatyButton: UIButton!
+    @IBOutlet private weak var cameraLayerView: UIView!
+    @IBOutlet private weak var objectLabel: UILabel!
+    @IBOutlet private weak var findInDictionatyButton: UIButton!
+    @IBOutlet private weak var noWordButton: UIButton!
 
     // MARK: - Life cycle
     override func viewDidLoad() {
@@ -71,15 +73,34 @@ final class ObjectDetectionVC: UIViewController {
     @IBAction private func backButtonTouched(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+
     @IBAction func findInDictionaryTouched(_ sender: Any) {
         guard let object = objectLabel.text?.lowercased(),
-            let objectName = object.split(separator: ",", maxSplits: 1, omittingEmptySubsequences: true).first else { return }
+            let objectName = object.components(separatedBy: ", ").first else { return }
+        searchingWord = String(objectName)
+        findInDictionatyButton.setTitle("Find in dictionary: \(objectName)", for: .normal)
         let context = CoreDataStack.shared.persistantContainer.viewContext
         let request: NSFetchRequest<Word> = Word.fetchRequest()
         request.predicate = NSPredicate(format: "word contains[c] %@", String(objectName))
 
-        let result = try? context.fetch(request)
-        print(result)
+        guard let result = try? context.fetch(request).first else {
+            noWordButton.setTitle("No \(objectName) in dictionary. Tap to add", for: .normal)
+            noWordButton.isHidden = false
+            return
+        }
+
+        guard let controller = UIStoryboard(name: "ShowDetail", bundle: nil)
+            .instantiateViewController(withIdentifier: ShowDetailViewController.identifier) as? ShowDetailViewController else { return }
+        controller.context = result
+        present(controller, animated: true)
+    }
+
+    @IBAction func noWordButtonTouched(_ sender: Any) {
+        noWordButton.isHidden = true
+        guard let controller = UIStoryboard(name: "AddNewWord", bundle: nil)
+            .instantiateViewController(withIdentifier: AddNewWordViewController.reuseIdentifier) as? AddNewWordViewController else { return }
+        controller.newWord = searchingWord
+        present(controller, animated: true)
     }
 }
 

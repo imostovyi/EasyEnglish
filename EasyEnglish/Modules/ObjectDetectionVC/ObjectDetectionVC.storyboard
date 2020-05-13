@@ -50,15 +50,27 @@
                                     <action selector="findInDictionaryTouched:" destination="psS-hL-G9z" eventType="touchUpInside" id="KK6-HW-885"/>
                                 </connections>
                             </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZLZ-fl-jAD">
+                                <rect key="frame" x="0.0" y="784.5" width="414" height="30"/>
+                                <state key="normal" title="There is no such word in dictionary. Tap to add">
+                                    <color key="titleColor" name="Text"/>
+                                </state>
+                                <connections>
+                                    <action selector="noWordButtonTouched:" destination="psS-hL-G9z" eventType="touchUpInside" id="XmW-ti-NYG"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" name="CheckButtonBackground"/>
                         <constraints>
+                            <constraint firstItem="ZLZ-fl-jAD" firstAttribute="top" secondItem="Pel-bx-H8K" secondAttribute="bottom" constant="15" id="3p5-So-0hF"/>
+                            <constraint firstItem="ZLZ-fl-jAD" firstAttribute="centerX" secondItem="Pel-bx-H8K" secondAttribute="centerX" id="8Qr-S3-p5i"/>
                             <constraint firstItem="FWe-3S-Z3X" firstAttribute="leading" secondItem="P3m-Wc-zS9" secondAttribute="leading" id="97l-OC-sd6"/>
                             <constraint firstItem="9Fj-m2-YTd" firstAttribute="top" secondItem="FWe-3S-Z3X" secondAttribute="bottom" constant="10" id="9bf-Q5-oI9"/>
                             <constraint firstItem="9Fj-m2-YTd" firstAttribute="leading" secondItem="P3m-Wc-zS9" secondAttribute="leading" id="DI9-cJ-Kdr"/>
                             <constraint firstItem="9Fj-m2-YTd" firstAttribute="height" secondItem="i2k-m0-dT9" secondAttribute="height" multiplier="0.65" id="DyY-RC-epR"/>
                             <constraint firstItem="9Fj-m2-YTd" firstAttribute="width" secondItem="i2k-m0-dT9" secondAttribute="width" id="M04-mj-tJo"/>
                             <constraint firstItem="Pel-bx-H8K" firstAttribute="centerX" secondItem="P3m-Wc-zS9" secondAttribute="centerX" id="TXg-Wh-9Hx"/>
+                            <constraint firstItem="ZLZ-fl-jAD" firstAttribute="leading" secondItem="P3m-Wc-zS9" secondAttribute="leading" id="VD8-zt-kQY"/>
                             <constraint firstItem="NEZ-OS-mpj" firstAttribute="top" secondItem="9Fj-m2-YTd" secondAttribute="bottom" constant="20" id="Wrl-yl-M2A"/>
                             <constraint firstItem="FWe-3S-Z3X" firstAttribute="trailing" secondItem="P3m-Wc-zS9" secondAttribute="trailing" id="Za6-U9-Ho3"/>
                             <constraint firstItem="Pel-bx-H8K" firstAttribute="top" secondItem="NEZ-OS-mpj" secondAttribute="bottom" constant="15" id="cd1-Ho-BU0"/>
@@ -72,6 +84,7 @@
                     <connections>
                         <outlet property="cameraLayerView" destination="9Fj-m2-YTd" id="kRO-xj-wNK"/>
                         <outlet property="findInDictionatyButton" destination="Pel-bx-H8K" id="VII-oe-kFZ"/>
+                        <outlet property="noWordButton" destination="ZLZ-fl-jAD" id="hDz-99-3fN"/>
                         <outlet property="objectLabel" destination="NEZ-OS-mpj" id="5s0-mP-x4M"/>
                     </connections>
                 </viewController>

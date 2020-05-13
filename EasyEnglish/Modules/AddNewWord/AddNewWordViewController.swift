@@ -12,25 +12,25 @@ import CoreData
 
 class AddNewWordViewController: UIViewController {
 
-    // MARK: IBoutlets
+    // MARK: - IBoutlets
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet var wordInformation: [IsaoTextField]!
     @IBOutlet weak var descriptionTextView: UITextView!
 
-    // MARK: public properties
-
+    // MARK: public state
     public var passedObject: Word?
     public var rootController: DictionaryViewController?
+    public var newWord: String?
     static public let reuseIdentifier = "AddNewWord"
 
-    // MARK: Private poperties
-
+    // MARK: - Private state
     private var isDoneButtonMustBeShown = [false, false]
     private var rightButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(saveWord))
     private lazy var context = CoreDataStack.shared.persistantContainer.viewContext
     private lazy var fetchedWords = Word.fetchAll()
     private lazy var object = Word(context: context)
 
+    // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -42,6 +42,16 @@ class AddNewWordViewController: UIViewController {
         guard let tempObject = passedObject else { return }
         object = tempObject
         fillFields(object: object)
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        guard var text = newWord else { return }
+        let capitalLetter = text.remove(at: String.Index(utf16Offset: 0, in: text)).uppercased()
+        wordInformation[0].text = capitalLetter + text
+        wordInformation[0].placeholderLabel.transform.ty = 0
+//        wordInformation[0].layer.borderColor = UIColor.white.cgColor
+        isDoneButtonMustBeShown[1] = checkIfWordIsNormal(textField: wordInformation[0])
     }
 
     // MARK: Setting up textFields
@@ -60,7 +70,6 @@ class AddNewWordViewController: UIViewController {
     }
 
     // MARK: Setting up description text view
-
     private func setUpTextView() {
         descriptionTextView.text = "Word description"
         descriptionTextView.delegate = self
@@ -80,7 +89,6 @@ class AddNewWordViewController: UIViewController {
 
     // MARK: Saving information About word
     @objc private func saveWord() {
-
         object.word = wordInformation[0].text
         object.transcription = wordInformation[1].text
         object.wordDescription = descriptionTextView.text
@@ -176,7 +184,7 @@ class AddNewWordViewController: UIViewController {
 
     }
 
-    ///Checking if word have set normally
+    ///Checking if word was set normally
     private func checkIfWordIsNormal(textField: UITextField) -> Bool {
 
         if textField.text == nil {
@@ -261,9 +269,7 @@ extension AddNewWordViewController: UITextViewDelegate {
 }
 
 // MARK: - - Extension textFieldDelegate
-
 extension AddNewWordViewController: UITextFieldDelegate {
-
     func textFieldDidEndEditing(_ textField: UITextField) {
 
         for word in fetchedWords where word.word == textField.text {

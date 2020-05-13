@@ -116,7 +116,6 @@ class ShowDetailViewController: UIViewController {
 extension ShowDetailViewController: YTPlayerViewDelegate {
     func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
         playerView.isHidden = false
-        print("OK")
     }
 }
 
