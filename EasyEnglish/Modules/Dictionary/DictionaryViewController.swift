@@ -109,14 +109,14 @@ class DictionaryViewController: UIViewController {
 
         }
 
-        floatyButton.addItem("Test mode", icon: nil) { (_) in
+        floatyButton.addItem("Test mode", icon: UIImage(named: "test")) { (_) in
             self.resultSearchController.dismiss(animated: false, completion: nil)
             let storyboard = UIStoryboard(name: "TestWords", bundle: nil)
             let controller = storyboard.instantiateViewController(withIdentifier: TestWordViewController.identifier) as! TestWordViewController
             self.present(controller, animated: true, completion: nil)
         }
 
-        floatyButton.addItem("Detect object", icon: nil) { _ in
+        floatyButton.addItem("Detect object", icon: UIImage(named: "objectDetection")) { _ in
             self.resultSearchController.dismiss(animated: false, completion: nil)
             self.present(UIStoryboard(name: "ObjectDetectionVC", bundle: nil).instantiateViewController(withIdentifier: "ObjectDetectionVC"),
                          animated: true,
