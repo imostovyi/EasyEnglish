@@ -107,7 +107,7 @@ class SelfAddedWordsViewController: UIViewController {
             }
         }
         for word in arrayToEncode {
-            provider.request(.validateWord(word: word)) { (result) in
+            provider.request(.validateWord(word: ["data": word])) { (result) in
                 if case let .failure(error) = result {
                     debugPrint(error)
                 }

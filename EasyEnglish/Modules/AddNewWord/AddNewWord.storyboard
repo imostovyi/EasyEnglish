@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Fub-d1-3wT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Fub-d1-3wT">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -37,7 +36,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="692"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="by3-lO-NvM" userLabel="Content">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="503"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="443"/>
                                                     <subviews>
                                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Word" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pFo-Rw-wrY" userLabel="Word Text Field" customClass="IsaoTextField" customModule="TextFieldEffects">
                                                             <rect key="frame" x="20" y="5" width="374" height="50"/>
@@ -115,29 +114,8 @@
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
                                                         </textField>
-                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Translation to RU" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="L19-LY-WSe" userLabel="TranslationRU Text Field" customClass="IsaoTextField" customModule="TextFieldEffects">
-                                                            <rect key="frame" x="20" y="325" width="374" height="50"/>
-                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="50" id="gIq-lF-xlZ"/>
-                                                            </constraints>
-                                                            <color key="textColor" name="Text"/>
-                                                            <fontDescription key="fontDescription" name="Baskerville-BoldItalic" family="Baskerville" pointSize="22"/>
-                                                            <textInputTraits key="textInputTraits"/>
-                                                            <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="number" keyPath="placeholderFontScale">
-                                                                    <real key="value" value="0.59999999999999998"/>
-                                                                </userDefinedRuntimeAttribute>
-                                                                <userDefinedRuntimeAttribute type="color" keyPath="inactiveColor">
-                                                                    <color key="value" name="Text"/>
-                                                                </userDefinedRuntimeAttribute>
-                                                                <userDefinedRuntimeAttribute type="color" keyPath="activeColor">
-                                                                    <color key="value" name="Text"/>
-                                                                </userDefinedRuntimeAttribute>
-                                                            </userDefinedRuntimeAttributes>
-                                                        </textField>
                                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Image URL" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zgk-AB-T41" userLabel="ImageURL Text Field" customClass="IsaoTextField" customModule="TextFieldEffects">
-                                                            <rect key="frame" x="20" y="385" width="374" height="50"/>
+                                                            <rect key="frame" x="20" y="325" width="374" height="50"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="50" id="M4Y-Hh-Kbv"/>
@@ -157,8 +135,8 @@
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
                                                         </textField>
-                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Video URL" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YMs-19-kfr" userLabel="VideoURL Text Field" customClass="IsaoTextField" customModule="TextFieldEffects">
-                                                            <rect key="frame" x="20" y="445" width="374" height="50"/>
+                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Video Id" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YMs-19-kfr" userLabel="VideoURL Text Field" customClass="IsaoTextField" customModule="TextFieldEffects">
+                                                            <rect key="frame" x="20" y="385" width="374" height="50"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="50" id="QnQ-Wb-cR4"/>
@@ -183,26 +161,23 @@
                                                     <constraints>
                                                         <constraint firstAttribute="trailing" secondItem="sAX-g5-ouQ" secondAttribute="trailing" constant="20" id="C7A-Jc-qTX"/>
                                                         <constraint firstItem="BJr-M6-04a" firstAttribute="top" secondItem="sAX-g5-ouQ" secondAttribute="bottom" constant="20" id="G2k-ch-Kfa"/>
-                                                        <constraint firstItem="L19-LY-WSe" firstAttribute="leading" secondItem="by3-lO-NvM" secondAttribute="leading" constant="20" id="H3G-C8-uLc"/>
                                                         <constraint firstAttribute="trailing" secondItem="pFo-Rw-wrY" secondAttribute="trailing" constant="20" id="IVU-ge-e9Y"/>
-                                                        <constraint firstItem="L19-LY-WSe" firstAttribute="top" secondItem="u4B-TL-iPB" secondAttribute="bottom" constant="10" id="LfM-PD-Phm"/>
                                                         <constraint firstItem="pFo-Rw-wrY" firstAttribute="top" secondItem="by3-lO-NvM" secondAttribute="top" constant="5" id="OPQ-lp-XXy"/>
                                                         <constraint firstItem="sAX-g5-ouQ" firstAttribute="leading" secondItem="by3-lO-NvM" secondAttribute="leading" constant="20" id="TO3-0F-oCC"/>
                                                         <constraint firstItem="sAX-g5-ouQ" firstAttribute="top" secondItem="pFo-Rw-wrY" secondAttribute="bottom" constant="10" id="UHk-xf-Nu2"/>
                                                         <constraint firstItem="BJr-M6-04a" firstAttribute="leading" secondItem="by3-lO-NvM" secondAttribute="leading" constant="20" id="XaX-RB-tQ4"/>
                                                         <constraint firstItem="zgk-AB-T41" firstAttribute="leading" secondItem="by3-lO-NvM" secondAttribute="leading" constant="20" id="YuV-Db-JRO"/>
+                                                        <constraint firstItem="zgk-AB-T41" firstAttribute="top" secondItem="u4B-TL-iPB" secondAttribute="bottom" constant="10" id="aAU-B9-okm"/>
                                                         <constraint firstAttribute="trailing" secondItem="u4B-TL-iPB" secondAttribute="trailing" constant="20" id="eUn-gr-L2a"/>
                                                         <constraint firstAttribute="trailing" secondItem="BJr-M6-04a" secondAttribute="trailing" constant="20" id="eg4-eR-fcY"/>
                                                         <constraint firstItem="u4B-TL-iPB" firstAttribute="top" secondItem="BJr-M6-04a" secondAttribute="bottom" constant="10" id="hkL-DP-L8X"/>
                                                         <constraint firstAttribute="bottom" secondItem="YMs-19-kfr" secondAttribute="bottom" constant="8" id="l1J-nN-MUA"/>
                                                         <constraint firstAttribute="trailing" secondItem="YMs-19-kfr" secondAttribute="trailing" constant="20" id="lp0-xs-7lg"/>
-                                                        <constraint firstItem="zgk-AB-T41" firstAttribute="top" secondItem="L19-LY-WSe" secondAttribute="bottom" constant="10" id="p5Q-RI-E3y"/>
                                                         <constraint firstItem="pFo-Rw-wrY" firstAttribute="leading" secondItem="by3-lO-NvM" secondAttribute="leading" constant="20" id="s8X-Rt-Iht"/>
                                                         <constraint firstItem="YMs-19-kfr" firstAttribute="top" secondItem="zgk-AB-T41" secondAttribute="bottom" constant="10" id="sJB-xw-CJ0"/>
                                                         <constraint firstItem="u4B-TL-iPB" firstAttribute="leading" secondItem="by3-lO-NvM" secondAttribute="leading" constant="20" id="wRw-hL-CZJ"/>
                                                         <constraint firstItem="YMs-19-kfr" firstAttribute="leading" secondItem="by3-lO-NvM" secondAttribute="leading" constant="20" id="xCZ-2s-bjg"/>
                                                         <constraint firstAttribute="trailing" secondItem="zgk-AB-T41" secondAttribute="trailing" constant="20" id="xQQ-6i-TT1"/>
-                                                        <constraint firstAttribute="trailing" secondItem="L19-LY-WSe" secondAttribute="trailing" constant="20" id="y5t-jH-zbS"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -227,6 +202,7 @@
                                 <blurEffect style="light"/>
                             </visualEffectView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="bLe-t1-RtH"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="bLe-t1-RtH" firstAttribute="trailing" secondItem="cfE-0X-Ggz" secondAttribute="trailing" id="0DA-TH-0HW"/>
@@ -241,7 +217,6 @@
                             <constraint firstItem="bLe-t1-RtH" firstAttribute="bottom" secondItem="cfE-0X-Ggz" secondAttribute="bottom" id="x2F-X2-mpT"/>
                             <constraint firstAttribute="bottom" secondItem="06F-J2-dkS" secondAttribute="bottom" id="yyb-s5-3a0"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="bLe-t1-RtH"/>
                     </view>
                     <navigationItem key="navigationItem" id="BAC-M0-ZFR"/>
                     <connections>
@@ -250,7 +225,6 @@
                         <outletCollection property="wordInformation" destination="pFo-Rw-wrY" collectionClass="NSMutableArray" id="TcN-ub-8gB"/>
                         <outletCollection property="wordInformation" destination="sAX-g5-ouQ" collectionClass="NSMutableArray" id="dsk-KM-Q46"/>
                         <outletCollection property="wordInformation" destination="u4B-TL-iPB" collectionClass="NSMutableArray" id="Al8-ll-Sao"/>
-                        <outletCollection property="wordInformation" destination="L19-LY-WSe" collectionClass="NSMutableArray" id="hsa-ol-qY4"/>
                         <outletCollection property="wordInformation" destination="zgk-AB-T41" collectionClass="NSMutableArray" id="Ebx-hh-WB7"/>
                         <outletCollection property="wordInformation" destination="YMs-19-kfr" collectionClass="NSMutableArray" id="mD7-Pr-seq"/>
                     </connections>
@@ -260,6 +234,23 @@
             <point key="canvasLocation" x="-743" y="151"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="YMs-19-kfr">
+            <size key="intrinsicContentSize" width="110.66666666666667" height="50.666666666666664"/>
+        </designable>
+        <designable name="pFo-Rw-wrY">
+            <size key="intrinsicContentSize" width="80.666666666666671" height="50.666666666666664"/>
+        </designable>
+        <designable name="sAX-g5-ouQ">
+            <size key="intrinsicContentSize" width="168" height="50.666666666666664"/>
+        </designable>
+        <designable name="u4B-TL-iPB">
+            <size key="intrinsicContentSize" width="206.33333333333334" height="50.666666666666664"/>
+        </designable>
+        <designable name="zgk-AB-T41">
+            <size key="intrinsicContentSize" width="142" height="50.666666666666664"/>
+        </designable>
+    </designables>
     <resources>
         <image name="big-ben" width="864" height="1296"/>
         <namedColor name="Background">

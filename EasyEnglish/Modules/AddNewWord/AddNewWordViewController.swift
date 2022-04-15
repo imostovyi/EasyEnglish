@@ -50,7 +50,6 @@ class AddNewWordViewController: UIViewController {
         let capitalLetter = text.remove(at: String.Index(utf16Offset: 0, in: text)).uppercased()
         wordInformation[0].text = capitalLetter + text
         wordInformation[0].placeholderLabel.transform.ty = 0
-//        wordInformation[0].layer.borderColor = UIColor.white.cgColor
         isDoneButtonMustBeShown[1] = checkIfWordIsNormal(textField: wordInformation[0])
     }
 
@@ -66,7 +65,7 @@ class AddNewWordViewController: UIViewController {
         wordInformation[0].delegate = self
         wordInformation[0].layer.borderColor = UIColor.red.cgColor
         wordInformation[0].addTarget(self, action: #selector(changingTheContext(textField:)), for: .editingChanged)
-        wordInformation[5].delegate = self
+        wordInformation[4].delegate = self
     }
 
     // MARK: Setting up description text view
@@ -93,15 +92,15 @@ class AddNewWordViewController: UIViewController {
         object.transcription = wordInformation[1].text
         object.wordDescription = descriptionTextView.text
         object.translationUA = wordInformation[2].text
-        object.pictureURL = URL(string: wordInformation[4].text ?? "")
-        object.videoURL = wordInformation[5].text
+        object.pictureURL = URL(string: wordInformation[3].text ?? "")
+        object.videoURL = wordInformation[4].text
         object.isKnown = false
         object.isApproved = false
 
         //cuting down all that isn't neccesary
-        if var index = wordInformation[5].text?.firstIndex(of: "=") {
-            index = wordInformation[5].text?.index(after: index) ?? index
-            let id = wordInformation[5].text?[index...]
+        if var index = wordInformation[4].text?.firstIndex(of: "=") {
+            index = wordInformation[4].text?.index(after: index) ?? index
+            let id = wordInformation[4].text?[index...]
             object.videoURL = String(id ?? "")
         }
 
@@ -141,11 +140,10 @@ class AddNewWordViewController: UIViewController {
         descriptionTextView.text = object.wordDescription
         wordInformation[2].text = object.translationUA
         wordInformation[2].placeholderLabel.transform.ty = 0
+        wordInformation[3].text = object.pictureURL?.absoluteString
         wordInformation[3].placeholderLabel.transform.ty = 0
-        wordInformation[4].text = object.pictureURL?.absoluteString
+        wordInformation[4].text = object.videoURL
         wordInformation[4].placeholderLabel.transform.ty = 0
-        wordInformation[5].text = object.videoURL
-        wordInformation[5].placeholderLabel.transform.ty = 0
     }
 
     ///Function that handling changing the text
@@ -287,6 +285,4 @@ extension AddNewWordViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.layer.borderColor = UIColor.white.cgColor
     }
-
 }
-

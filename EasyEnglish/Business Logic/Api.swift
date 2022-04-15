@@ -8,19 +8,19 @@
 import Moya
 
 enum Services {
-    case validateWord(word: WordStruct)
+    case validateWord(word: [String: WordStruct])
     case updatebase
 }
 
 extension Services: TargetType {
     var baseURL: URL {
-        return URL(string: "https://6882-2001-7d0-8417-9a80-f1d2-313d-29ac-cd9f.eu.ngrok.io/api/")!
+        return URL(string: "https://3426-2001-7d0-8417-9a80-f1d2-313d-29ac-cd9f.eu.ngrok.io/api/")!
     }
 
     var path: String {
         switch self {
-        case .validateWord(word: _):
-            return "/posts/add"
+        case .validateWord:
+            return "words"
         case .updatebase:
             return "words"
         }
@@ -30,7 +30,7 @@ extension Services: TargetType {
         switch self {
         case .updatebase:
             return .get
-        case .validateWord(word: _):
+        case .validateWord:
             return .post
         }
     }
