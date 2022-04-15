@@ -14,7 +14,7 @@ enum Services {
 
 extension Services: TargetType {
     var baseURL: URL {
-        return URL(string: "https://api.front-end.icu/api")!
+        return URL(string: "https://6882-2001-7d0-8417-9a80-f1d2-313d-29ac-cd9f.eu.ngrok.io/api/")!
     }
 
     var path: String {
@@ -22,7 +22,7 @@ extension Services: TargetType {
         case .validateWord(word: _):
             return "/posts/add"
         case .updatebase:
-            return "/posts"
+            return "words"
         }
     }
 
@@ -53,4 +53,3 @@ extension Services: TargetType {
     }
 
 }
-

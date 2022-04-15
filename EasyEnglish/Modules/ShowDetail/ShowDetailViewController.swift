@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import WebKit
 import AVFoundation
 import youtube_ios_player_helper
 
@@ -15,7 +14,6 @@ class ShowDetailViewController: UIViewController {
 
     // MARK: public properties
 
-    //nead for text to xpeech converting
     static let identifier = "ShowDetailView"
     var context: Word?
 
@@ -33,7 +31,6 @@ class ShowDetailViewController: UIViewController {
 
     @IBOutlet weak var videoView: YTPlayerView!
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var translationRU: UILabel!
     @IBOutlet weak var translationUA: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
 
@@ -44,6 +41,7 @@ class ShowDetailViewController: UIViewController {
         checkAndFill()
 
         videoView.delegate = self
+        videoView.isHidden = true
         speechSentesizer.delegate = self
 
         playButton.addTarget(self, action: #selector(playButtonWasTapped), for: .touchUpInside)
@@ -80,7 +78,6 @@ class ShowDetailViewController: UIViewController {
         transcriptionLabel.text = word.transcription
         descriptionTextView.text = word.wordDescription
         translationUA.text = word.translationUA
-        translationRU.text = word.translationRu
 
         let image = UIImage(named: "flag")
         let imageURL = word.pictureURL
@@ -89,8 +86,8 @@ class ShowDetailViewController: UIViewController {
                               placeholder: image,
                               options: nil,
                               progressBlock: nil)
-
-        setUpPlayer(word: word)
+        
+        _ = word.videoURL.map(videoView.load(withVideoId:))
     }
 
     /// func that play speach
@@ -99,17 +96,6 @@ class ShowDetailViewController: UIViewController {
             speechSentesizer.stopSpeaking(at: .immediate)
         }
         speechSentesizer.speak(speech)
-    }
-
-    ///Function that vreating and adding player to videoView
-
-    private func setUpPlayer(word: Word) {
-        videoView.isHidden = true
-        videoView.backgroundColor = UIColor.clear
-        if let url = word.videoURL {
-            if url == "" {return}
-            videoView.load(withVideoId: url)
-        }
     }
 }
 
@@ -128,4 +114,3 @@ extension ShowDetailViewController: AVSpeechSynthesizerDelegate {
         playButton.isEnabled = true
     }
 }
-

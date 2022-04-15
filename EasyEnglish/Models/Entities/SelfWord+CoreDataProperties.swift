@@ -18,7 +18,6 @@ extension SelfWord {
 
     @NSManaged public var pictureURL: String?
     @NSManaged public var transcription: String?
-    @NSManaged public var translationRU: String?
     @NSManaged public var translationUA: String?
     @NSManaged public var videoURL: String?
     @NSManaged public var word: String?

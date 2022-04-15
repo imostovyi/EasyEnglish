@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		30CB2163EF74FD36457BF74F /* Pods_EasyEnglish.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4305813D6A82890671DF7384 /* Pods_EasyEnglish.framework */; };
 		41D42EFB62E56FBED4D96C59 /* Pods_EasyEnglishUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50792D01308A966ECFFEDFA6 /* Pods_EasyEnglishUITests.framework */; };
+		506A88112809A00900828152 /* JSONDecoder+Extesion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506A88102809A00900828152 /* JSONDecoder+Extesion.swift */; };
 		843430352235880900DD429B /* SelfWord+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843430312235880900DD429B /* SelfWord+CoreDataClass.swift */; };
 		843430362235880900DD429B /* SelfWord+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843430322235880900DD429B /* SelfWord+CoreDataProperties.swift */; };
 		843430372235880900DD429B /* Word+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843430332235880900DD429B /* Word+CoreDataClass.swift */; };
@@ -65,6 +66,7 @@
 		01FE90524C2F0DA377691198 /* Pods-EasyEnglish.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyEnglish.debug.xcconfig"; path = "Target Support Files/Pods-EasyEnglish/Pods-EasyEnglish.debug.xcconfig"; sourceTree = "<group>"; };
 		21CC462FE27AA8426DCBCA3B /* Pods-EasyEnglish.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyEnglish.release.xcconfig"; path = "Target Support Files/Pods-EasyEnglish/Pods-EasyEnglish.release.xcconfig"; sourceTree = "<group>"; };
 		4305813D6A82890671DF7384 /* Pods_EasyEnglish.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EasyEnglish.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		506A88102809A00900828152 /* JSONDecoder+Extesion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONDecoder+Extesion.swift"; sourceTree = "<group>"; };
 		50792D01308A966ECFFEDFA6 /* Pods_EasyEnglishUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EasyEnglishUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7906E800EE31B51E9D7ED99D /* Pods-EasyEnglishUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyEnglishUITests.debug.xcconfig"; path = "Target Support Files/Pods-EasyEnglishUITests/Pods-EasyEnglishUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		843430312235880900DD429B /* SelfWord+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SelfWord+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 			isa = PBXGroup;
 			children = (
 				844540B2222D4006002FFF2F /* .gitkeep */,
+				506A88102809A00900828152 /* JSONDecoder+Extesion.swift */,
 			);
 			path = Standart;
 			sourceTree = "<group>";
@@ -529,7 +532,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1010;
-				LastUpgradeCheck = 1010;
+				LastUpgradeCheck = 1320;
 				ORGANIZATIONNAME = "Мостовий Ігор";
 				TargetAttributes = {
 					844540A5222D4006002FFF2F = {
@@ -689,6 +692,7 @@
 				84C15E842238480F00F8A8C3 /* WordStruct.swift in Sources */,
 				844540E7222D4067002FFF2F /* LoginViewController.swift in Sources */,
 				84CF8D5322428556006CC4A7 /* ShowDetailViewController.swift in Sources */,
+				506A88112809A00900828152 /* JSONDecoder+Extesion.swift in Sources */,
 				847411642248118700639522 /* TestWordCell.swift in Sources */,
 				844540CE222D4006002FFF2F /* AppDelegate.swift in Sources */,
 				843430362235880900DD429B /* SelfWord+CoreDataProperties.swift in Sources */,
@@ -753,6 +757,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -778,7 +783,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -815,6 +820,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -834,7 +840,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -850,16 +856,17 @@
 			baseConfigurationReference = 01FE90524C2F0DA377691198 /* Pods-EasyEnglish.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = DJNZKXGF8V;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KD8XC68A62;
 				INFOPLIST_FILE = EasyEnglish/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ekreative.TemplifyApp;
+				PRODUCT_BUNDLE_IDENTIFIER = EasyEnglish.PetProject.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "match Development com.ekreative.TemplifyApp";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -870,16 +877,17 @@
 			baseConfigurationReference = 21CC462FE27AA8426DCBCA3B /* Pods-EasyEnglish.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = DJNZKXGF8V;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KD8XC68A62;
 				INFOPLIST_FILE = EasyEnglish/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ekreative.TemplifyApp;
+				PRODUCT_BUNDLE_IDENTIFIER = EasyEnglish.PetProject.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "match Development com.ekreative.TemplifyApp";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

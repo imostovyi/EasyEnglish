@@ -80,7 +80,6 @@ class DictionaryViewController: UIViewController {
         controller.searchBar.placeholder = "At least two letters to start"
         controller.searchBar.layer.cornerRadius = 20
 
-//        navigationItem.searchController = controller
         tableView.tableHeaderView = controller.searchBar
 
         return controller

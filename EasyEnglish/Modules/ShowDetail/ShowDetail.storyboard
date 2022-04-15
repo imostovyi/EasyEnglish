@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4Vw-bi-P29">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4Vw-bi-P29">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -64,10 +64,10 @@
                                                                     <state key="normal" image="Play"/>
                                                                 </button>
                                                             </subviews>
+                                                            <viewLayoutGuide key="safeArea" id="P8z-2s-kcq"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="trailing" secondItem="nVd-br-lPf" secondAttribute="trailing" id="dgz-09-W1o"/>
                                                             </constraints>
-                                                            <viewLayoutGuide key="safeArea" id="P8z-2s-kcq"/>
                                                         </stackView>
                                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EKJ-bD-xqG">
                                                             <rect key="frame" x="15" y="100" width="384" height="130"/>
@@ -86,20 +86,6 @@
                                                             <color key="textColor" name="Text"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Translate Ru" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UZo-jg-sQx">
-                                                            <rect key="frame" x="15" y="285" width="384" height="25"/>
-                                                            <fontDescription key="fontDescription" name="Baskerville-BoldItalic" family="Baskerville" pointSize="22"/>
-                                                            <color key="textColor" name="Text"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qn0-Gc-Skj" customClass="YTPlayerView">
-                                                            <rect key="frame" x="15" y="580" width="384" height="240"/>
-                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="240" id="vt1-K6-I6z"/>
-                                                            </constraints>
-                                                            <viewLayoutGuide key="safeArea" id="7yv-2c-fV9"/>
-                                                        </view>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XK5-EM-G8H">
                                                             <rect key="frame" x="87" y="325" width="240" height="240"/>
                                                             <constraints>
@@ -107,6 +93,14 @@
                                                                 <constraint firstAttribute="height" constant="240" id="ti5-ef-mOs"/>
                                                             </constraints>
                                                         </imageView>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qn0-Gc-Skj" customClass="YTPlayerView">
+                                                            <rect key="frame" x="15" y="580" width="384" height="240"/>
+                                                            <viewLayoutGuide key="safeArea" id="7yv-2c-fV9"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="240" id="vt1-K6-I6z"/>
+                                                            </constraints>
+                                                        </view>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
@@ -116,18 +110,15 @@
                                                         <constraint firstItem="k5E-4A-AFd" firstAttribute="leading" secondItem="1qf-cj-wOb" secondAttribute="leading" constant="15" id="92q-aD-BYG"/>
                                                         <constraint firstAttribute="trailing" secondItem="IDt-xo-20H" secondAttribute="trailing" constant="15" id="9l9-k9-rtR"/>
                                                         <constraint firstItem="IDt-xo-20H" firstAttribute="top" secondItem="k5E-4A-AFd" secondAttribute="bottom" constant="15" id="Den-K4-lhI"/>
-                                                        <constraint firstItem="XK5-EM-G8H" firstAttribute="top" secondItem="UZo-jg-sQx" secondAttribute="bottom" constant="15" id="GAd-mH-AHp"/>
                                                         <constraint firstAttribute="trailing" secondItem="FjM-Nl-0Fn" secondAttribute="trailing" constant="15" id="JIi-lO-2w1"/>
                                                         <constraint firstItem="FjM-Nl-0Fn" firstAttribute="top" secondItem="EKJ-bD-xqG" secondAttribute="bottom" constant="15" id="Lgd-J1-jXv"/>
                                                         <constraint firstItem="EKJ-bD-xqG" firstAttribute="top" secondItem="IDt-xo-20H" secondAttribute="bottom" constant="15" id="OZ5-bb-697"/>
                                                         <constraint firstItem="EKJ-bD-xqG" firstAttribute="leading" secondItem="1qf-cj-wOb" secondAttribute="leading" constant="15" id="Tcx-oe-k3F"/>
                                                         <constraint firstAttribute="trailing" secondItem="EKJ-bD-xqG" secondAttribute="trailing" constant="15" id="WVs-mq-O0R"/>
+                                                        <constraint firstItem="XK5-EM-G8H" firstAttribute="top" secondItem="FjM-Nl-0Fn" secondAttribute="bottom" constant="55" id="XFY-9w-yJE"/>
                                                         <constraint firstAttribute="bottom" secondItem="qn0-Gc-Skj" secondAttribute="bottom" constant="10" id="agj-m1-O9E"/>
                                                         <constraint firstItem="qn0-Gc-Skj" firstAttribute="top" secondItem="XK5-EM-G8H" secondAttribute="bottom" constant="15" id="big-8L-2bb"/>
                                                         <constraint firstItem="XK5-EM-G8H" firstAttribute="centerX" secondItem="1qf-cj-wOb" secondAttribute="centerX" id="ezH-Kf-2Gh"/>
-                                                        <constraint firstItem="UZo-jg-sQx" firstAttribute="leading" secondItem="1qf-cj-wOb" secondAttribute="leading" constant="15" id="gaf-Qf-idL"/>
-                                                        <constraint firstItem="UZo-jg-sQx" firstAttribute="top" secondItem="FjM-Nl-0Fn" secondAttribute="bottom" constant="15" id="h5m-fk-pj5"/>
-                                                        <constraint firstAttribute="trailing" secondItem="UZo-jg-sQx" secondAttribute="trailing" constant="15" id="huB-YV-xrK"/>
                                                         <constraint firstItem="qn0-Gc-Skj" firstAttribute="leading" secondItem="1qf-cj-wOb" secondAttribute="leading" constant="15" id="sYJ-zm-moL"/>
                                                         <constraint firstAttribute="trailing" secondItem="k5E-4A-AFd" secondAttribute="trailing" constant="15" id="u3s-w5-gdQ"/>
                                                         <constraint firstItem="FjM-Nl-0Fn" firstAttribute="leading" secondItem="1qf-cj-wOb" secondAttribute="leading" constant="15" id="xvT-g1-q7g"/>
@@ -156,6 +147,7 @@
                                 <blurEffect style="light"/>
                             </visualEffectView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="wzR-9i-Ruo"/>
                         <color key="backgroundColor" name="ActiveTextFieldBorder"/>
                         <constraints>
                             <constraint firstItem="WGb-kO-ipI" firstAttribute="leading" secondItem="wzR-9i-Ruo" secondAttribute="leading" id="249-h0-Jbn"/>
@@ -174,7 +166,6 @@
                             <constraint firstItem="SD7-6r-flL" firstAttribute="leading" secondItem="wzR-9i-Ruo" secondAttribute="leading" id="oPO-Zq-ouV"/>
                             <constraint firstItem="SD7-6r-flL" firstAttribute="top" secondItem="eTS-xh-Vr1" secondAttribute="bottom" id="zFL-E2-TXS"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="wzR-9i-Ruo"/>
                     </view>
                     <connections>
                         <outlet property="descriptionTextView" destination="EKJ-bD-xqG" id="d4b-qK-wcX"/>
@@ -182,7 +173,6 @@
                         <outlet property="navigationBar" destination="eTS-xh-Vr1" id="LpO-7Y-YzC"/>
                         <outlet property="playButton" destination="nVd-br-lPf" id="g3K-tn-aSH"/>
                         <outlet property="transcriptionLabel" destination="Xon-dt-hhn" id="UCs-0t-MAh"/>
-                        <outlet property="translationRU" destination="UZo-jg-sQx" id="VEJ-Wl-l5A"/>
                         <outlet property="translationUA" destination="FjM-Nl-0Fn" id="xXz-8q-QM3"/>
                         <outlet property="videoView" destination="qn0-Gc-Skj" id="eAp-ir-jvY"/>
                         <outlet property="wordLabel" destination="k5E-4A-AFd" id="NKE-Gz-YFg"/>

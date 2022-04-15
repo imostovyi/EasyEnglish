@@ -16,7 +16,7 @@ DEPENDENCIES:
   - Kingfisher (~> 5.7.0)
   - Moya
   - TextFieldEffects
-  - youtube-ios-player-helper (~> 0.1.4)
+  - youtube-ios-player-helper
 
 SPEC REPOS:
   trunk:
@@ -37,6 +37,6 @@ SPEC CHECKSUMS:
   TextFieldEffects: 529b8aff706fb40f82c41c780c0777941a893796
   youtube-ios-player-helper: 21ab92db027c7ff86cb17a3843a3f6eafc8158d2
 
-PODFILE CHECKSUM: 60193595adf8ea0c52717460706f08b5f9612b54
+PODFILE CHECKSUM: 0f37964376258464d000453901b4a8b33ce50e9f
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.11.3

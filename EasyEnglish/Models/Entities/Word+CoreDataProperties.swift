@@ -20,7 +20,6 @@ extension Word {
     @NSManaged public var isKnown: Bool
     @NSManaged public var pictureURL: URL?
     @NSManaged public var transcription: String?
-    @NSManaged public var translationRu: String?
     @NSManaged public var translationUA: String?
     @NSManaged public var videoURL: String?
     @NSManaged public var word: String?

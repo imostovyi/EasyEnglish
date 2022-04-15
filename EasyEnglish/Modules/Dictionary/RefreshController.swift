@@ -49,11 +49,12 @@ class PullToRefresh {
             case let .success(moyaResponse):
                 let data = moyaResponse.data
                 do {
-                    let wordsArray = try JSONDecoder().decode([WordStruct].self, from: data)
-                    DispatchQueue.main.async {
-                        for word in wordsArray {
-                            self.saveChanges(word: word)
-                        }
+                    let wordsArray = try JSONDecoder().decode([WordStructJsonWrapper].self, from: data, keyPath: "data")
+                    DispatchQueue.main.async { [weak self] in
+                        guard let self = self else { return }
+                        wordsArray
+                            .map(\.attributes)
+                            .forEach(self.saveChanges(word:))
                     }
                 } catch {
                     debugPrint(error)
@@ -78,8 +79,6 @@ class PullToRefresh {
                 checkField(checkedField: word.description, originalField: originalWord.wordDescription)
             originalWord.translationUA =
                 checkField(checkedField: word.translationUA, originalField: originalWord.translationUA)
-            originalWord.translationRu =
-                checkField(checkedField: word.translationRU, originalField: originalWord.translationRu)
             originalWord.pictureURL =
                 URL(string: checkField(
                     checkedField: word.imageURL,
@@ -101,7 +100,6 @@ class PullToRefresh {
             object.transcription = word.transcription
             object.wordDescription = word.description
             object.translationUA = word.translationUA
-            object.translationRu = word.translationRU
             object.pictureURL = URL(string: word.imageURL ?? "")
             object.videoURL = word.videoURL
             object.isKnown = false
@@ -116,9 +114,6 @@ class PullToRefresh {
     }
 
     private func containce(checkWord: WordStruct, originalWord: inout Word?) -> Bool {
-//        guard let wordsArray = fetchedResultsController.fetchedObjects else {
-//            return false
-//        }
         let wordsArray = Word.fetchAll()
 
         for word in wordsArray where word.word == checkWord.word {

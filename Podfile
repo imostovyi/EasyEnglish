@@ -7,7 +7,7 @@ target 'EasyEnglish' do
   pod 'Floaty', '~> 4.1.0'
   pod 'IQKeyboardManagerSwift'
   pod 'Kingfisher', '~> 5.7.0'
-  pod "youtube-ios-player-helper", "~> 0.1.4"
+  pod "youtube-ios-player-helper"
   pod 'Moya'
 
   target 'EasyEnglishUITests' do
