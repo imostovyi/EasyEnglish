@@ -17,6 +17,10 @@ class DictionaryViewController: UIViewController {
 
     @IBOutlet private weak var floatyButton: Floaty!
     @IBOutlet private weak var tableView: UITableView!
+    
+    // MARK: Public
+    
+    public var appCoordinator: AppCoordinator!
 
     // MARK: Private
 
@@ -170,26 +174,19 @@ extension DictionaryViewController {
         }
 
         icon = UIImage(named: "layers")
-        floatyButton.addItem("Unchecked words", icon: icon) { (_) in
-            self.resultSearchController.dismiss(animated: false, completion: nil)
-            let storyboard = UIStoryboard(name: "SelfAddedWords", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "SelfAddedWords") as! SelfAddedWordsViewController
-            self.present(vc, animated: true, completion: nil)
-
+        floatyButton.addItem("Unchecked words", icon: icon) { [weak self] _ in
+            self?.resultSearchController.dismiss(animated: false, completion: nil)
+            self?.appCoordinator.showSelfAddedWordsScreen()
         }
 
-        floatyButton.addItem("Test mode", icon: UIImage(named: "test")) { (_) in
-            self.resultSearchController.dismiss(animated: false, completion: nil)
-            let storyboard = UIStoryboard(name: "TestWords", bundle: nil)
-            let controller = storyboard.instantiateViewController(withIdentifier: TestWordViewController.identifier) as! TestWordViewController
-            self.present(controller, animated: true, completion: nil)
+        floatyButton.addItem("Test mode", icon: UIImage(named: "test")) { [weak self] _ in
+            self?.resultSearchController.dismiss(animated: false, completion: nil)
+            self?.appCoordinator.showTestingScreen()
         }
 
-        floatyButton.addItem("Detect object", icon: UIImage(named: "objectDetection")) { _ in
-            self.resultSearchController.dismiss(animated: false, completion: nil)
-            self.present(UIStoryboard(name: "ObjectDetectionVC", bundle: nil).instantiateViewController(withIdentifier: "ObjectDetectionVC"),
-                         animated: true,
-                         completion: nil)
+        floatyButton.addItem("Detect object", icon: UIImage(named: "objectDetection")) { [weak self] _ in
+            self?.resultSearchController.dismiss(animated: false, completion: nil)
+            self?.appCoordinator.showDetectObjectScreen()
         }
 
         view.addSubview(floatyButton)

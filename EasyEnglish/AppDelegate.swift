@@ -12,19 +12,14 @@ import IQKeyboardManagerSwift
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow?
+    private lazy var appCoordinator = AppCoordinator()
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil)
         -> Bool {
-            window = UIWindow(frame: UIScreen.main.bounds)
-            window?.makeKeyAndVisible()
-            let storyboard = UIStoryboard(name: "Dictionary", bundle: nil)
-            let controller = storyboard.instantiateViewController(withIdentifier: "Dictionary")
-
-            window?.rootViewController = controller
-
             IQKeyboardManager.shared.enable = true
+            
+            appCoordinator.start()
 
             return true
     }

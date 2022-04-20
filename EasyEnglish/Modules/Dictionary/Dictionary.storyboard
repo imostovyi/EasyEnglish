@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="z5X-8D-Xn8">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="z5X-8D-Xn8">
+    <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -14,53 +14,53 @@
             <objects>
                 <viewController storyboardIdentifier="Dictionary" useStoryboardIdentifierAsRestorationIdentifier="YES" id="z5X-8D-Xn8" userLabel="Dictionary" customClass="DictionaryViewController" customModule="EasyEnglish" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="40Y-gC-REA">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="big-ben" translatesAutoresizingMaskIntoConstraints="NO" id="zqi-Jq-KbH">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="big-ben" translatesAutoresizingMaskIntoConstraints="NO" id="zqi-Jq-KbH">
+                                <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                             </imageView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v4S-jK-ZwQ">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="44" width="428" height="848"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="fbZ-EG-47w">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="428" height="848"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                                 <color key="backgroundColor" name="Background"/>
                                 <blurEffect style="light"/>
                             </visualEffectView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Cyg-4i-IYu">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="44" width="428" height="848"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mwR-z2-b7z" customClass="Floaty" customModule="Floaty">
-                                <rect key="frame" x="306" y="582" width="53" height="56"/>
+                                <rect key="frame" x="359" y="841" width="53" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" red="0.091955924250000001" green="0.53582658299999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="itemTitleColor">
-                                        <color key="value" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" systemColor="systemBlueColor"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="a5J-Gg-bog"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="v4S-jK-ZwQ" firstAttribute="leading" secondItem="a5J-Gg-bog" secondAttribute="leading" id="7FN-oF-Je1"/>
                             <constraint firstItem="a5J-Gg-bog" firstAttribute="trailing" secondItem="zqi-Jq-KbH" secondAttribute="trailing" id="A1q-PK-tky"/>
                             <constraint firstItem="zqi-Jq-KbH" firstAttribute="leading" secondItem="a5J-Gg-bog" secondAttribute="leading" id="BNM-E6-y50"/>
-                            <constraint firstItem="zqi-Jq-KbH" firstAttribute="top" secondItem="a5J-Gg-bog" secondAttribute="top" id="KO2-vT-yZd"/>
                             <constraint firstItem="a5J-Gg-bog" firstAttribute="trailing" secondItem="Cyg-4i-IYu" secondAttribute="trailing" id="L2g-f5-1KM"/>
                             <constraint firstItem="a5J-Gg-bog" firstAttribute="trailing" secondItem="v4S-jK-ZwQ" secondAttribute="trailing" id="LtK-KI-bda"/>
                             <constraint firstItem="Cyg-4i-IYu" firstAttribute="top" secondItem="a5J-Gg-bog" secondAttribute="top" id="XUP-jb-ZNM"/>
                             <constraint firstItem="v4S-jK-ZwQ" firstAttribute="top" secondItem="a5J-Gg-bog" secondAttribute="top" id="Y6z-if-HlD"/>
+                            <constraint firstAttribute="bottom" secondItem="zqi-Jq-KbH" secondAttribute="bottom" id="gwh-mD-Mto"/>
                             <constraint firstItem="Cyg-4i-IYu" firstAttribute="leading" secondItem="a5J-Gg-bog" secondAttribute="leading" id="ifS-lF-b6b"/>
-                            <constraint firstItem="a5J-Gg-bog" firstAttribute="bottom" secondItem="zqi-Jq-KbH" secondAttribute="bottom" id="n95-5Z-1fh"/>
+                            <constraint firstItem="zqi-Jq-KbH" firstAttribute="top" secondItem="40Y-gC-REA" secondAttribute="top" id="vYt-wM-1am"/>
                             <constraint firstItem="a5J-Gg-bog" firstAttribute="bottom" secondItem="v4S-jK-ZwQ" secondAttribute="bottom" id="x1q-pN-YCR"/>
                             <constraint firstAttribute="bottomMargin" secondItem="Cyg-4i-IYu" secondAttribute="bottom" id="xBK-Xi-5Zv"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="a5J-Gg-bog"/>
                     </view>
                     <navigationItem key="navigationItem" id="Ofe-bC-08d"/>
                     <connections>
@@ -74,9 +74,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="big-ben" width="1296" height="1944"/>
+        <image name="big-ben" width="864" height="1296"/>
         <namedColor name="Background">
             <color red="0.0" green="0.0" blue="0.0" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

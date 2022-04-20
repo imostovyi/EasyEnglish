@@ -37,7 +37,7 @@ class PullToRefresh {
     lazy var refreshController: UIRefreshControl = {
        let refreshController = UIRefreshControl()
         refreshController.addTarget(self, action: #selector(refresh), for: .valueChanged)
-        refreshController.backgroundColor = .black
+        refreshController.backgroundColor = .clear
         refreshController.tintColor = .white
 
         return refreshController
