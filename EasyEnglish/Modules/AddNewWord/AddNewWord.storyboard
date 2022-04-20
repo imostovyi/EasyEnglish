@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Fub-d1-3wT">
-    <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -11,35 +10,35 @@
         <!--AddNewWord-->
         <scene sceneID="bkJ-AK-1AT">
             <objects>
-                <viewController storyboardIdentifier="AddNewWord" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Fub-d1-3wT" userLabel="AddNewWord" customClass="AddNewWordViewController" customModule="EasyEnglish" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddNewWord" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Fub-d1-3wT" userLabel="AddNewWord" customClass="AddEditWordVC" customModule="EasyEnglish" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="b4r-SS-TDg">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eb5-gn-tAQ">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <color key="backgroundColor" name="InactiveTextFieldBorder"/>
                                 <items>
                                     <navigationItem title="Title" id="oce-hi-aCE"/>
                                 </items>
                             </navigationBar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="big-ben" translatesAutoresizingMaskIntoConstraints="NO" id="06F-J2-dkS">
-                                <rect key="frame" x="0.0" y="44" width="414" height="692"/>
+                                <rect key="frame" x="0.0" y="44" width="600" height="556"/>
                             </imageView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cfE-0X-Ggz">
-                                <rect key="frame" x="0.0" y="44" width="414" height="692"/>
+                                <rect key="frame" x="0.0" y="44" width="600" height="556"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="8l3-n5-uUA">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="692"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Smt-sZ-J2X">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="692"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="by3-lO-NvM" userLabel="Content">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="443"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="443"/>
                                                     <subviews>
                                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Word" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pFo-Rw-wrY" userLabel="Word Text Field" customClass="IsaoTextField" customModule="TextFieldEffects">
-                                                            <rect key="frame" x="20" y="5" width="374" height="50"/>
+                                                            <rect key="frame" x="20" y="5" width="560" height="50"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="50" id="8eg-0L-Asd"/>
@@ -60,7 +59,7 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </textField>
                                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Transcription" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sAX-g5-ouQ" userLabel="Transcription Text Field" customClass="IsaoTextField" customModule="TextFieldEffects">
-                                                            <rect key="frame" x="20" y="65" width="374" height="50"/>
+                                                            <rect key="frame" x="20" y="65" width="560" height="50"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="50" id="JJN-db-Pi8"/>
@@ -81,7 +80,7 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </textField>
                                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="BJr-M6-04a" userLabel="DescriptionText View">
-                                                            <rect key="frame" x="20" y="135" width="374" height="120"/>
+                                                            <rect key="frame" x="20" y="135" width="560" height="120"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="120" id="Unw-LL-cex"/>
@@ -94,7 +93,7 @@
                                                             </connections>
                                                         </textView>
                                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Translation to UA" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u4B-TL-iPB" userLabel="TranslationUA Text Field" customClass="IsaoTextField" customModule="TextFieldEffects">
-                                                            <rect key="frame" x="20" y="265" width="374" height="50"/>
+                                                            <rect key="frame" x="20" y="265" width="560" height="50"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="50" id="QP0-fy-P8v"/>
@@ -115,7 +114,7 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </textField>
                                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Image URL" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zgk-AB-T41" userLabel="ImageURL Text Field" customClass="IsaoTextField" customModule="TextFieldEffects">
-                                                            <rect key="frame" x="20" y="325" width="374" height="50"/>
+                                                            <rect key="frame" x="20" y="325" width="560" height="50"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="50" id="M4Y-Hh-Kbv"/>
@@ -136,7 +135,7 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </textField>
                                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Video Id" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YMs-19-kfr" userLabel="VideoURL Text Field" customClass="IsaoTextField" customModule="TextFieldEffects">
-                                                            <rect key="frame" x="20" y="385" width="374" height="50"/>
+                                                            <rect key="frame" x="20" y="385" width="560" height="50"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="50" id="QnQ-Wb-cR4"/>
@@ -234,23 +233,6 @@
             <point key="canvasLocation" x="-743" y="151"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="YMs-19-kfr">
-            <size key="intrinsicContentSize" width="110.66666666666667" height="50.666666666666664"/>
-        </designable>
-        <designable name="pFo-Rw-wrY">
-            <size key="intrinsicContentSize" width="80.666666666666671" height="50.666666666666664"/>
-        </designable>
-        <designable name="sAX-g5-ouQ">
-            <size key="intrinsicContentSize" width="168" height="50.666666666666664"/>
-        </designable>
-        <designable name="u4B-TL-iPB">
-            <size key="intrinsicContentSize" width="206.33333333333334" height="50.666666666666664"/>
-        </designable>
-        <designable name="zgk-AB-T41">
-            <size key="intrinsicContentSize" width="142" height="50.666666666666664"/>
-        </designable>
-    </designables>
     <resources>
         <image name="big-ben" width="864" height="1296"/>
         <namedColor name="Background">

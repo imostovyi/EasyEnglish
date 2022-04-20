@@ -167,7 +167,7 @@ extension DictionaryViewController {
         floatyButton.addItem("Add word", icon: icon) { (_) in
             self.resultSearchController.dismiss(animated: false, completion: nil)
             let storyboard = UIStoryboard(name: "AddNewWord", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: AddNewWordViewController.reuseIdentifier) as! AddNewWordViewController
+            let vc = storyboard.instantiateViewController(withIdentifier: AddEditWordVC.reuseIdentifier) as! AddEditWordVC
             vc.rootController = self
             self.present(vc, animated: true, completion: nil)
 

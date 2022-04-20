@@ -134,7 +134,7 @@ class SelfAddedWordsViewController: UIViewController {
 
     @objc private func addWordButtonWasTapped() {
         let storyboard = UIStoryboard(name: "AddNewWord", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "AddNewWord") as! AddNewWordViewController
+        let vc = storyboard.instantiateViewController(withIdentifier: "AddNewWord") as! AddEditWordVC
         self.present(vc, animated: true, completion: nil)
 
     }
@@ -154,7 +154,7 @@ class SelfAddedWordsViewController: UIViewController {
     private func editAction(indexPath: IndexPath) {
         guard let object = fetchedResultsController.fetchedObjects?[indexPath.row] else { return }
         let storyboard = UIStoryboard(name: "AddNewWord", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "AddNewWord") as! AddNewWordViewController
+        let vc = storyboard.instantiateViewController(withIdentifier: "AddNewWord") as! AddEditWordVC
         vc.passedObject = object
         self.present(vc, animated: true, completion: nil)
 

@@ -98,7 +98,7 @@ final class ObjectDetectionVC: UIViewController {
     @IBAction func noWordButtonTouched(_ sender: Any) {
         noWordButton.isHidden = true
         guard let controller = UIStoryboard(name: "AddNewWord", bundle: nil)
-            .instantiateViewController(withIdentifier: AddNewWordViewController.reuseIdentifier) as? AddNewWordViewController else { return }
+            .instantiateViewController(withIdentifier: AddEditWordVC.reuseIdentifier) as? AddEditWordVC else { return }
         controller.newWord = searchingWord
         present(controller, animated: true)
     }

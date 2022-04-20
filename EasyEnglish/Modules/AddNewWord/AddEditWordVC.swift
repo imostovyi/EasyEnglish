@@ -1,5 +1,5 @@
 //
-//  AddNewWordViewController.swift
+//  AddEditWordVC.swift
 //  EasyEnglish
 //
 //  Created by Мостовий Ігор on 3/5/19.
@@ -10,7 +10,7 @@ import UIKit
 import TextFieldEffects
 import CoreData
 
-class AddNewWordViewController: UIViewController {
+class AddEditWordVC: UIViewController {
 
     // MARK: - IBoutlets
     @IBOutlet weak var navigationBar: UINavigationBar!
@@ -242,7 +242,7 @@ class AddNewWordViewController: UIViewController {
 
 // MARK: - - Extension textViewDelegate
 
-extension AddNewWordViewController: UITextViewDelegate {
+extension AddEditWordVC: UITextViewDelegate {
 
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.text == "Word description" {
@@ -265,7 +265,7 @@ extension AddNewWordViewController: UITextViewDelegate {
 }
 
 // MARK: - - Extension textFieldDelegate
-extension AddNewWordViewController: UITextFieldDelegate {
+extension AddEditWordVC: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
 
         for word in fetchedWords where word.word == textField.text {
