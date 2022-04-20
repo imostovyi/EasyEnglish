@@ -90,7 +90,7 @@ final class ObjectDetectionVC: UIViewController {
         }
 
         guard let controller = UIStoryboard(name: "ShowDetail", bundle: nil)
-            .instantiateViewController(withIdentifier: ShowDetailViewController.identifier) as? ShowDetailViewController else { return }
+            .instantiateViewController(withIdentifier: WordDetailsVC.identifier) as? WordDetailsVC else { return }
         controller.context = result
         present(controller, animated: true)
     }

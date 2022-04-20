@@ -128,7 +128,7 @@ extension DictionaryViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "ShowDetail", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: ShowDetailViewController.identifier) as! ShowDetailViewController
+        let vc = storyboard.instantiateViewController(withIdentifier: WordDetailsVC.identifier) as! WordDetailsVC
         
         vc.context = props?.wordForIndex(indexPath.row)
         self.resultSearchController.dismiss(animated: true, completion: nil)

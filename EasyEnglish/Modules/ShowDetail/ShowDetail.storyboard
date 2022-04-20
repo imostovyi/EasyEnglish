@@ -1,61 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4Vw-bi-P29">
-    <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Show Detail View Controller-->
+        <!--Word DetailsVC-->
         <scene sceneID="1jT-oR-cGn">
             <objects>
-                <viewController storyboardIdentifier="ShowDetailView" modalTransitionStyle="flipHorizontal" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4Vw-bi-P29" customClass="ShowDetailViewController" customModule="EasyEnglish" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ShowDetailView" modalTransitionStyle="flipHorizontal" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4Vw-bi-P29" customClass="WordDetailsVC" customModule="EasyEnglish" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Fqa-hD-Yf4">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="eTS-xh-Vr1">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <color key="backgroundColor" name="CheckButtonBackground"/>
                                 <items>
                                     <navigationItem title="Title" id="r9G-mj-7O9"/>
                                 </items>
                             </navigationBar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="big-ben" translatesAutoresizingMaskIntoConstraints="NO" id="SD7-6r-flL">
-                                <rect key="frame" x="0.0" y="44" width="414" height="692"/>
+                                <rect key="frame" x="0.0" y="44" width="600" height="556"/>
                             </imageView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WGb-kO-ipI">
-                                <rect key="frame" x="0.0" y="44" width="414" height="692"/>
+                                <rect key="frame" x="0.0" y="44" width="600" height="556"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="UxS-bo-Rx9" userLabel="Conteiner">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="692"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SH3-ZL-ZLy">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="692"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1qf-cj-wOb" userLabel="Content">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="830"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="830"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Word" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k5E-4A-AFd">
-                                                            <rect key="frame" x="15" y="15" width="384" height="25"/>
+                                                            <rect key="frame" x="15" y="15" width="570" height="25"/>
                                                             <fontDescription key="fontDescription" name="Baskerville-BoldItalic" family="Baskerville" pointSize="22"/>
                                                             <color key="textColor" name="Text"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="IDt-xo-20H">
-                                                            <rect key="frame" x="15" y="55" width="384" height="30"/>
+                                                            <rect key="frame" x="15" y="55" width="570" height="30"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transcription" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xon-dt-hhn">
-                                                                    <rect key="frame" x="0.0" y="2.6666666666666714" width="349" height="25"/>
+                                                                    <rect key="frame" x="0.0" y="2.5" width="535" height="25"/>
                                                                     <fontDescription key="fontDescription" name="Baskerville-BoldItalic" family="Baskerville" pointSize="22"/>
                                                                     <color key="textColor" name="Text"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nVd-br-lPf">
-                                                                    <rect key="frame" x="354" y="0.0" width="30" height="30"/>
+                                                                    <rect key="frame" x="540" y="0.0" width="30" height="30"/>
                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="30" id="JHJ-y5-Axq"/>
@@ -70,7 +68,7 @@
                                                             </constraints>
                                                         </stackView>
                                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EKJ-bD-xqG">
-                                                            <rect key="frame" x="15" y="100" width="384" height="130"/>
+                                                            <rect key="frame" x="15" y="100" width="570" height="130"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="130" id="jwe-kR-XZ0"/>
@@ -81,20 +79,20 @@
                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                         </textView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Translate UA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FjM-Nl-0Fn">
-                                                            <rect key="frame" x="15" y="245" width="384" height="25"/>
+                                                            <rect key="frame" x="15" y="245" width="570" height="25"/>
                                                             <fontDescription key="fontDescription" name="Baskerville-BoldItalic" family="Baskerville" pointSize="22"/>
                                                             <color key="textColor" name="Text"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XK5-EM-G8H">
-                                                            <rect key="frame" x="87" y="325" width="240" height="240"/>
+                                                            <rect key="frame" x="180" y="325" width="240" height="240"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="240" id="jmf-BR-xHA"/>
                                                                 <constraint firstAttribute="height" constant="240" id="ti5-ef-mOs"/>
                                                             </constraints>
                                                         </imageView>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qn0-Gc-Skj" customClass="YTPlayerView">
-                                                            <rect key="frame" x="15" y="580" width="384" height="240"/>
+                                                            <rect key="frame" x="15" y="580" width="570" height="240"/>
                                                             <viewLayoutGuide key="safeArea" id="7yv-2c-fV9"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
