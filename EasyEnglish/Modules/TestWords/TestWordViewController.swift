@@ -80,7 +80,7 @@ class TestWordViewController: UIViewController {
     }
 
     @objc private func backButtonWasTapped() {
-        dismiss(animated: true)
+        navigationController?.popViewController(animated: true)
     }
 
     ///Function that check capacity of wordsForTesting set and decide if it's necessary to show rightBarButtonItem

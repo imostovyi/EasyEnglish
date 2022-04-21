@@ -13,61 +13,64 @@ import CoreMedia
 import CoreData
 
 final class ObjectDetectionVC: UIViewController {
+    
     // MARK: - State
-    private var captureSesion: AVCaptureSession!
-    private var searchingWord: String?
+    private var props: Props?
+    
+    // MARK: Public
+    public var logicController: ObjectDetectionLC!
 
     // MARK: - @IBOutlets
     @IBOutlet private weak var cameraLayerView: UIView!
     @IBOutlet private weak var objectLabel: UILabel!
-    @IBOutlet private weak var findInDictionatyButton: UIButton!
-    @IBOutlet private weak var noWordButton: UIButton!
+    @IBOutlet private weak var findInDictionaryButton: UIButton!
+    @IBOutlet private weak var addNewWordButton: UIButton!
 
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        configurateCaptureSession()
-    }
-
-    private func configurateCaptureSession() {
-        captureSesion = AVCaptureSession()
-        captureSesion.sessionPreset = .photo
-
-        guard let captureDevice = AVCaptureDevice.default(for: .video),
-            let input = try? AVCaptureDeviceInput(device: captureDevice) else { return }
-
-        captureSesion.addInput(input)
-
-        let previewLayer = AVCaptureVideoPreviewLayer(session: captureSesion)
-        previewLayer.videoGravity = .resizeAspect
-        previewLayer.connection?.videoOrientation = .portrait
-        cameraLayerView.layer.addSublayer(previewLayer)
-
-        DispatchQueue.global(qos: .userInitiated).async {
-            self.captureSesion.startRunning()
+        logicController.updatedProps = { [weak self] props in
             DispatchQueue.main.async {
-                previewLayer.frame = self.cameraLayerView.bounds
+                self?.render(props)
             }
         }
-
-        let dataOutput = AVCaptureVideoDataOutput()
-        dataOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "ObjectDetection"))
-        captureSesion.addOutput(dataOutput)
     }
-
-    deinit {
-        captureSesion.stopRunning()
-    }
-
-    private func reseiveObjects(results: [Any]?) {
-        guard let object = (results as? [VNClassificationObservation])?.first else { return }
-
-        DispatchQueue.main.async { [weak self] in
-            self?.findInDictionatyButton.isHidden = false
-            self?.objectLabel.isHidden = false
-            self?.objectLabel.text = object.identifier
+    
+    private func render(_ props: Props) {
+        self.props = props
+        _ = configureCaptureSession
+        
+        addNewWordButton.isHidden = !props.shouldShowAddButton
+        
+        guard let objectName = props.capturedObject else {
+            findInDictionaryButton.isHidden = true
+            objectLabel.isHidden = true
+            return
+        }
+        
+        findInDictionaryButton.isHidden = false
+        objectLabel.isHidden = false
+        objectLabel.text = objectName
+        
+        if props.shouldShowAddButton {
+            addNewWordButton.setTitle(
+                "There in no \(props.focusedObject) in dictionary. Tap to add",
+                for: .normal
+            )
         }
     }
+
+    private lazy var configureCaptureSession: () = {
+        guard let props = props else {
+            return
+        }
+
+        let previewLayer = AVCaptureVideoPreviewLayer(session: props.session)
+        previewLayer.videoGravity = .resizeAspect
+        previewLayer.connection?.videoOrientation = .portrait
+        previewLayer.frame = self.cameraLayerView.bounds
+        cameraLayerView.layer.addSublayer(previewLayer)
+    }()
 
     // MARK: - @IBActions
     @IBAction private func backButtonTouched(_ sender: Any) {
@@ -75,43 +78,27 @@ final class ObjectDetectionVC: UIViewController {
     }
 
     @IBAction func findInDictionaryTouched(_ sender: Any) {
-        guard let object = objectLabel.text?.lowercased(),
-            let objectName = object.components(separatedBy: ", ").first else { return }
-        searchingWord = String(objectName)
-        findInDictionatyButton.setTitle("Find in dictionary: \(objectName)", for: .normal)
-        let context = CoreDataStack.shared.persistantContainer.viewContext
-        let request: NSFetchRequest<Word> = Word.fetchRequest()
-        request.predicate = NSPredicate(format: "word contains[c] %@", String(objectName))
-
-        guard let result = try? context.fetch(request).first else {
-            noWordButton.setTitle("No \(objectName) in dictionary. Tap to add", for: .normal)
-            noWordButton.isHidden = false
-            return
-        }
-
-        guard let controller = UIStoryboard(name: "ShowDetail", bundle: nil)
-            .instantiateViewController(withIdentifier: WordDetailsVC.identifier) as? WordDetailsVC else { return }
-        controller.context = result
-        present(controller, animated: true)
+        guard let objectName = props?.capturedObject else { return }
+        findInDictionaryButton.setTitle("Find in dictionary: \(objectName)", for: .normal)
+        props?.findInDictionary()
     }
 
-    @IBAction func noWordButtonTouched(_ sender: Any) {
-        noWordButton.isHidden = true
+    @IBAction func addNewWordButtonTouched(_ sender: Any) {
+        addNewWordButton.isHidden = true
         guard let controller = UIStoryboard(name: "AddNewWord", bundle: nil)
             .instantiateViewController(withIdentifier: AddEditWordVC.reuseIdentifier) as? AddEditWordVC else { return }
-        controller.newWord = searchingWord
+        controller.newWord = props?.focusedObject
         present(controller, animated: true)
     }
 }
 
-extension ObjectDetectionVC: AVCaptureVideoDataOutputSampleBufferDelegate {
-    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        guard let pixelBuffer: CVPixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer),
-            let model = try? VNCoreMLModel(for: Resnet50().model) else { return }
-
-        let request = VNCoreMLRequest(model: model) { [weak self] request, _ in
-            self?.reseiveObjects(results: request.results)
-        }
-        try? VNImageRequestHandler(cvPixelBuffer: pixelBuffer, options: [:]).perform([request])
+extension ObjectDetectionVC {
+    struct Props {
+        let capturedObject: String?
+        let focusedObject: String
+        let session: AVCaptureSession
+        let shouldShowAddButton: Bool
+        
+        let findInDictionary: () -> Void
     }
 }

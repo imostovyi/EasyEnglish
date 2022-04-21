@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="psS-hL-G9z">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="psS-hL-G9z">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -32,7 +32,7 @@
                             </navigationBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Fj-m2-YTd">
                                 <rect key="frame" x="0.0" y="98" width="414" height="582.5"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NEZ-OS-mpj">
                                 <rect key="frame" x="186" y="700.5" width="42" height="21"/>
@@ -40,7 +40,7 @@
                                 <color key="textColor" name="Text"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pel-bx-H8K">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pel-bx-H8K">
                                 <rect key="frame" x="141.5" y="736.5" width="131" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Find in dictionary">
@@ -50,16 +50,17 @@
                                     <action selector="findInDictionaryTouched:" destination="psS-hL-G9z" eventType="touchUpInside" id="KK6-HW-885"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZLZ-fl-jAD">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZLZ-fl-jAD">
                                 <rect key="frame" x="0.0" y="784.5" width="414" height="30"/>
                                 <state key="normal" title="There is no such word in dictionary. Tap to add">
                                     <color key="titleColor" name="Text"/>
                                 </state>
                                 <connections>
-                                    <action selector="noWordButtonTouched:" destination="psS-hL-G9z" eventType="touchUpInside" id="XmW-ti-NYG"/>
+                                    <action selector="addNewWordButtonTouched:" destination="psS-hL-G9z" eventType="touchUpInside" id="CBw-cS-l2N"/>
                                 </connections>
                             </button>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="P3m-Wc-zS9"/>
                         <color key="backgroundColor" name="CheckButtonBackground"/>
                         <constraints>
                             <constraint firstItem="ZLZ-fl-jAD" firstAttribute="top" secondItem="Pel-bx-H8K" secondAttribute="bottom" constant="15" id="3p5-So-0hF"/>
@@ -77,14 +78,13 @@
                             <constraint firstItem="FWe-3S-Z3X" firstAttribute="top" secondItem="P3m-Wc-zS9" secondAttribute="top" id="gHw-hy-c0w"/>
                             <constraint firstItem="NEZ-OS-mpj" firstAttribute="centerX" secondItem="P3m-Wc-zS9" secondAttribute="centerX" id="z40-XF-bZs"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="P3m-Wc-zS9"/>
                     </view>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="addNewWordButton" destination="ZLZ-fl-jAD" id="hDz-99-3fN"/>
                         <outlet property="cameraLayerView" destination="9Fj-m2-YTd" id="kRO-xj-wNK"/>
-                        <outlet property="findInDictionatyButton" destination="Pel-bx-H8K" id="VII-oe-kFZ"/>
-                        <outlet property="noWordButton" destination="ZLZ-fl-jAD" id="hDz-99-3fN"/>
+                        <outlet property="findInDictionaryButton" destination="Pel-bx-H8K" id="VII-oe-kFZ"/>
                         <outlet property="objectLabel" destination="NEZ-OS-mpj" id="5s0-mP-x4M"/>
                     </connections>
                 </viewController>
@@ -103,5 +103,8 @@
         <namedColor name="Text">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

@@ -36,12 +36,12 @@ class WordDetailsVC: UIViewController {
         super.viewDidLoad()
 
         setUpNavBar()
-        checkAndFill()
+        checkAndFillLabels()
 
         videoView.delegate = self
         videoView.isHidden = true
 
-        playButton.addTarget(self, action: #selector(playButtonWasTapped), for: .touchUpInside)
+        playButton.addTarget(self, action: #selector(playButtonTouched), for: .touchUpInside)
         playButton.layer.cornerRadius = 20
         playButton.layer.masksToBounds = true
 
@@ -64,7 +64,7 @@ class WordDetailsVC: UIViewController {
         navigationBar.items?.append(navigationItem)
     }
 
-    private func checkAndFill() {
+    private func checkAndFillLabels() {
         guard let word = context else {
             goBack()
             return
@@ -87,7 +87,7 @@ class WordDetailsVC: UIViewController {
         _ = word.videoURL.map(videoView.load(withVideoId:))
     }
 
-    @objc private func playButtonWasTapped() {
+    @objc private func playButtonTouched() {
         guard let word = context?.word else {
             return
         }
