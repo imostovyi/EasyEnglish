@@ -1,5 +1,5 @@
 //
-//  SelfAddedWordsViewController.swift
+//  SelfAddedWordsVC.swift
 //  EasyEnglish
 //
 //  Created by Мостовий Ігор on 3/11/19.
@@ -11,7 +11,7 @@ import CoreData
 import Kingfisher
 import Moya
 
-class SelfAddedWordsViewController: UIViewController {
+class SelfAddedWordsVC: UIViewController {
 
     // MARK: Outlets
 
@@ -22,10 +22,13 @@ class SelfAddedWordsViewController: UIViewController {
     // MARK: Public properties
 
     static let identifier = "SelfAddedWords"
-    var root: DictionaryViewController?
+    var root: UIViewController?
 
     // MARK: Private properties
 
+    private var props: Props?
+    private let logicController = SelfAddedWordsLC()
+    
     private let cell = UINib(nibName: "SelfAddedWordsTableViewCell", bundle: nil)
 
     private lazy var editActions = [
@@ -37,28 +40,6 @@ class SelfAddedWordsViewController: UIViewController {
         })
     ]
 
-    private lazy var context = CoreDataStack.shared.persistantContainer.viewContext
-    private lazy var fetchedResultsController: NSFetchedResultsController<Word> = {
-        let fetchRequest: NSFetchRequest<Word> = Word.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "word", ascending: true)]
-        fetchRequest.predicate = NSPredicate(format: "isApproved = 0")
-        let controller = NSFetchedResultsController<Word>(
-            fetchRequest: fetchRequest,
-            managedObjectContext: context,
-            sectionNameKeyPath: nil,
-            cacheName: nil)
-        controller.delegate = self
-
-        do {
-            try controller.performFetch()
-        } catch {
-            debugPrint(error)
-        }
-        return controller
-    }()
-
-    // MARK: ViewDidLoad
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -68,6 +49,15 @@ class SelfAddedWordsViewController: UIViewController {
         tableView.register(cell, forCellReuseIdentifier: SelfAddedWordsTableViewCell.identifier)
         tableView.delegate = self
         tableView.dataSource = self
+        
+        logicController.updatedProps = { [weak self] in
+            self?.render($0)
+        }
+    }
+    
+    private func render(_ props: Props) {
+        self.props = props
+        tableView.reloadData()
     }
 
     private func setUpNavigationBar() {
@@ -77,48 +67,18 @@ class SelfAddedWordsViewController: UIViewController {
         title = "List of self added words"
     }
 
-    // MARK: Setting up check button
-
     private func setUpCheckButton() {
         checkButton.layer.cornerRadius = 7.0
         checkButton.setTitle("Check words", for: .normal)
         checkButton.addTarget(self, action: #selector(checkButtonTapped), for: .touchUpInside)
     }
 
-    // MARK: Private objective C functions
-
     @objc private func checkButtonTapped() {
-        let provider = MoyaProvider<Services>()
-
-        var arrayToEncode: [WordStruct] = []
-        while fetchedResultsController.fetchedObjects?.count != 0 {
-            guard let object = fetchedResultsController.fetchedObjects?.first else { return }
-
-            object.isApproved = true
-            //nead to change
-            let codableObject = WordStruct(word: object)
-            arrayToEncode.append(codableObject)
-
-            do {
-                try context.save()
-            } catch {
-                debugPrint(error)
-                return
-            }
-        }
-        for word in arrayToEncode {
-            provider.request(.validateWord(word: ["data": word])) { (result) in
-                if case let .failure(error) = result {
-                    debugPrint(error)
-                }
-            }
-        }
-
-        dismiss(animated: true, completion: nil)
+        props?.sendToServer()
     }
 
     @objc private func doneButtonWasTapped() {
-        if fetchedResultsController.fetchedObjects?.count == 0 {
+        if props?.words.count == 0 {
             dismiss(animated: true, completion: nil)
             return
         }
@@ -136,65 +96,49 @@ class SelfAddedWordsViewController: UIViewController {
         let storyboard = UIStoryboard(name: "AddNewWord", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "AddNewWord") as! AddEditWordVC
         self.present(vc, animated: true, completion: nil)
-
     }
 
     // MARK: delete option
 
     private func deleteAction(indexPath: IndexPath) {
-        guard let object = fetchedResultsController.fetchedObjects?[indexPath.row] else { return }
-        context.delete(object)
-        do {
-            try context.save()
-        } catch { debugPrint(error) }
+        props?.deleteWord(indexPath.row)
     }
 
     // MARK: Edit option function
 
     private func editAction(indexPath: IndexPath) {
-        guard let object = fetchedResultsController.fetchedObjects?[indexPath.row] else { return }
+        guard let object = props?.editWord(indexPath.row) else { return }
         let storyboard = UIStoryboard(name: "AddNewWord", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "AddNewWord") as! AddEditWordVC
         vc.passedObject = object
         self.present(vc, animated: true, completion: nil)
-
-    }
-
-}
-
-// MARK: - - FetchedresultsControllerDelegate
-
-extension SelfAddedWordsViewController: NSFetchedResultsControllerDelegate {
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.reloadData()
     }
 }
 
 // MARK: - - extension table view delegate and datasource
 
-extension SelfAddedWordsViewController: UITableViewDelegate, UITableViewDataSource {
-
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-
+extension SelfAddedWordsVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return fetchedResultsController.fetchedObjects?.count ?? 0
+        props?.words.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SelfAddedWordsTableViewCell.identifier) as! SelfAddedWordsTableViewCell
-        guard let object = fetchedResultsController.fetchedObjects?[indexPath.row] else {
+        guard let object = props?.words[indexPath.row] else {
             return cell
         }
 
-        cell.wordLabel.text = object.word
-        cell.descriptionLabel.text = object.wordDescription
+        cell.wordLabel.text = object.title
+        cell.descriptionLabel.text = object.description
 
         let placeholderImage = UIImage(named: "flag")
-        let url = object.pictureURL
         cell.captureImageView.kf.indicatorType = .activity
-        cell.captureImageView.kf.setImage(with: url, placeholder: placeholderImage, options: nil, progressBlock: nil) { (result) in
+        cell.captureImageView.kf.setImage(
+            with: object.imageURL,
+            placeholder: placeholderImage,
+            options: nil,
+            progressBlock: nil
+        ) { (result) in
             switch result {
             case .failure:
                 cell.captureImageView.image = placeholderImage
@@ -206,5 +150,21 @@ extension SelfAddedWordsViewController: UITableViewDelegate, UITableViewDataSour
 
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         return editActions
+    }
+}
+
+extension SelfAddedWordsVC {
+    struct Props {
+        let words: [WordModel]
+        
+        let deleteWord: (Int) -> Void
+        let editWord: (Int) -> Word?
+        let sendToServer: () -> Void
+        
+        struct WordModel {
+            let title: String
+            let description: String
+            let imageURL: URL?
+        }
     }
 }

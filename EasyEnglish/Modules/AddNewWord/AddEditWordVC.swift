@@ -120,7 +120,7 @@ class AddEditWordVC: UIViewController {
         }
 
         let storyboard = UIStoryboard(name: "SelfAddedWords", bundle: nil)
-        let addedWordsVC = storyboard.instantiateViewController(withIdentifier: SelfAddedWordsViewController.identifier) as! SelfAddedWordsViewController
+        let addedWordsVC = storyboard.instantiateViewController(withIdentifier: SelfAddedWordsVC.identifier) as! SelfAddedWordsVC
         addedWordsVC.root = rootController
         dismiss(animated: true, completion: nil)
         vc.present(addedWordsVC, animated: true, completion: nil)
