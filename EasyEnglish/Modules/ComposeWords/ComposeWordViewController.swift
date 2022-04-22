@@ -65,7 +65,7 @@ class ComposeWordViewController: UIViewController {
         checkButton.addTarget(self, action: #selector(checkButtonWasTapped), for: .touchUpInside)
 
         fillLettersAndDescription()
-        configuratinCollectionView()
+        configurateCollectionView()
         configuratingNavBar()
 
     }
@@ -219,7 +219,7 @@ class ComposeWordViewController: UIViewController {
     }
 
     ///Configurating collection view
-    private func configuratinCollectionView() {
+    private func configurateCollectionView() {
         lettersCollectionView.delegate = self
         lettersCollectionView.dragInteractionEnabled = true
         lettersCollectionView.dragDelegate = self

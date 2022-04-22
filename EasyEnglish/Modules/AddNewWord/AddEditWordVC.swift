@@ -25,7 +25,7 @@ class AddEditWordVC: UIViewController {
 
     // MARK: - Private state
     private var isDoneButtonMustBeShown = [false, false]
-    private var rightButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(saveWord))
+    private var rightButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonTouched))
     private lazy var context = CoreDataStack.shared.persistantContainer.viewContext
     private lazy var fetchedWords = Word.fetchAll()
     private lazy var object = Word(context: context)
@@ -87,7 +87,7 @@ class AddEditWordVC: UIViewController {
     }
 
     // MARK: Saving information About word
-    @objc private func saveWord() {
+    @objc private func doneButtonTouched() {
         object.word = wordInformation[0].text
         object.transcription = wordInformation[1].text
         object.wordDescription = descriptionTextView.text

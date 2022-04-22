@@ -13,7 +13,7 @@ final class AppCoordinator: Coordinator, ParentCoordinator {
     let navigationController = UINavigationController()
     var childCoordinators: [Coordinator] = []
 
-    let window = UIWindow(frame: UIScreen.main.bounds)
+    private let window = UIWindow(frame: UIScreen.main.bounds)
 
     init() {
         self.window.makeKeyAndVisible()
@@ -61,8 +61,8 @@ final class AppCoordinator: Coordinator, ParentCoordinator {
     
     public func showTestingScreen() {
         let storyboard = UIStoryboard(name: "TestWords", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: TestWordViewController.identifier)
-        navigationController.pushViewController(controller, animated: true)
+        let controller = storyboard.instantiateViewController(withIdentifier: TestWordsVC.identifier)
+        navigationController.present(controller, animated: true)
     }
     
     public func showSelfAddedWordsScreen() {

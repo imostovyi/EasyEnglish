@@ -12,12 +12,6 @@ import Vision
 
 final class ObjectDetectionLC: NSObject {
 
-    public var updatedProps: ((ObjectDetectionVC.Props) -> Void)? {
-        didSet {
-            start()
-        }
-    }
-    
     private let model = try! VNCoreMLModel(for: Resnet50().model)
     
     private lazy var captureSession = AVCaptureSession()
@@ -29,6 +23,12 @@ final class ObjectDetectionLC: NSObject {
     
     private let context = CoreDataStack.shared.persistantContainer.viewContext
     private let fetchRequest: NSFetchRequest<Word> = Word.fetchRequest()
+    
+    public var updatedProps: ((ObjectDetectionVC.Props) -> Void)? {
+        didSet {
+            start()
+        }
+    }
     
     // MARK: Life cycle
     

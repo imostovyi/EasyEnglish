@@ -14,7 +14,7 @@ class SelfAddedWordsTableViewCell: UITableViewCell {
     @IBOutlet weak var wordLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
 
-    static let identfier = "SelfAddedWordCell"
+    static let identifier = "SelfAddedWordCell"
 
     override func awakeFromNib() {
         super.awakeFromNib()

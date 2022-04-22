@@ -65,7 +65,7 @@ class SelfAddedWordsViewController: UIViewController {
         setUpNavigationBar()
         setUpCheckButton()
 
-        tableView.register(cell, forCellReuseIdentifier: SelfAddedWordsTableViewCell.identfier)
+        tableView.register(cell, forCellReuseIdentifier: SelfAddedWordsTableViewCell.identifier)
         tableView.delegate = self
         tableView.dataSource = self
     }
@@ -183,7 +183,7 @@ extension SelfAddedWordsViewController: UITableViewDelegate, UITableViewDataSour
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: SelfAddedWordsTableViewCell.identfier) as! SelfAddedWordsTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: SelfAddedWordsTableViewCell.identifier) as! SelfAddedWordsTableViewCell
         guard let object = fetchedResultsController.fetchedObjects?[indexPath.row] else {
             return cell
         }
@@ -207,6 +207,4 @@ extension SelfAddedWordsViewController: UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         return editActions
     }
-
 }
-

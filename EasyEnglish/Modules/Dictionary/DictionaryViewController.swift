@@ -50,7 +50,7 @@ class DictionaryViewController: UIViewController {
 
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(cell, forCellReuseIdentifier: SelfAddedWordsTableViewCell.identfier)
+        tableView.register(cell, forCellReuseIdentifier: SelfAddedWordsTableViewCell.identifier)
         tableView.addSubview(PullToRefresh.shared.refreshController)
 
         resultSearchController = setUpSearchController()
@@ -99,7 +99,7 @@ extension DictionaryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView
             .dequeueReusableCell(
-                withIdentifier: SelfAddedWordsTableViewCell.identfier
+                withIdentifier: SelfAddedWordsTableViewCell.identifier
             ) as! SelfAddedWordsTableViewCell
         cell.selectionStyle = .none
         

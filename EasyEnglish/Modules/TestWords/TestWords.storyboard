@@ -1,33 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PhH-iY-WDe">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PhH-iY-WDe">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Test Word View Controller-->
+        <!--Test WordsVC-->
         <scene sceneID="YbP-w6-FbA">
             <objects>
-                <viewController storyboardIdentifier="TestWords" useStoryboardIdentifierAsRestorationIdentifier="YES" id="PhH-iY-WDe" customClass="TestWordViewController" customModule="EasyEnglish" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TestWords" useStoryboardIdentifierAsRestorationIdentifier="YES" id="PhH-iY-WDe" customClass="TestWordsVC" customModule="EasyEnglish" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Voe-Kz-OQB">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="big-ben" translatesAutoresizingMaskIntoConstraints="NO" id="1Po-p1-A3n">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5yT-vM-v0L">
-                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                                <rect key="frame" x="0.0" y="44" width="600" height="556"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="ciz-fJ-PpW">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsMultipleSelection="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Fhh-gj-U6g">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </tableView>
                                     </subviews>
@@ -42,12 +40,13 @@
                                 <blurEffect style="light"/>
                             </visualEffectView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ROr-5T-vCP">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <items>
                                     <navigationItem title="Title" id="SRY-aS-t8T"/>
                                 </items>
                             </navigationBar>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="wqX-7Z-7xh"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ROr-5T-vCP" firstAttribute="trailing" secondItem="wqX-7Z-7xh" secondAttribute="trailing" id="2ZM-Od-0ai"/>
@@ -62,7 +61,6 @@
                             <constraint firstItem="ROr-5T-vCP" firstAttribute="leading" secondItem="wqX-7Z-7xh" secondAttribute="leading" id="jJc-Wq-v4R"/>
                             <constraint firstItem="wqX-7Z-7xh" firstAttribute="bottom" secondItem="1Po-p1-A3n" secondAttribute="bottom" id="wZg-Kg-XoD"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="wqX-7Z-7xh"/>
                     </view>
                     <connections>
                         <outlet property="navigationBar" destination="ROr-5T-vCP" id="eoj-I3-TO4"/>
