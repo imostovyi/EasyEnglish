@@ -92,7 +92,7 @@ final class SelfAddedWordsLC: NSObject {
     }
 }
 
-// MARK: - - NSFetchedResultsControllerDelegate
+// MARK: -- NSFetchedResultsControllerDelegate
 
 extension SelfAddedWordsLC: NSFetchedResultsControllerDelegate {
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {

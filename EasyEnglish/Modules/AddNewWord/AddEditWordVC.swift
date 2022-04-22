@@ -26,9 +26,10 @@ class AddEditWordVC: UIViewController {
     // MARK: - Private state
     private var isDoneButtonMustBeShown = [false, false]
     private var rightButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonTouched))
-    private lazy var context = CoreDataStack.shared.persistantContainer.viewContext
-    private lazy var fetchedWords = Word.fetchAll()
-    private lazy var object = Word(context: context)
+    private lazy var object = Word(context: CoreDataStack.shared.persistantContainer.viewContext)
+    
+    private var props: Props?
+    private let logicController = AddEditWordLC()
 
     // MARK: - Life cycle
     override func viewDidLoad() {
@@ -38,10 +39,14 @@ class AddEditWordVC: UIViewController {
         setUpTextFields()
         setUpNavigationBar()
 
+        logicController.updatedProps = { [weak self] in
+            self?.render($0)
+        }
         //check if passedObject is nil it means that controller is not using as edit controller
         guard let tempObject = passedObject else { return }
         object = tempObject
         fillFields(object: object)
+        props?.checkWord(object)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -50,11 +55,38 @@ class AddEditWordVC: UIViewController {
         let capitalLetter = text.remove(at: String.Index(utf16Offset: 0, in: text)).uppercased()
         wordInformation[0].text = capitalLetter + text
         wordInformation[0].placeholderLabel.transform.ty = 0
-        isDoneButtonMustBeShown[1] = checkIfWordIsNormal(textField: wordInformation[0])
+    }
+    
+    private func render(_ props: Props) {
+        self.props = props
+        
+        if props.doneButtonShouldBeShown {
+            navigationItem.rightBarButtonItem = rightButton
+        } else {
+            navigationItem.rightBarButtonItem = nil
+        }
+        
+        var color = props.descriptionIsValid ? UIColor.white.cgColor : UIColor.red.cgColor
+        descriptionTextView.layer.borderColor = color
+        
+        if props.wordIsAlreadyInDictionary {
+            wordInformation[0].layer.borderColor = UIColor.red.cgColor
+            let alert = UIAlertController(title: "Error", message: "You already have this word", preferredStyle: .alert)
+            alert.addAction(
+                UIAlertAction(title: "Ok", style: .cancel) { [weak self] _ in
+                    self?.wordInformation[0].becomeFirstResponder()
+                }
+            )
+            present(alert, animated: true, completion: nil)
+            return
+        }
+        
+        color = props.wordIsValid ? UIColor.white.cgColor : UIColor.red.cgColor
+        wordInformation[0].layer.borderColor = color
     }
 
     // MARK: Setting up textFields
-
+    
     private func setUpTextFields() {
         for field in wordInformation {
             field.layer.cornerRadius = 7
@@ -62,19 +94,18 @@ class AddEditWordVC: UIViewController {
             field.layer.borderWidth = 1
             field.layer.borderColor = UIColor.white.cgColor
         }
-        wordInformation[0].delegate = self
-        wordInformation[0].layer.borderColor = UIColor.red.cgColor
+        wordInformation[0].layer.borderColor = UIColor.white.cgColor
         wordInformation[0].addTarget(self, action: #selector(changingTheContext(textField:)), for: .editingChanged)
-        wordInformation[4].delegate = self
     }
 
     // MARK: Setting up description text view
+    
     private func setUpTextView() {
         descriptionTextView.text = "Word description"
         descriptionTextView.delegate = self
         descriptionTextView.layer.cornerRadius = 8
         descriptionTextView.layer.borderWidth = 1
-        descriptionTextView.layer.borderColor = UIColor.red.cgColor
+        descriptionTextView.layer.borderColor = UIColor.white.cgColor
     }
 
     // MARK: Adding navigation bar
@@ -97,22 +128,18 @@ class AddEditWordVC: UIViewController {
         object.isKnown = false
         object.isApproved = false
 
-        //cuting down all that isn't neccesary
+        //cutting down videoURL
         if var index = wordInformation[4].text?.firstIndex(of: "=") {
             index = wordInformation[4].text?.index(after: index) ?? index
             let id = wordInformation[4].text?[index...]
             object.videoURL = String(id ?? "")
         }
 
-        do {
-            try context.save()
-        } catch {
-            debugPrint(error)
-        }
+        props?.saveWord()
         goToSelfAddedViewController()
     }
 
-    /// Function that dismsiss current view controller and presenting Controller with list of self added words
+    /// Function that dismiss current view controller and presenting Controller with list of self added words
     @objc private func goToSelfAddedViewController() {
         guard let vc = rootController else {
             goBack()
@@ -124,7 +151,6 @@ class AddEditWordVC: UIViewController {
         addedWordsVC.root = rootController
         dismiss(animated: true, completion: nil)
         vc.present(addedWordsVC, animated: true, completion: nil)
-
     }
 
     @objc private func goBack() {
@@ -148,102 +174,14 @@ class AddEditWordVC: UIViewController {
 
     ///Function that handling changing the text
     @objc private func changingTheContext(textField: UITextField) {
-        isDoneButtonMustBeShown[1] = checkIfWordIsNormal(textField: textField)
-        checkNeccesaryForDoneButton()
+        object.word = textField.text
+        props?.checkWord(object)
     }
-
-    ///Checking if url is correct
-    private func validateVideoURL(textField: UITextField) {
-        if textField.text == "" {
-            return
-        }
-
-        if !(textField.text!.contains("www.youtube.com/watch?v=")) {
-            let alert = UIAlertController(title: "Error",
-                                          message: "Incorect video URL. If you left it, you can't watch video\n Correct format www.youtube.com/watch?v=id", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
-            present(alert, animated: true, completion: nil)
-            return
-        }
-
-        let url = URL(string: textField.text!)!
-        let session = URLSession(configuration: .default)
-        let task = session.dataTask(with: url) { (_, _, error) in
-            if error == nil {
-                return
-            }
-
-            let alert = UIAlertController(title: "Error", message: "Invalid URL. Please try to check your insertion", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
-        }
-        task.resume()
-
-    }
-
-    ///Checking if word was set normally
-    private func checkIfWordIsNormal(textField: UITextField) -> Bool {
-
-        if textField.text == nil {
-            textField.layer.borderColor = UIColor.red.cgColor
-            return false
-        }
-
-        let regex: NSRegularExpression
-        do {
-            //check if word is nil
-            try regex = NSRegularExpression(pattern: "[a-z]+", options: .caseInsensitive)
-            let range = NSRange(location: 0, length: textField.text!.utf16.count)
-            if regex.firstMatch(in: wordInformation[0].text!, options: [], range: range) == nil {
-                textField.layer.borderColor = UIColor.red.cgColor
-                return false
-            }
-        } catch {
-            debugPrint(error)
-        }
-
-        textField.layer.borderColor = UIColor.white.cgColor
-        return true
-    }
-
-    ///Checking if description set normally
-    private func checkIfDescriptionIsNormal(textView: UITextView) -> Bool {
-        if textView.text == nil {
-            textView.layer.borderColor = UIColor.red.cgColor
-            return false
-        }
-
-        let regex: NSRegularExpression
-
-        do {
-            try regex = NSRegularExpression(pattern: "[a-z]+", options: .caseInsensitive)
-            let range = NSRange(location: 0, length: textView.text.utf16.count)
-            if regex.firstMatch(in: textView.text, options: [], range: range) == nil {
-                textView.layer.borderColor = UIColor.red.cgColor
-                return false
-            }
-        } catch {
-            debugPrint(error)
-        }
-
-        textView.layer.borderColor = UIColor.white.cgColor
-        return true
-    }
-
-    ///Handling if doneButton must be shown
-    private func checkNeccesaryForDoneButton() {
-        if isDoneButtonMustBeShown[0] == true && isDoneButtonMustBeShown[1] == true {
-            navigationItem.rightBarButtonItem = rightButton
-        } else {
-            navigationItem.rightBarButtonItem = nil
-        }
-    }
-
 }
 
-// MARK: - - Extension textViewDelegate
+// MARK: -- Extension TextViewDelegate
 
 extension AddEditWordVC: UITextViewDelegate {
-
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.text == "Word description" {
             textView.text = ""
@@ -253,36 +191,23 @@ extension AddEditWordVC: UITextViewDelegate {
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text == "" {
             textView.text = "Word description"
-            return
         }
     }
 
     func textViewDidChange(_ textView: UITextView) {
-        isDoneButtonMustBeShown[0] = checkIfDescriptionIsNormal(textView: textView)
-        checkNeccesaryForDoneButton()
+        object.wordDescription = textView.text
+        props?.checkWord(object)
     }
-
 }
 
-// MARK: - - Extension textFieldDelegate
-extension AddEditWordVC: UITextFieldDelegate {
-    func textFieldDidEndEditing(_ textField: UITextField) {
-
-        for word in fetchedWords where word.word == textField.text {
-
-            textField.layer.borderColor = UIColor.red.cgColor
-
-            let alert = UIAlertController(title: "Error", message: "You have this word already", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: {(_) in
-                textField.becomeFirstResponder()
-            }))
-
-            present(alert, animated: true, completion: nil)
-            return
-        }
-    }
-
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.layer.borderColor = UIColor.white.cgColor
+extension AddEditWordVC {
+    struct Props {
+        let wordIsAlreadyInDictionary: Bool
+        let wordIsValid: Bool
+        let doneButtonShouldBeShown: Bool
+        let descriptionIsValid: Bool
+        
+        let checkWord: (Word) -> Void
+        let saveWord: () -> Void
     }
 }
