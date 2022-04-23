@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="20G527" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="SelfWord" representedClassName="SelfWord" syncable="YES">
-        <attribute name="pictureURL" optional="YES" attributeType="String"/>
-        <attribute name="transcription" optional="YES" attributeType="String"/>
-        <attribute name="translationUA" optional="YES" attributeType="String"/>
-        <attribute name="videoURL" optional="YES" attributeType="String"/>
-        <attribute name="word" optional="YES" attributeType="String"/>
-        <attribute name="wordDescription" optional="YES" attributeType="String"/>
-    </entity>
-    <entity name="Word" representedClassName="Word" syncable="YES">
-        <attribute name="isApproved" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="isKnown" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+    <entity name="AbstractWord" representedClassName="AbstractWord" isAbstract="YES" syncable="YES">
         <attribute name="pictureURL" optional="YES" attributeType="URI"/>
         <attribute name="transcription" optional="YES" attributeType="String"/>
         <attribute name="translationUA" optional="YES" attributeType="String"/>
@@ -18,8 +8,14 @@
         <attribute name="word" optional="YES" attributeType="String"/>
         <attribute name="wordDescription" optional="YES" attributeType="String"/>
     </entity>
+    <entity name="SelfWord" representedClassName="SelfWord" parentEntity="AbstractWord" syncable="YES"/>
+    <entity name="Word" representedClassName="Word" parentEntity="AbstractWord" syncable="YES">
+        <attribute name="isApproved" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="isKnown" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+    </entity>
     <elements>
-        <element name="SelfWord" positionX="-63" positionY="45" width="128" height="119"/>
+        <element name="AbstractWord" positionX="-63" positionY="63" width="128" height="119"/>
+        <element name="SelfWord" positionX="-63" positionY="45" width="128" height="29"/>
         <element name="Word" positionX="-63" positionY="-18" width="128" height="149"/>
     </elements>
 </model>

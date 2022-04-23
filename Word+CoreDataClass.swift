@@ -2,8 +2,8 @@
 //  Word+CoreDataClass.swift
 //  EasyEnglish
 //
-//  Created by Мостовий Ігор on 3/10/19.
-//  Copyright © 2019 Мостовий Ігор. All rights reserved.
+//  Created by Ігор Мостовий on 23.04.2022.
+//  Copyright © 2022 Мостовий Ігор. All rights reserved.
 //
 //
 
@@ -11,7 +11,7 @@ import Foundation
 import CoreData
 
 @objc(Word)
-public class Word: NSManagedObject {
+public class Word: AbstractWord {
 
     class func fetchAll() -> [Word] {
         let context: NSManagedObjectContext = CoreDataStack.shared.persistantContainer.viewContext
