@@ -79,7 +79,7 @@ class TestWordsVC: UIViewController {
                   return
               }
 
-        vc.fillWordsArray(words: words)
+        vc.logicController = .init(words: words)
         present(vc, animated: true, completion: nil)
     }
 

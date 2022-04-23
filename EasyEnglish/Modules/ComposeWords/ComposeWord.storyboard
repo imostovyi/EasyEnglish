@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qK4-JF-h44">
-    <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -13,27 +12,27 @@
             <objects>
                 <viewController storyboardIdentifier="Test" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qK4-JF-h44" customClass="ComposeWordViewController" customModule="EasyEnglish" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mEu-zz-qww">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="big-ben" translatesAutoresizingMaskIntoConstraints="NO" id="g1v-kr-Qca">
-                                <rect key="frame" x="0.0" y="44" width="414" height="692"/>
+                                <rect key="frame" x="0.0" y="44" width="600" height="556"/>
                             </imageView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Th6-iK-DhF">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <color key="backgroundColor" name="NavigationBarBackground"/>
                                 <items>
                                     <navigationItem title="Title" id="VVX-fR-emQ"/>
                                 </items>
                             </navigationBar>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0aU-Ki-hOQ">
-                                <rect key="frame" x="0.0" y="44" width="414" height="692"/>
+                                <rect key="frame" x="0.0" y="44" width="600" height="556"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="mvj-BX-bgz" userLabel="Content">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="692"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ZnX-d4-k9C">
-                                            <rect key="frame" x="5" y="5" width="404" height="352"/>
+                                            <rect key="frame" x="5" y="5" width="590" height="216"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                             <color key="textColor" name="Text"/>
@@ -41,7 +40,7 @@
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pHg-yS-SrE">
-                                            <rect key="frame" x="0.0" y="417" width="414" height="100"/>
+                                            <rect key="frame" x="0.0" y="281" width="600" height="100"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <inset key="scrollIndicatorInsets" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="d4w-KD-kWz">
@@ -52,14 +51,14 @@
                                             </collectionViewFlowLayout>
                                             <cells>
                                                 <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AnswerLetterCell" id="9Tn-of-Xdq" customClass="CollectionViewCell" customModule="EasyEnglish" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="7.666666666666667" width="85" height="85"/>
+                                                    <rect key="frame" x="0.0" y="7.5" width="85" height="85"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                         <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="L" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ct7-6p-JKu">
-                                                                <rect key="frame" x="33.333333333333336" y="25.666666666666671" width="18.666666666666664" height="34"/>
+                                                                <rect key="frame" x="33.5" y="25.5" width="18.5" height="34"/>
                                                                 <fontDescription key="fontDescription" name="Baskerville-BoldItalic" family="Baskerville" pointSize="30"/>
                                                                 <color key="textColor" name="Text"/>
                                                                 <nil key="highlightedColor"/>
@@ -78,7 +77,7 @@
                                             </cells>
                                         </collectionView>
                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Sl9-Dg-Muu">
-                                            <rect key="frame" x="0.0" y="527" width="414" height="100"/>
+                                            <rect key="frame" x="0.0" y="391" width="600" height="100"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="100" id="Vq6-8m-Mll"/>
@@ -91,14 +90,14 @@
                                             </collectionViewFlowLayout>
                                             <cells>
                                                 <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LetterCell" id="DzV-CU-ziA" customClass="CollectionViewCell" customModule="EasyEnglish" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="7.666666666666667" width="85" height="85"/>
+                                                    <rect key="frame" x="0.0" y="7.5" width="85" height="85"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                         <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="L" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1lu-BX-1Ok">
-                                                                <rect key="frame" x="33.333333333333336" y="25.666666666666671" width="18.666666666666664" height="34"/>
+                                                                <rect key="frame" x="33.5" y="25.5" width="18.5" height="34"/>
                                                                 <fontDescription key="fontDescription" name="Baskerville-BoldItalic" family="Baskerville" pointSize="30"/>
                                                                 <color key="textColor" name="Text"/>
                                                                 <nil key="highlightedColor"/>
@@ -117,7 +116,7 @@
                                             </cells>
                                         </collectionView>
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="XNu-K2-jqD">
-                                            <rect key="frame" x="20" y="637" width="374" height="50"/>
+                                            <rect key="frame" x="20" y="501" width="560" height="50"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BAV-4J-pPS" userLabel="Back" customClass="BounceButton" customModule="EasyEnglish" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -129,7 +128,7 @@
                                                     <state key="normal" image="left-arrow"/>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V0e-gd-7hQ" userLabel="Check" customClass="BounceButton" customModule="EasyEnglish" customModuleProvider="target">
-                                                    <rect key="frame" x="65" y="0.0" width="244" height="50"/>
+                                                    <rect key="frame" x="65" y="0.0" width="430" height="50"/>
                                                     <color key="backgroundColor" name="NavigationBarBackground"/>
                                                     <fontDescription key="fontDescription" name="Baskerville-BoldItalic" family="Baskerville" pointSize="22"/>
                                                     <state key="normal" title="Check">
@@ -137,7 +136,7 @@
                                                     </state>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CLe-Xs-0on" userLabel="Forvard" customClass="BounceButton" customModule="EasyEnglish" customModuleProvider="target">
-                                                    <rect key="frame" x="324" y="0.0" width="50" height="50"/>
+                                                    <rect key="frame" x="510" y="0.0" width="50" height="50"/>
                                                     <color key="backgroundColor" name="NavigationBarBackground"/>
                                                     <state key="normal" image="right-arrow"/>
                                                 </button>
@@ -153,16 +152,16 @@
                                             </constraints>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="ofM-ox-Nfb">
-                                            <rect key="frame" x="51.333333333333343" y="362" width="311.66666666666663" height="50"/>
+                                            <rect key="frame" x="144" y="226" width="312" height="50"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Compose word below. Status is" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kzU-IW-IDV">
-                                                    <rect key="frame" x="0.0" y="15.333333333333313" width="246.66666666666666" height="19.333333333333329"/>
+                                                    <rect key="frame" x="0.0" y="15.5" width="247" height="19.5"/>
                                                     <fontDescription key="fontDescription" name="Baskerville-BoldItalic" family="Baskerville" pointSize="17"/>
                                                     <color key="textColor" name="Text"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lYm-Sc-sQM">
-                                                    <rect key="frame" x="261.66666666666669" y="0.0" width="50" height="50"/>
+                                                    <rect key="frame" x="262" y="0.0" width="50" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="Xob-KZ-VVX"/>
                                                         <constraint firstAttribute="width" constant="50" id="ybB-Ta-VgR"/>
@@ -214,12 +213,12 @@
                     </view>
                     <connections>
                         <outlet property="answerCollectionView" destination="pHg-yS-SrE" id="PTz-Xk-wzi"/>
-                        <outlet property="backButton" destination="BAV-4J-pPS" id="aTQ-oC-Int"/>
                         <outlet property="checkButton" destination="V0e-gd-7hQ" id="FhN-AW-ztF"/>
                         <outlet property="descriptionTextView" destination="ZnX-d4-k9C" id="WPU-Jm-EYO"/>
-                        <outlet property="forwardButton" destination="CLe-Xs-0on" id="hl1-Qm-T4S"/>
                         <outlet property="lettersCollectionView" destination="Sl9-Dg-Muu" id="m7O-lp-XEw"/>
                         <outlet property="navigationBar" destination="Th6-iK-DhF" id="bFd-7O-NAl"/>
+                        <outlet property="nextWordButton" destination="CLe-Xs-0on" id="hl1-Qm-T4S"/>
+                        <outlet property="previousWordButton" destination="BAV-4J-pPS" id="aTQ-oC-Int"/>
                         <outlet property="statusImageView" destination="lYm-Sc-sQM" id="eh2-w8-gHo"/>
                         <outlet property="visualEffectView" destination="0aU-Ki-hOQ" id="LLS-Os-j5r"/>
                     </connections>

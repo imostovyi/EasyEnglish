@@ -19,6 +19,7 @@
 		5094E4D72812CC770059F2D7 /* SelfAddedWordsLC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5094E4D62812CC770059F2D7 /* SelfAddedWordsLC.swift */; };
 		5094E4D82812CD260059F2D7 /* DictionaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C112B6222E7CFD000E0D57 /* DictionaryViewController.swift */; };
 		5094E4DA2812DB990059F2D7 /* AddEditWordLC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5094E4D92812DB990059F2D7 /* AddEditWordLC.swift */; };
+		50AFB1572814190000A400D4 /* ComposeWordLC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AFB1562814190000A400D4 /* ComposeWordLC.swift */; };
 		843430352235880900DD429B /* SelfWord+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843430312235880900DD429B /* SelfWord+CoreDataClass.swift */; };
 		843430362235880900DD429B /* SelfWord+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843430322235880900DD429B /* SelfWord+CoreDataProperties.swift */; };
 		843430372235880900DD429B /* Word+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843430332235880900DD429B /* Word+CoreDataClass.swift */; };
@@ -84,6 +85,7 @@
 		5094E4D32812BB660059F2D7 /* TestWordsLS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestWordsLS.swift; sourceTree = "<group>"; };
 		5094E4D62812CC770059F2D7 /* SelfAddedWordsLC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfAddedWordsLC.swift; sourceTree = "<group>"; };
 		5094E4D92812DB990059F2D7 /* AddEditWordLC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditWordLC.swift; sourceTree = "<group>"; };
+		50AFB1562814190000A400D4 /* ComposeWordLC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeWordLC.swift; sourceTree = "<group>"; };
 		7906E800EE31B51E9D7ED99D /* Pods-EasyEnglishUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyEnglishUITests.debug.xcconfig"; path = "Target Support Files/Pods-EasyEnglishUITests/Pods-EasyEnglishUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		843430312235880900DD429B /* SelfWord+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SelfWord+CoreDataClass.swift"; sourceTree = "<group>"; };
 		843430322235880900DD429B /* SelfWord+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SelfWord+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -445,6 +447,7 @@
 				84BE5E84224A29940016C63D /* ComposeWord.storyboard */,
 				84A21291224AB9BC003CA53E /* CollectionViewCell.swift */,
 				84BE5E86224A29C60016C63D /* ComposeWordViewController.swift */,
+				50AFB1562814190000A400D4 /* ComposeWordLC.swift */,
 			);
 			path = ComposeWords;
 			sourceTree = "<group>";
@@ -735,6 +738,7 @@
 				843430352235880900DD429B /* SelfWord+CoreDataClass.swift in Sources */,
 				88C1837824696184009DB1D5 /* ObjectDetectionVC.swift in Sources */,
 				503AA3272810769A00CFA6C4 /* AppCoordinator.swift in Sources */,
+				50AFB1572814190000A400D4 /* ComposeWordLC.swift in Sources */,
 				84C0CB85222D495A002AB7B4 /* CoreDataStack.swift in Sources */,
 				843430382235880900DD429B /* Word+CoreDataProperties.swift in Sources */,
 				84B83C34222EA876005ED568 /* AddEditWordVC.swift in Sources */,
