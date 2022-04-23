@@ -13,23 +13,25 @@ import CoreData
 class AddEditWordVC: UIViewController {
 
     // MARK: - IBoutlets
+    
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet var wordInformation: [IsaoTextField]!
     @IBOutlet weak var descriptionTextView: UITextView!
 
     // MARK: public state
+    
     public var passedObject: Word?
     public var rootController: DictionaryViewController?
     public var newWord: String?
     static public let reuseIdentifier = "AddNewWord"
+    public let logicController = AddEditWordLC()
 
     // MARK: - Private state
-    private var isDoneButtonMustBeShown = [false, false]
+    
     private var rightButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonTouched))
     private lazy var object = Word(context: CoreDataStack.shared.persistantContainer.viewContext)
     
     private var props: Props?
-    private let logicController = AddEditWordLC()
 
     // MARK: - Life cycle
     override func viewDidLoad() {

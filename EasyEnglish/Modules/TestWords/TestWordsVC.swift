@@ -14,6 +14,7 @@ class TestWordsVC: UIViewController {
     // MARK: Public properties
 
     public static let identifier = "TestWords"
+    public let logicController = TestWordsLS()
 
     // MARK: private properties
 
@@ -21,8 +22,6 @@ class TestWordsVC: UIViewController {
     private let doneButton = UIBarButtonItem(title: "I'm ready!", style: .done, target: self, action: #selector(doneButtonWasTapped))
     
     private var props: Props?
-    private let logicController = TestWordsLS()
-
 
     // MARK: outlets
 
@@ -90,7 +89,6 @@ class TestWordsVC: UIViewController {
 
 // MARK: - Extension tableViewDataSource and tableViewDelegate
 extension TestWordsVC: UITableViewDataSource, UITableViewDelegate {
-
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return props?.words.count ?? 0

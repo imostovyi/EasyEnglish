@@ -35,7 +35,6 @@ class DictionaryViewController: UIViewController {
         tableView.reloadData()
     }
     
-
     // MARK: ViewDidLoad
 
     override func viewDidLoad() {

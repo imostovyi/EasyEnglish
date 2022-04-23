@@ -36,15 +36,6 @@ class ComposeWordViewController: UIViewController {
     private var sourceCollectionView: UICollectionView?
     private var sourceIndexPath: IndexPath?
 
-    // MARK: Public functions
-
-//    public func fillWordsArray(words: [Word]) {
-//        for word in words {
-//            word.isKnown = false
-//            self.words.append(word)
-//        }
-//    }
-
     // MARK: Private functions
 
     override func viewDidLoad() {
