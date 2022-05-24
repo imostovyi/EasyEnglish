@@ -40,10 +40,11 @@ class AddEditWordVC: UIViewController {
         setUpTextView()
         setUpTextFields()
         setUpNavigationBar()
-
+        
         logicController.updatedProps = { [weak self] in
             self?.render($0)
         }
+        
         //check if passedObject is nil it means that controller is not using as edit controller
         guard let tempObject = passedObject else { return }
         object = tempObject
@@ -57,6 +58,8 @@ class AddEditWordVC: UIViewController {
         let capitalLetter = text.remove(at: String.Index(utf16Offset: 0, in: text)).uppercased()
         wordInformation[0].text = capitalLetter + text
         wordInformation[0].placeholderLabel.transform.ty = 0
+        object.word = wordInformation[0].text
+        props?.checkWord(object)
     }
     
     private func render(_ props: Props) {
@@ -150,7 +153,6 @@ class AddEditWordVC: UIViewController {
 
         let storyboard = UIStoryboard(name: "SelfAddedWords", bundle: nil)
         let addedWordsVC = storyboard.instantiateViewController(withIdentifier: SelfAddedWordsVC.identifier) as! SelfAddedWordsVC
-        addedWordsVC.root = rootController
         dismiss(animated: true, completion: nil)
         vc.present(addedWordsVC, animated: true, completion: nil)
     }

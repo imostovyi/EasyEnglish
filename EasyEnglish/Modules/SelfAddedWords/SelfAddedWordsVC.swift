@@ -22,7 +22,6 @@ class SelfAddedWordsVC: UIViewController {
     // MARK: Public properties
 
     static let identifier = "SelfAddedWords"
-    var root: UIViewController?
 
     // MARK: Private properties
 
@@ -83,7 +82,7 @@ class SelfAddedWordsVC: UIViewController {
             return
         }
 
-        let alert = UIAlertController(title: "Are you shure?", message: "You didn't send words for checking, so we cant check and approve it. This words will not appeare in dictionary", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Are you sure?", message: "You didn't send words for checking, so we cant check and approve it. This words will not appear in dictionary", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: {(_) in
             self.dismiss(animated: true, completion: nil)
         }))

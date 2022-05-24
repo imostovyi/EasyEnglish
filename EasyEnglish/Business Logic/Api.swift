@@ -14,7 +14,7 @@ enum Services {
 
 extension Services: TargetType {
     var baseURL: URL {
-        return URL(string: "https://0721-2001-7d0-8417-9a80-64c9-27d3-a509-2d90.eu.ngrok.io/api/")!
+        return URL(string: "https://aa49-2001-7d0-8417-9a80-84aa-e3dc-472a-b05a.eu.ngrok.io/api/")!
     }
 
     var path: String {

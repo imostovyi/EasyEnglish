@@ -33,7 +33,6 @@ class ComposeWordViewController: UIViewController {
     private lazy var checkedImage = UIImage(named: "checked")
     private lazy var canceledImage = UIImage(named: "cancel")
 
-    private var sourceCollectionView: UICollectionView?
     private var sourceIndexPath: IndexPath?
 
     // MARK: Private functions
@@ -229,7 +228,6 @@ extension ComposeWordViewController: UICollectionViewDelegate, UICollectionViewD
 
 extension ComposeWordViewController: UICollectionViewDragDelegate {
     func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
-        sourceCollectionView = collectionView
         sourceIndexPath = indexPath
         let item = collectionView == lettersCollectionView
         ? props.lettersDataSource[indexPath.row]

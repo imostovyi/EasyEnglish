@@ -248,10 +248,10 @@
 			children = (
 				84C112B8222E7F94000E0D57 /* Dictionary */,
 				84CF8D5122426F7F006CC4A7 /* ShowDetail */,
+				84B83C35222EA87E005ED568 /* AddNewWord */,
 				88C1837424696129009DB1D5 /* ObjectDetectionVC */,
 				847411602248082A00639522 /* TestWords */,
 				84F940942236938A00D63C89 /* SelfAddedWords */,
-				84B83C35222EA87E005ED568 /* AddNewWord */,
 				84BE5E88224A29CC0016C63D /* ComposeWords */,
 				84206A39222D416C0046D9D3 /* LoginRegistration */,
 				845E3FBD2255083100F8CB78 /* SplashScreen.storyboard */,
