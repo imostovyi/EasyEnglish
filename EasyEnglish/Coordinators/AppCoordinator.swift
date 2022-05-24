@@ -56,7 +56,11 @@ final class AppCoordinator: Coordinator, ParentCoordinator {
                 return
             }
         controller.context = word
-        navigationController.pushViewController(controller, animated: true)
+        guard let presentedController = navigationController.presentedViewController else {
+            navigationController.pushViewController(controller, animated: true)
+            return
+        }
+        presentedController.present(controller, animated: true)
     }
     
     public func showTestingScreen() {
