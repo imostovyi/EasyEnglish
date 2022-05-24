@@ -2,8 +2,7 @@
 //  BounceButton.swift
 //  EasyEnglish
 //
-//  Created by Мостовий Ігор on 3/12/19.
-//  Copyright © 2019 Мостовий Ігор. All rights reserved.
+//  Created on 3/12/19.
 //
 
 import Foundation

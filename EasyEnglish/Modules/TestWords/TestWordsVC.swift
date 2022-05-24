@@ -2,8 +2,7 @@
 //  TestWordsVC.swift
 //  EasyEnglish
 //
-//  Created by Мостовий Ігор on 3/24/19.
-//  Copyright © 2019 Мостовий Ігор. All rights reserved.
+//  Created on 3/24/19.
 //
 
 import UIKit

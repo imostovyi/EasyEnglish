@@ -2,8 +2,7 @@
 //  LoginViewController.swift
 //  EasyEnglish
 //
-//  Created by Мостовий Ігор on 2/21/19.
-//  Copyright © 2019 Мостовий Ігор. All rights reserved.
+//  Created on 2/21/19.
 //
 
 import UIKit

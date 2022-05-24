@@ -2,9 +2,7 @@
 //  AbstractWord+CoreDataProperties.swift
 //  EasyEnglish
 //
-//  Created by Ігор Мостовий on 23.04.2022.
-//  Copyright © 2022 Мостовий Ігор. All rights reserved.
-//
+//  Created on 23.04.2022.
 //
 
 import Foundation

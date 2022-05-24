@@ -2,8 +2,7 @@
 //  ObjectDetectionVC.swift
 //  EasyEnglish
 //
-//  Created by Ihor Mostoviy on 11.05.2020.
-//  Copyright © 2020 Мостовий Ігор. All rights reserved.
+//  Created on 11.05.2020.
 //
 
 import UIKit

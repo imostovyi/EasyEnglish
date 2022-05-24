@@ -2,8 +2,7 @@
 //  ObjectdetectionLC.swift
 //  EasyEnglish
 //
-//  Created by Ігор Мостовий on 21.04.2022.
-//  Copyright © 2022 Мостовий Ігор. All rights reserved.
+//  Created 21.04.2022.
 //
 
 import AVKit

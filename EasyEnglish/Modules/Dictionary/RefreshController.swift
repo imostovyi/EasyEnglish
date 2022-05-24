@@ -2,8 +2,7 @@
 //  RefreshController.swift
 //  EasyEnglish
 //
-//  Created by Мостовий Ігор on 4/1/19.
-//  Copyright © 2019 Мостовий Ігор. All rights reserved.
+//  Created on 4/1/19.
 //
 
 import Moya
